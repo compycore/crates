@@ -25,6 +25,12 @@ typedef struct Entity
 		collide = {.x = x + cbox.x, .y = y + cbox.y, .width = cbox.width, .height = cbox.height};
 	}
 
+	void accelerate()
+	{
+		momX += accel * cos(angle * 1000 / 57296);
+		momY -= accel * sin(angle * 1000 / 57296);
+	}
+
 	void physics()
 	{
 		x += momX;
