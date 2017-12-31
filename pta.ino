@@ -1,9 +1,7 @@
 #include "globals.h"
-#include "utils.h"
 #include "compycore.h"
 #include "entity.h"
 #include "player.h"
-#include "enemy.h"
 
 Compycore compycore;
 Player player;
@@ -41,35 +39,6 @@ void loop()
 	arduboy.clear();
 
 	if (!(compycore.introduce())) return;
-
-	// ground
-	arduboy.drawLine(0, ground,WIDTH,ground);
-	arduboy.drawLine(0, ground+1,WIDTH,ground+1);
-	fillRectPattern(0, ground+3, WIDTH, HEIGHT-ground-3);
-
-	// spawn a new enemy
-	if (random(100)<2) {
-		enemies.push_back(Enemy());
-	}
-
-	player.drawScore();
-
-	// do stuff with the enemies
-	for(int i=0; i < enemies.size(); i++){
-		if (enemies[i].x>(0-enemies[i].width)) {
-			enemies[i].update();
-			enemies[i].draw();
-			// enemies[i].debug();
-
-			if (arduboy.collide(player.collide, enemies[i].collide)) {
-				player.score+=1000;
-			}
-		} else {
-			// erase enemies when they're off the left of the screen
-			enemies.erase(enemies.begin() + i);
-			i--;
-		}
-	}
 
 	player.update();
 	player.draw();

@@ -14,14 +14,6 @@ typedef struct Entity
 	int curFrame;
 	int animationFrequency;
 
-	void jump()
-	{
-		if (y + height == ground)
-		{
-			momY -= jumpStrength;
-		}
-	}
-
 	void updateCollide()
 	{
 		// if we haven't defined cbox, make it a default one
@@ -38,19 +30,6 @@ typedef struct Entity
 		y += momY;
 
 		gravity();
-	}
-
-	void gravity()
-	{
-		if (y + height < ground)
-		{
-			momY += weight;
-		}
-		else
-		{
-			momY = 0;
-			y = ground - height;
-		}
 	}
 
 	void animate()
