@@ -27,8 +27,10 @@ typedef struct Entity
 
 	void accelerate()
 	{
-		momX += accel * cos(angle * 1000 / 57296);
-		momY -= accel * sin(angle * 1000 / 57296);
+		float visualAngle = angle / 360 * frameCount * (360 / frameCount);
+
+		momX += accel * cos(visualAngle * 1000 / 57296);
+		momY -= accel * sin(visualAngle * 1000 / 57296);
 	}
 
 	void physics()
