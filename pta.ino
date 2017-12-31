@@ -1,4 +1,5 @@
 #include "globals.h"
+#include "utils.h"
 #include "compycore.h"
 #include "entity.h"
 #include "player.h"

@@ -79,23 +79,23 @@ typedef struct Player: Entity
 {
 	Player()
 	{
+		angle = 0;
 		x = 10, y = 0;
 		width = 16, height = 16;
 		cbox = {.x = 4, .y = 8, .width = 8, .height = 8};
 
-		momY = 0;
-		weight = 0.35;
-		movementSpeed = 1.5;
+		momX = 0, momY = 0;
+		turnSpeed = 3;
+		accel = 1.5;
 
-		frames = 12;
+		frameCount = 12;
 		curFrame = 0;
-		animationFrequency = 3;
+		animFreq = 3;
 	}
 
 	void update()
 	{
 		control();
-		animate();
 		physics();
 		updateCollide();
 	}
@@ -109,23 +109,15 @@ typedef struct Player: Entity
 	{
 		if (arduboy.pressed(LEFT_BUTTON))
 		{
-			if (x - movementSpeed > 0)
-			{
-				animationFrequency = 4;
-				x -= movementSpeed;
-			}
+			angle += turnSpeed;
 		}
 		else if (arduboy.pressed(RIGHT_BUTTON))
 		{
-			if (x + movementSpeed + width < WIDTH)
-			{
-				animationFrequency = 2;
-				x += movementSpeed;
-			}
+			angle -= turnSpeed;
 		}
-		else
-		{
-			animationFrequency = 3;
-		}
+
+		angle = normalizeAngle(angle);
+
+		curFrame = angleToFrame(angle, frameCount);
 	}
 };

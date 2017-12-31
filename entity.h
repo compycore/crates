@@ -1,17 +1,18 @@
 typedef struct Entity
 {
+	float angle;
 	float x, y;
 	int width, height;
 	Rect cbox; // used for cbox offset and size
 	Rect collide; // used to actually calculate collisions
 
-	float momY;
-	float weight;
-	float movementSpeed;
+	float momX, momY;
+	float turnSpeed;
+	float accel;
 
-	int frames;
+	int frameCount;
 	int curFrame;
-	int animationFrequency;
+	int animFreq;
 
 	void updateCollide()
 	{
@@ -26,14 +27,15 @@ typedef struct Entity
 
 	void physics()
 	{
+		x += momX;
 		y += momY;
 	}
 
 	void animate()
 	{
-		if (arduboy.everyXFrames(animationFrequency))
+		if (arduboy.everyXFrames(animFreq))
 		{
-			if (curFrame < frames - 1)
+			if (curFrame < frameCount - 1)
 			{
 				curFrame += 1;
 			}
