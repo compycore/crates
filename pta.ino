@@ -6,8 +6,6 @@
 Compycore compycore;
 Player player;
 
-std::vector<Enemy> enemies;
-
 void setup()
 {
 	arduboy.boot(); // raw hardware

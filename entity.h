@@ -8,7 +8,6 @@ typedef struct Entity
 	float momY;
 	float weight;
 	float movementSpeed;
-	float jumpStrength;
 
 	int frames;
 	int curFrame;
@@ -28,8 +27,6 @@ typedef struct Entity
 	void physics()
 	{
 		y += momY;
-
-		gravity();
 	}
 
 	void animate()

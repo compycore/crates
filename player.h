@@ -86,7 +86,6 @@ typedef struct Player: Entity
 		momY = 0;
 		weight = 0.35;
 		movementSpeed = 1.5;
-		jumpStrength = 5;
 
 		frames = 12;
 		curFrame = 0;
@@ -108,11 +107,6 @@ typedef struct Player: Entity
 
 	void control()
 	{
-		if (arduboy.justPressed(A_BUTTON | B_BUTTON | UP_BUTTON))
-		{
-			jump();
-		}
-
 		if (arduboy.pressed(LEFT_BUTTON))
 		{
 			if (x - movementSpeed > 0)
