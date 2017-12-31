@@ -84,7 +84,7 @@ typedef struct Player: Entity
 		width = 16, height = 16;
 		cbox = {.x = 4, .y = 8, .width = 8, .height = 8};
 
-		momX = 0, momY = 0;
+		speed = 0;
 		turnSpeed = 3;
 		accel = 0.05;
 
@@ -121,6 +121,10 @@ typedef struct Player: Entity
 		if (arduboy.pressed(A_BUTTON))
 		{
 			accelerate();
+		}
+		else if (arduboy.pressed(B_BUTTON))
+		{
+			decelerate();
 		}
 
 		curFrame = angleToFrame(angle, frameCount);

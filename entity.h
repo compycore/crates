@@ -6,9 +6,10 @@ typedef struct Entity
 	Rect cbox; // used for cbox offset and size
 	Rect collide; // used to actually calculate collisions
 
-	float momX, momY;
-	float turnSpeed;
 	float accel;
+	float speed;
+	float friction;
+	float turnSpeed;
 
 	int frameCount;
 	int curFrame;
@@ -27,16 +28,20 @@ typedef struct Entity
 
 	void accelerate()
 	{
-		float visualAngle = angle / 360 * frameCount * (360 / frameCount);
+		speed += accel;
+	}
 
-		momX += accel * cos(visualAngle * 1000 / 57296);
-		momY -= accel * sin(visualAngle * 1000 / 57296);
+	void decelerate()
+	{
+		speed -= accel;
 	}
 
 	void physics()
 	{
-		x += momX;
-		y += momY;
+		float visualAngle = angle / 360 * frameCount * (360 / frameCount);
+
+		x += speed * cos(visualAngle * 1000 / 57296);
+		y -= speed * sin(visualAngle * 1000 / 57296);
 	}
 
 	void animate()
