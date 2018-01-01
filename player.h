@@ -107,13 +107,16 @@ typedef struct Player: Entity
 
 	void control()
 	{
-		if (arduboy.pressed(LEFT_BUTTON))
+		if (speed > 0)
 		{
-			angle += turnSpeed;
-		}
-		else if (arduboy.pressed(RIGHT_BUTTON))
-		{
-			angle -= turnSpeed;
+			if (arduboy.pressed(LEFT_BUTTON))
+			{
+				angle += turnSpeed;
+			}
+			else if (arduboy.pressed(RIGHT_BUTTON))
+			{
+				angle -= turnSpeed;
+			}
 		}
 
 		angle = normalizeAngle(angle);

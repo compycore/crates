@@ -34,14 +34,39 @@ typedef struct Entity
 	void decelerate()
 	{
 		speed -= accel;
+
+		if (speed < 0)
+		{
+			speed = 0;
+		}
 	}
 
 	void physics()
 	{
-		float visualAngle = angle / 360 * frameCount * (360 / frameCount);
+		int realFrameCount = frameCount + 1;
+		float visualAngle = angle / 360 * realFrameCount * (360 / realFrameCount);
 
 		x += speed * cos(visualAngle * 1000 / 57296);
 		y -= speed * sin(visualAngle * 1000 / 57296);
+
+		// temporarily keep inside the screen for testing
+		if (x < 0)
+		{
+			x = 0;
+		}
+		else if (x + width > WIDTH)
+		{
+			x = WIDTH - width;
+		}
+
+		if (y < 0)
+		{
+			y = 0;
+		}
+		else if (y + height > HEIGHT)
+		{
+			y = HEIGHT - height;
+		}
 	}
 
 	void animate()
