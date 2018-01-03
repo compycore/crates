@@ -1,23 +1,24 @@
 struct Dust: Entity
 {
-	Dust(float x, float y, float angle, float speed)
+	Dust(float X, float Y, float Angle, float Speed)
 	{
-		ttl = 50;
-		angle = angle || 0;
-		x = x, y = y;
+		angle = Angle;
+		x = X, y = Y;
 		width = 8, height = 8;
-		cbox = {.x = 4, .y = 8, .width = 8, .height = 8};
 
-		speed = speed / 2 || 0;
+		speed = Speed;
 
-		frameCount = 12;
+		frameCount = 4;
 		curFrame = 0;
-		animFreq = 3;
+		animFreq = 6;
+
+		ttl = animFreq * frameCount;
 	}
 
 	void update()
 	{
 		ttl--;
+		animate();
 		physics();
 	}
 

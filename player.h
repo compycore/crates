@@ -4,8 +4,8 @@ struct Player: Car
 	{
 		angle = 0;
 		x = WIDTH / 2, y = HEIGHT / 2;
-		width = 16, height = 16;
-		cbox = {.x = 4, .y = 8, .width = 8, .height = 8};
+		width = 20, height = 16;
+		cbox = {.x = 6, .y = 5, .width = 8, .height = 8};
 
 		speed = 0;
 		turnSpeed = 3;

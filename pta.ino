@@ -48,14 +48,15 @@ void loop()
 		if (dust[i].ttl>0) {
 			dust[i].update();
 			dust[i].draw();
+			// dust[i].debug();
 		} else {
 			dust.erase(dust.begin()+i);
 			i--;
 		}
 	}
 
-	if (random(100)<2) {
-		dust.push_back(Dust(player.x, player.y, player.angle, player.speed/2));
+	if (random(100)<4 && player.speed > 0) {
+		dust.push_back(Dust(player.x+player.width/2, player.y+player.height/2, player.angle, player.speed/2));
 	}
 
 	player.update();
