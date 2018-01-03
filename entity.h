@@ -1,4 +1,4 @@
-typedef struct Entity
+struct Entity
 {
 	float angle;
 	float x, y;

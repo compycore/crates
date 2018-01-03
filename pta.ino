@@ -1,7 +1,9 @@
 #include "globals.h"
+#include "images.h"
 #include "utils.h"
 #include "compycore.h"
 #include "entity.h"
+#include "car.h"
 #include "player.h"
 
 Compycore compycore;
