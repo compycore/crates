@@ -5,9 +5,12 @@
 #include "entity.h"
 #include "car.h"
 #include "player.h"
+#include "dust.h"
 
 Compycore compycore;
 Player player;
+
+std::vector<Dust> dust;
 
 void setup()
 {
@@ -40,6 +43,20 @@ void loop()
 	arduboy.clear();
 
 	if (!(compycore.introduce())) return;
+
+	for (int i=0; i < dust.size(); i++) {
+		if (dust[i].ttl>0) {
+			dust[i].update();
+			dust[i].draw();
+		} else {
+			dust.erase(dust.begin()+i);
+			i--;
+		}
+	}
+
+	if (random(100)<2) {
+		dust.push_back(Dust(player.x, player.y, player.angle, player.speed/2));
+	}
 
 	player.update();
 	player.draw();

@@ -1,15 +1,14 @@
 struct Entity
 {
-	float angle;
+	int ttl;
+
 	float x, y;
 	int width, height;
 	Rect cbox; // used for cbox offset and size
 	Rect collide; // used to actually calculate collisions
 
-	float accel;
+	float angle;
 	float speed;
-	float friction;
-	float turnSpeed;
 
 	int frameCount;
 	int curFrame;
@@ -17,28 +16,13 @@ struct Entity
 
 	void updateCollide()
 	{
-		// if we haven't defined cbox, make it a default one
+		// if we haven't defined cbox, make a default one
 		if (!cbox.x)
 		{
 			cbox = {.x = 0, .y = 0, .width = width, .height = height};
 		}
 
 		collide = {.x = x + cbox.x, .y = y + cbox.y, .width = cbox.width, .height = cbox.height};
-	}
-
-	void accelerate()
-	{
-		speed += accel;
-	}
-
-	void decelerate()
-	{
-		speed -= accel;
-
-		if (speed < 0)
-		{
-			speed = 0;
-		}
 	}
 
 	void physics()

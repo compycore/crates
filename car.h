@@ -1,5 +1,23 @@
 struct Car: Entity
 {
+	float turnSpeed;
+	float accel;
+
+	void accelerate()
+	{
+		speed += accel;
+	}
+
+	void decelerate()
+	{
+		speed -= accel;
+
+		if (speed < 0)
+		{
+			speed = 0;
+		}
+	}
+
 	void control()
 	{
 		if (speed > 0)
@@ -26,17 +44,5 @@ struct Car: Entity
 		}
 
 		curFrame = angleToFrame(angle, frameCount);
-	}
-
-	void update()
-	{
-		control();
-		physics();
-		updateCollide();
-	}
-
-	void draw()
-	{
-		sketch(car_plus_mask);
 	}
 };

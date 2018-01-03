@@ -15,4 +15,16 @@ struct Player: Car
 		curFrame = 0;
 		animFreq = 3;
 	}
+
+	void update()
+	{
+		control();
+		physics();
+		updateCollide();
+	}
+
+	void draw()
+	{
+		sketch(car_plus_mask);
+	}
 };
