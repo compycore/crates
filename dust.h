@@ -2,7 +2,7 @@ struct Dust: Entity
 {
 	Dust(float x, float y, float angle, float speed)
 	{
-		ttl = 0;
+		ttl = 50;
 		angle = angle || 0;
 		x = x, y = y;
 		width = 8, height = 8;
