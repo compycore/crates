@@ -9,6 +9,7 @@ struct Entity
 
 	float angle;
 	float speed;
+	float maxSpeed;
 
 	int frameCount;
 	int curFrame;

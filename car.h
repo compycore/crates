@@ -6,6 +6,11 @@ struct Car: Entity
 	void accelerate()
 	{
 		speed += accel;
+
+		if (speed > maxSpeed)
+		{
+			speed = maxSpeed;
+		}
 	}
 
 	void decelerate()
