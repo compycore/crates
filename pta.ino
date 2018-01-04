@@ -5,10 +5,12 @@
 #include "entity.h"
 #include "car.h"
 #include "player.h"
+#include "box.h"
 #include "dust.h"
 
 Compycore compycore;
 Player player;
+Box box;
 
 std::vector<Dust> dust;
 
@@ -59,9 +61,21 @@ void loop()
 		dust.push_back(Dust(player.x+player.width/2, player.y+player.height/2, player.angle, player.speed/2));
 	}
 
+	box.update();
+	box.draw();
+
 	player.update();
 	player.draw();
-	// player.debug();
+	player.debug();
+
+	// preliminary solid collisions
+	if (arduboy.collide(player.collide, box.collide)) {
+		if (player.collide.x<box.collide.x) {
+			player.x=box.collide.x-player.cbox.width-player.cbox.x+1;
+		} else {
+			player.x=box.collide.x+box.cbox.width-player.cbox.x;
+		}
+	}
 
 	arduboy.display();
 }
