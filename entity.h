@@ -28,8 +28,7 @@ struct Entity
 
 	void physics()
 	{
-		int realFrameCount = frameCount + 1;
-		float visualAngle = angle / 360 * realFrameCount * (360 / realFrameCount);
+		float visualAngle = angle / 360 * rotationAngles * (360 / rotationAngles);
 
 		x += speed * cos(visualAngle * 1000 / 57296);
 		y -= speed * sin(visualAngle * 1000 / 57296);

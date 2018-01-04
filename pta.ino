@@ -55,7 +55,7 @@ void loop()
 		}
 	}
 
-	if (random(100)<4 && player.speed > 0) {
+	if (random(100)<8 && player.speed > 0) {
 		dust.push_back(Dust(player.x+player.width/2, player.y+player.height/2, player.angle, player.speed/2));
 	}
 
