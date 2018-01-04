@@ -10,14 +10,18 @@ struct Dust: Entity
 
 		frameCount = 4;
 		curFrame = 0;
-		animFreq = 6;
+		animFreq = 8;
 
-		ttl = animFreq * frameCount;
+		ttl = frameCount;
 	}
 
 	void update()
 	{
-		ttl--;
+		if (arduboy.everyXFrames(animFreq))
+		{
+			ttl--;
+		}
+
 		animate();
 		physics();
 	}
