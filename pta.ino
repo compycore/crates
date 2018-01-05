@@ -66,7 +66,7 @@ void loop()
 
 	player.update();
 	player.draw();
-	player.debug();
+	// player.debug();
 
 	// preliminary solid collisions
 	if (arduboy.collide(player.collide, box.collide)) {
