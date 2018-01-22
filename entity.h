@@ -110,8 +110,13 @@ struct Entity
 
 	void sketch(unsigned char sprite[])
 	{
+		sprites.drawPlusMask(x, y, sprite, curFrame);
+	}
+
+	void buffer(unsigned char sprite[])
+	{
 		// add the entity to the draw buffer
-		buffer.push_back(BufferEntity(int(x), int(y), sprite, curFrame));
+		gfxBuffer.push_back(GfxBufferEntity(int(x), int(y), sprite, curFrame));
 	}
 
 	void debug()

@@ -26,6 +26,6 @@ struct Player: Car
 
 	void draw()
 	{
-		sketch(car_plus_mask);
+		buffer(car_plus_mask);
 	}
 };

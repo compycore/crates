@@ -47,7 +47,7 @@ void loop()
 	if (!(compycore.introduce())) return;
 
 	// clear the draw buffer
-	buffer.clear();
+	gfxBuffer.clear();
 
 	// handle dust
 	for (int i=0; i < dust.size(); i++) {
@@ -76,11 +76,11 @@ void loop()
 	// player.debug();
 
 	// sort the draw buffer
-	std::sort(buffer.begin(), buffer.end(), sort);
+	std::sort(gfxBuffer.begin(), gfxBuffer.end(), sort);
 
 	// draw the draw buffer
-	for (int i=0; i < buffer.size(); i++) {
-		buffer[i].draw();
+	for (int i=0; i < gfxBuffer.size(); i++) {
+		gfxBuffer[i].draw();
 	}
 
 	// draw everything to the screen

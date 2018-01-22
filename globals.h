@@ -9,14 +9,14 @@ Sprites sprites;
 
 int rotationAngles = 13;
 
-struct BufferEntity
+struct GfxBufferEntity
 {
 	int x;
 	int y;
 	unsigned char *sprite;
 	int curFrame;
 
-	BufferEntity(int X, int Y, unsigned char Sprite[], int CurFrame)
+	GfxBufferEntity(int X, int Y, unsigned char Sprite[], int CurFrame)
 	{
 		x = X;
 		y = Y;
@@ -30,9 +30,9 @@ struct BufferEntity
 	}
 };
 
-std::vector<BufferEntity> buffer;
+std::vector<GfxBufferEntity> gfxBuffer;
 
-bool sort(const BufferEntity& e1, const BufferEntity& e2)
+bool sort(const GfxBufferEntity& e1, const GfxBufferEntity& e2)
 {
 	return e1.y < e2.y;
 }

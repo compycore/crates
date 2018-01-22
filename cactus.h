@@ -22,6 +22,6 @@ struct Cactus: Entity
 
 	void draw()
 	{
-		sketch(cactus_plus_mask);
+		buffer(cactus_plus_mask);
 	}
 };
