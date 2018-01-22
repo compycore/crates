@@ -5,12 +5,12 @@
 #include "entity.h"
 #include "car.h"
 #include "player.h"
-#include "box.h"
+#include "cactus.h"
 #include "dust.h"
 
 Compycore compycore;
 Player player;
-Box box;
+Cactus cactus;
 
 std::vector<Dust> dust;
 
@@ -61,12 +61,13 @@ void loop()
 		dust.push_back(Dust(player.x+player.width/2, player.y+player.height/2, player.angle, player.speed/2));
 	}
 
-	box.update();
-	box.draw();
+	cactus.update();
+	cactus.draw();
+	// cactus.debug();
 
 	player.update();
 	player.draw();
-	player.collide(box.cbox);
+	player.collide(cactus.cbox);
 	// player.debug();
 
 	arduboy.display();
