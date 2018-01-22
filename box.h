@@ -17,7 +17,7 @@ struct Box: Entity
 	void update()
 	{
 		physics();
-		updateCollide();
+		updateCbox();
 	}
 
 	void draw()

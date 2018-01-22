@@ -66,34 +66,8 @@ void loop()
 
 	player.update();
 	player.draw();
+	player.collide(box.cbox);
 	// player.debug();
-
-	// preliminary solid collisions
-	if (arduboy.collide(player.collide, box.collide)) {
-		float translateX = 0;
-		float translateY = 0;
-
-		// find x translation distance
-		if (player.collide.x<box.collide.x) {
-			translateX=(box.collide.x-player.cbox.width-player.cbox.x+1)-player.x;
-		} else {
-			translateX=(box.collide.x+box.cbox.width-player.cbox.x)-player.x;
-		}
-
-		// find y translation distance
-		if (player.collide.y<box.collide.y) {
-			translateY=(box.collide.y-player.cbox.height-player.cbox.y+1)-player.y;
-		} else {
-			translateY=(box.collide.y+box.cbox.height-player.cbox.y)-player.y;
-		}
-
-		// apply the translation
-		if (abs(translateX) < abs(translateY)) {
-			player.x+=translateX;
-		} else {
-			player.y+=translateY;
-		}
-	}
 
 	arduboy.display();
 }
