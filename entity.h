@@ -110,7 +110,8 @@ struct Entity
 
 	void sketch(unsigned char sprite[])
 	{
-		sprites.drawPlusMask(int(x), int(y), sprite, curFrame);
+		buffer.push_back(BufferEntity(int(x), int(y), sprite, curFrame));
+		// sprites.drawPlusMask(int(x), int(y), sprite, curFrame);
 	}
 
 	void debug()

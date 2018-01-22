@@ -38,14 +38,18 @@ void setup()
 
 void loop()
 {
+	// arduboy setup for each frame
 	if (!(arduboy.nextFrame())) return;
-
 	arduboy.pollButtons();
-
 	arduboy.clear();
 
+	// draw the intro logo if we haven't finished that already
 	if (!(compycore.introduce())) return;
 
+	// clear the draw buffer
+	buffer.clear();
+
+	// handle dust
 	for (int i=0; i < dust.size(); i++) {
 		if (dust[i].ttl>0) {
 			dust[i].update();
@@ -57,6 +61,7 @@ void loop()
 		}
 	}
 
+	// generate more dust
 	if (random(100)<8 && player.speed > 0) {
 		dust.push_back(Dust(player.x+player.width/2, player.y+player.height/2, player.angle, player.speed/2));
 	}
@@ -70,5 +75,14 @@ void loop()
 	player.collide(cactus.cbox);
 	// player.debug();
 
+	// sort the draw buffer
+	std::sort(buffer.begin(), buffer.end(), greater<BufferEntity>());
+
+	// draw the draw buffer
+	for (int i=0; i < buffer.size(); i++) {
+		buffer[i].draw();
+	}
+
+	// draw everything to the screen
 	arduboy.display();
 }
