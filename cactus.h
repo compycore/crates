@@ -5,7 +5,7 @@ struct Cactus: Entity
 		angle = random(360);
 		width = 14, height = 16;
 		x = 30, y = 30;
-		cbox_conf = {.x = 2, .y = 6, .width = 10, .height = 10};
+		cbox_conf = {.x = 3, .y = 5, .width = 8, .height = 8};
 
 		speed = 0;
 		maxSpeed = 0;
