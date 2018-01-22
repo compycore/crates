@@ -110,8 +110,8 @@ struct Entity
 
 	void sketch(unsigned char sprite[])
 	{
+		// add the entity to the draw buffer
 		buffer.push_back(BufferEntity(int(x), int(y), sprite, curFrame));
-		// sprites.drawPlusMask(int(x), int(y), sprite, curFrame);
 	}
 
 	void debug()

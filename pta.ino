@@ -76,7 +76,7 @@ void loop()
 	// player.debug();
 
 	// sort the draw buffer
-	std::sort(buffer.begin(), buffer.end(), greater<BufferEntity>());
+	std::sort(buffer.begin(), buffer.end(), sort);
 
 	// draw the draw buffer
 	for (int i=0; i < buffer.size(); i++) {

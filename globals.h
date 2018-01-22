@@ -13,7 +13,7 @@ struct BufferEntity
 {
 	int x;
 	int y;
-	unsigned char sprite;
+	unsigned char *sprite;
 	int curFrame;
 
 	BufferEntity(int X, int Y, unsigned char Sprite[], int CurFrame)
@@ -24,11 +24,6 @@ struct BufferEntity
 		curFrame = CurFrame;
 	}
 
-	bool operator < (const BufferEntity& other) const
-	{
-		return (y < other.y);
-	}
-
 	void draw()
 	{
 		sprites.drawPlusMask(x, y, sprite, curFrame);
@@ -36,3 +31,8 @@ struct BufferEntity
 };
 
 std::vector<BufferEntity> buffer;
+
+bool sort(const BufferEntity& e1, const BufferEntity& e2)
+{
+	return e1.y < e2.y;
+}
