@@ -4,18 +4,27 @@ struct GfxBufferEntity
 	int y;
 	unsigned char *sprite;
 	int curFrame;
+	Rect cbox_conf;
 
-	GfxBufferEntity(int X, int Y, unsigned char Sprite[], int CurFrame)
+	GfxBufferEntity(int X, int Y, unsigned char Sprite[], int CurFrame, Rect Cbox_conf)
 	{
 		x = X;
 		y = Y;
 		sprite = Sprite;
 		curFrame = CurFrame;
+		cbox_conf = Cbox_conf;
 	}
 
 	void draw()
 	{
 		sprites.drawPlusMask(x, y, sprite, curFrame);
+
+		if (debug)
+		{
+			arduboy.drawRect(x + cbox_conf.x - 1, y + cbox_conf.y - 1, cbox_conf.width + 2, cbox_conf.height + 2, BLACK);
+			arduboy.drawRect(x + cbox_conf.x + 1, y + cbox_conf.y + 1, cbox_conf.width - 2, cbox_conf.height - 2, BLACK);
+			arduboy.drawRect(x + cbox_conf.x, y + cbox_conf.y, cbox_conf.width, cbox_conf.height);
+		}
 	}
 };
 
