@@ -2,6 +2,7 @@
 #include "images.h"
 #include "utils.h"
 #include "compycore.h"
+#include "menu.h"
 #include "entity.h"
 #include "car.h"
 #include "player.h"
@@ -9,6 +10,7 @@
 #include "dust.h"
 
 Compycore compycore;
+Menu menu;
 Player player;
 Cactus cactus;
 
@@ -45,6 +47,9 @@ void loop()
 
 	// draw the intro logo if we haven't finished that already
 	if (!(compycore.introduce())) return;
+
+	// show the menu if we haven't already picked an option
+	if (!(menu.show())) return;
 
 	// clear the draw buffer
 	gfxBuffer.clear();
