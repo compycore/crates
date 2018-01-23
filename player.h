@@ -14,7 +14,7 @@ struct Player: Car
 
 		frameCount = 12;
 		curFrame = 0;
-		animFreq = 3;
+		animFreq = 0;
 	}
 
 	void update()
@@ -24,8 +24,8 @@ struct Player: Car
 		updateCbox();
 	}
 
-	void draw()
+	void draw(GfxBuffer &gfxBuffer)
 	{
-		buffer(car_plus_mask);
+		buffer(gfxBuffer, car_plus_mask);
 	}
 };

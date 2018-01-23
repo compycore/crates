@@ -1,6 +1,7 @@
 #include "globals.h"
 #include "images.h"
 #include "utils.h"
+#include "buffer.h"
 #include "compycore.h"
 #include "menu.h"
 #include "entity.h"
@@ -11,6 +12,7 @@
 
 Compycore compycore;
 Menu menu;
+GfxBuffer gfxBuffer;
 Player player;
 Cactus cactus;
 
@@ -72,21 +74,19 @@ void loop()
 	}
 
 	cactus.update();
-	cactus.draw();
+	cactus.draw(gfxBuffer);
 	// cactus.debug();
 
 	player.update();
-	player.draw();
+	player.draw(gfxBuffer);
 	player.collide(cactus.cbox);
 	// player.debug();
 
 	// sort the draw buffer
-	std::sort(gfxBuffer.begin(), gfxBuffer.end(), sort);
+	gfxBuffer.sort();
 
 	// draw the draw buffer
-	for (int i=0; i < gfxBuffer.size(); i++) {
-		gfxBuffer[i].draw();
-	}
+	gfxBuffer.draw();
 
 	// draw everything to the screen
 	arduboy.display();

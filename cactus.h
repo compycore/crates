@@ -10,7 +10,7 @@ struct Cactus: Entity
 		speed = 0;
 		maxSpeed = 0;
 
-		frameCount = 0;
+		frameCount = 12;
 		curFrame = 0;
 		animFreq = 0;
 	}
@@ -18,10 +18,11 @@ struct Cactus: Entity
 	void update()
 	{
 		updateCbox();
+		curFrame = angleToFrame(angle, frameCount);
 	}
 
-	void draw()
+	void draw(GfxBuffer &gfxBuffer)
 	{
-		buffer(cactus_plus_mask);
+		buffer(gfxBuffer, cactus_plus_mask);
 	}
 };
