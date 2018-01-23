@@ -61,7 +61,6 @@ void loop()
 		if (dust[i].ttl>0) {
 			dust[i].update();
 			dust[i].draw();
-			// dust[i].debug();
 		} else {
 			dust.erase(dust.begin()+i);
 			i--;
@@ -75,12 +74,10 @@ void loop()
 
 	cactus.update();
 	cactus.draw(gfxBuffer);
-	// cactus.debug();
 
 	player.update();
 	player.draw(gfxBuffer);
 	player.collide(cactus.cbox);
-	// player.debug();
 
 	// sort the draw buffer
 	gfxBuffer.sort();

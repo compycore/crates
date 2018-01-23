@@ -8,4 +8,5 @@ Arduboy2 arduboy;
 ArduboyTones sound(arduboy.audio.enabled);
 Sprites sprites;
 
+bool debug = false;
 int rotationAngles = 13;

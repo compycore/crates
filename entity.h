@@ -111,18 +111,23 @@ struct Entity
 	void sketch(unsigned char sprite[])
 	{
 		sprites.drawPlusMask(x, y, sprite, curFrame);
+		cboxDebug();
 	}
 
 	void buffer(GfxBuffer &gfxBuffer, unsigned char sprite[])
 	{
 		// add the entity to the draw buffer
 		gfxBuffer.add(GfxBufferEntity(int(x), int(y), sprite, curFrame));
+		cboxDebug();
 	}
 
-	void debug()
+	void cboxDebug()
 	{
-		arduboy.drawRect(x + cbox_conf.x - 1, y + cbox_conf.y - 1, cbox_conf.width + 2, cbox_conf.height + 2, BLACK);
-		arduboy.drawRect(x + cbox_conf.x + 1, y + cbox_conf.y + 1, cbox_conf.width - 2, cbox_conf.height - 2, BLACK);
-		arduboy.drawRect(x + cbox_conf.x, y + cbox_conf.y, cbox_conf.width, cbox_conf.height);
+		if (debug)
+		{
+			arduboy.drawRect(x + cbox_conf.x - 1, y + cbox_conf.y - 1, cbox_conf.width + 2, cbox_conf.height + 2, BLACK);
+			arduboy.drawRect(x + cbox_conf.x + 1, y + cbox_conf.y + 1, cbox_conf.width - 2, cbox_conf.height - 2, BLACK);
+			arduboy.drawRect(x + cbox_conf.x, y + cbox_conf.y, cbox_conf.width, cbox_conf.height);
+		}
 	}
 };
