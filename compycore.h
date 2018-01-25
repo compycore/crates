@@ -45,20 +45,19 @@ typedef struct Compycore
 	bool introduce()
 	{
 		// skip the intro if the right button is pressed
-		if (arduboy.pressed(RIGHT_BUTTON))
+		if (introduced || arduboy.pressed(RIGHT_BUTTON))
 		{
 			introduced = true;
 			return true;
 		}
-
-		if (michaelY < michaelTargetY)
+		else if (michaelY < michaelTargetY)
 		{
 			michaelY++;
 			sprites.drawSelfMasked(michaelX, michaelY, michael, 0);
 		}
 		else
 		{
-			if (introduced | arduboy.everyXFrames(150))
+			if (arduboy.everyXFrames(150))
 			{
 				introduced = true;
 				return true;
