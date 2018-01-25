@@ -1,7 +1,7 @@
 typedef struct Menu
 {
 	bool selected = false;
-	int currentSelection = 0;
+	int currentSelection = 1;
 	int buttonWidth = 21;
 	int buttonPaddingLeft = 16;
 	int buttonPadding = 4;
@@ -16,14 +16,14 @@ typedef struct Menu
 			return true;
 		}
 
-		if (arduboy.pressed(LEFT_BUTTON))
+		if (arduboy.justPressed(LEFT_BUTTON))
 		{
 			if (currentSelection > 0)
 			{
 				currentSelection--;
 			}
 		}
-		else if (arduboy.pressed(RIGHT_BUTTON))
+		else if (arduboy.justPressed(RIGHT_BUTTON))
 		{
 			if (currentSelection < 3)
 			{
@@ -32,7 +32,7 @@ typedef struct Menu
 		}
 
 
-		if (arduboy.pressed(A_BUTTON))
+		if (arduboy.justPressed(A_BUTTON))
 		{
 			selected = true;
 			return true;
