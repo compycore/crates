@@ -44,6 +44,13 @@ typedef struct Compycore
 
 	bool introduce()
 	{
+		// skip the intro if the right button is pressed
+		if (arduboy.pressed(RIGHT_BUTTON))
+		{
+			introduced = true;
+			return true;
+		}
+
 		if (michaelY < michaelTargetY)
 		{
 			michaelY++;
