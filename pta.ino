@@ -1,6 +1,7 @@
 #include "globals.h"
 #include "images.h"
 #include "utils.h"
+#include "svg.h"
 #include "buffer.h"
 #include "compycore.h"
 #include "menu.h"
@@ -12,11 +13,14 @@
 
 Compycore compycore;
 Menu menu;
+SVG svg;
 GfxBuffer gfxBuffer;
 Player player;
 Cactus cactus;
 
 std::vector<Dust> dust;
+
+int diamondScale=1;
 
 void setup()
 {
@@ -81,6 +85,13 @@ void loop()
 
 	// sort the draw buffer
 	gfxBuffer.sort();
+
+	// testing vector graphics
+	if (arduboy.everyXFrames(10)) {
+		diamondScale++;
+	}
+
+	svg.diamond(0,0,diamondScale);
 
 	// draw the draw buffer
 	gfxBuffer.draw();
