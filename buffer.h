@@ -17,7 +17,7 @@ struct GfxBufferEntity
 
 	void draw()
 	{
-		sprites.drawPlusMask(x, y, sprite, curFrame);
+		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
 
 		if (debug)
 		{

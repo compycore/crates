@@ -72,25 +72,6 @@ struct Entity
 
 		x += speed * cos(visualAngle * 1000 / 57296);
 		y -= speed * sin(visualAngle * 1000 / 57296);
-
-		// temporarily keep inside the screen for testing
-		if (x < 0)
-		{
-			x = 0;
-		}
-		else if (x + width > WIDTH)
-		{
-			x = WIDTH - width;
-		}
-
-		if (y < 0)
-		{
-			y = 0;
-		}
-		else if (y + height > HEIGHT)
-		{
-			y = HEIGHT - height;
-		}
 	}
 
 	void animate()
@@ -110,7 +91,7 @@ struct Entity
 
 	void sketch(unsigned char sprite[])
 	{
-		sprites.drawPlusMask(x, y, sprite, curFrame);
+		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
 	}
 
 	void buffer(GfxBuffer &gfxBuffer, unsigned char sprite[])

@@ -11,10 +11,10 @@ struct SVG
 
 	void map(float x, float y, int scale)
 	{
-		arduboy.drawLine(x + 20 * scale, y + 20 * scale, x + 40 * scale, y + 25 * scale);
-		arduboy.drawLine(x + 40 * scale, y + 25 * scale, x + 60 * scale, y + 40 * scale);
-		arduboy.drawLine(x + 60 * scale, y + 40 * scale, x + 80 * scale, y + 120 * scale);
-		arduboy.drawLine(x + 80 * scale, y + 120 * scale, x + 120 * scale, y + 140 * scale);
-		arduboy.drawLine(x + 120 * scale, y + 140 * scale, x + 200 * scale, y + 180 * scale);
+		arduboy.drawLine(x + 20 * scale - camera.x, y + 20 * scale - camera.y, x + 40 * scale - camera.x, y + 25 * scale - camera.y);
+		arduboy.drawLine(x + 40 * scale - camera.x, y + 25 * scale - camera.y, x + 60 * scale - camera.x, y + 40 * scale - camera.y);
+		arduboy.drawLine(x + 60 * scale - camera.x, y + 40 * scale - camera.y, x + 80 * scale - camera.x, y + 120 * scale - camera.y);
+		arduboy.drawLine(x + 80 * scale - camera.x, y + 120 * scale - camera.y, x + 120 * scale - camera.x, y + 140 * scale - camera.y);
+		arduboy.drawLine(x + 120 * scale - camera.x, y + 140 * scale - camera.y, x + 200 * scale - camera.x, y + 180 * scale - camera.y);
 	}
 };

@@ -83,6 +83,9 @@ void loop()
 	player.draw(gfxBuffer);
 	player.collide(cactus.cbox);
 
+	// make the camera follow the player
+	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 16);
+
 	// sort the draw buffer
 	gfxBuffer.sort();
 
