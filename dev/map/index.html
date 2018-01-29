@@ -1,0 +1,47 @@
+<html>
+
+<body onload="polyline()">
+	<svg>
+	 <rect x="0" y="0" width="128" height="64" style="fill:none;stroke:red;stroke-width:1" />
+  <polyline id="polyline" points="20,20 40,25 60,40 80,120 120,140 200,180" style="fill:none;stroke:black;stroke-width:3" />
+</svg>
+</body>
+
+<script>
+	// Lines
+	function polyline() {
+		var result = "";
+		var points = document.getElementById("polyline").getAttribute("points").split(" ");
+
+		for (i = 0; i < points.length - 1; i++) {
+			var p1 = points[i].split(",");
+			var p2 = points[i + 1].split(",");
+
+			result += "arduboy.drawLine(x+" + p1[0] + "*scale,y+" + p1[1] + "*scale,x+" + p2[0] + "*scale,y+" + p2[1] + "*scale);";
+		}
+
+		console.log(result);
+	}
+
+	// Closed shapes
+	function polygon() {
+		var result = "";
+		var points = document.getElementById("polygon").getAttribute("points").split(" ");
+
+		for (i = 0; i < points.length; i++) {
+			var p1 = points[i].split(",");
+
+			if (i < points.length - 1) {
+				var p2 = points[i + 1].split(",");
+			} else {
+				var p2 = points[0].split(",");
+			}
+
+			result += "arduboy.drawLine(x+" + p1[0] + "*scale,y+" + p1[1] + "*scale,x+" + p2[0] + "*scale,y+" + p2[1] + "*scale);";
+		}
+
+		console.log(result);
+	}
+</script>
+
+</html>

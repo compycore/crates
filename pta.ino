@@ -88,10 +88,11 @@ void loop()
 
 	// testing vector graphics
 	if (arduboy.everyXFrames(10)) {
-		diamondScale++;
+		// diamondScale++;
 	}
 
-	svg.diamond(0,0,diamondScale);
+	// svg.diamond(0,0,diamondScale);
+	svg.map(0,0,diamondScale);
 
 	// draw the draw buffer
 	gfxBuffer.draw();
