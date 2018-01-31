@@ -20,8 +20,6 @@ Cactus cactus;
 
 std::vector<Dust> dust;
 
-int diamondScale=1;
-
 void setup()
 {
 	arduboy.boot(); // raw hardware
@@ -89,13 +87,7 @@ void loop()
 	// sort the draw buffer
 	gfxBuffer.sort();
 
-	// testing vector graphics
-	if (arduboy.everyXFrames(10)) {
-		// diamondScale++;
-	}
-
-	// svg.diamond(0,0,diamondScale);
-	svg.map(0,0,diamondScale);
+	svg.map(0,0,2);
 
 	// draw the draw buffer
 	gfxBuffer.draw();
