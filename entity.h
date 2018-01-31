@@ -72,6 +72,24 @@ struct Entity
 
 		x += speed * cos(visualAngle * 1000 / 57296);
 		y -= speed * sin(visualAngle * 1000 / 57296);
+
+		if (x < 0)
+		{
+			x = 0;
+		}
+		else if (x + width > camera.xMax)
+		{
+			x = camera.xMax - width;
+		}
+
+		if (y < 0)
+		{
+			y = 0;
+		}
+		else if (y + height > camera.yMax)
+		{
+			y = camera.yMax - height;
+		}
 	}
 
 	void animate()

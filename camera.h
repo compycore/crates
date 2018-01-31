@@ -3,6 +3,9 @@ struct Camera
 	float x = 0;
 	float y = 0;
 
+	int xMax = 2000;
+	int yMax = 1000;
+
 	void follow(float followX, float followY, int xPadding, int yPadding)
 	{
 		if (x + xPadding > followX)
@@ -18,6 +21,10 @@ struct Camera
 		{
 			x = 0;
 		}
+		else if (x + 128 > xMax)
+		{
+			x = xMax - 128;
+		}
 
 		if (y + yPadding > followY)
 		{
@@ -31,6 +38,10 @@ struct Camera
 		if (y < 0)
 		{
 			y = 0;
+		}
+		else if (y + 64 > yMax)
+		{
+			y = yMax - 64;
 		}
 	}
 };

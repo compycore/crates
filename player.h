@@ -8,8 +8,8 @@ struct Player: Car
 		cbox_conf = {.x = 6, .y = 5, .width = 8, .height = 8};
 
 		speed = 0;
-		maxSpeed = 1.5;
-		turnSpeed = 3;
+		maxSpeed = 2;
+		turnSpeed = 2;
 		accel = 0.05;
 
 		frameCount = 12;
