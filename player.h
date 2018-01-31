@@ -8,11 +8,11 @@ struct Player: Car
 		cbox_conf = {.x = 6, .y = 5, .width = 8, .height = 8};
 
 		speed = 0;
-		maxSpeed = 2;
-		turnSpeed = 2;
-		accel = 0.05;
+		maxSpeed = 3;
+		turnSpeed = 3;
+		accel = 0.03;
 
-		frameCount = 12;
+		frameCount = rotationAngles - 1;
 		curFrame = 0;
 		animFreq = 0;
 	}
@@ -22,6 +22,17 @@ struct Player: Car
 		control();
 		physics();
 		updateCbox();
+	}
+
+	void sketchSpeedometer()
+	{
+		// outline
+		arduboy.drawRect(1, 1, 3, 62);
+		// black fill
+		arduboy.drawFastVLine(2, 2, 59, BLACK);
+		// current speed
+		float speedHeight = speed / maxSpeed * 60;
+		arduboy.drawFastVLine(2, 63 - speedHeight, speedHeight);
 	}
 
 	void draw(GfxBuffer &gfxBuffer)

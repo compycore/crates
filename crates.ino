@@ -8,6 +8,7 @@
 #include "entity.h"
 #include "car.h"
 #include "player.h"
+#include "police.h"
 #include "cactus.h"
 #include "dust.h"
 
@@ -16,6 +17,7 @@ Menu menu;
 SVG svg;
 GfxBuffer gfxBuffer;
 Player player;
+Police police;
 Cactus cactus;
 
 std::vector<Dust> dust;
@@ -80,6 +82,10 @@ void loop()
 	player.update();
 	player.draw(gfxBuffer);
 	player.collide(cactus.cbox);
+	
+	police.update();
+	police.draw(gfxBuffer);
+	police.collide(cactus.cbox);
 
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 16);
@@ -91,6 +97,8 @@ void loop()
 
 	// draw the draw buffer
 	gfxBuffer.draw();
+
+	player.sketchSpeedometer();
 
 	// draw everything to the screen
 	arduboy.display();

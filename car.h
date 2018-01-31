@@ -23,6 +23,11 @@ struct Car: Entity
 		}
 	}
 
+	void follow(int x, int y)
+	{
+		// do stuff
+	}
+
 	void control()
 	{
 		if (speed > 0)
