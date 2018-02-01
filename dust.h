@@ -9,7 +9,6 @@ struct Dust: Entity
 		speed = Speed;
 
 		frameCount = 4;
-		curFrame = 0;
 		animFreq = 8;
 
 		ttl = frameCount;

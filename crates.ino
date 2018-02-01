@@ -98,8 +98,6 @@ void loop()
 	// draw the draw buffer
 	gfxBuffer.draw();
 
-	player.sketchSpeedometer();
-
 	// draw everything to the screen
 	arduboy.display();
 }

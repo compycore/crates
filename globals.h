@@ -11,5 +11,5 @@ ArduboyTones sound(arduboy.audio.enabled);
 Sprites sprites;
 Camera camera;
 
-bool debug = false;
+bool debug = true;
 int rotationAngles = 25;

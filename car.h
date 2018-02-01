@@ -1,7 +1,7 @@
 struct Car: Entity
 {
-	float turnSpeed;
-	float accel;
+	float turnSpeed = 3;
+	float accel = 0.03;
 
 	void accelerate()
 	{

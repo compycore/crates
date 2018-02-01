@@ -1,29 +1,23 @@
 struct Entity
 {
-	int ttl;
+	int ttl = 0;
 
-	float x, y;
-	int width, height;
-	Rect cbox_conf; // used for cbox offset and size
+	float x = 0, y = 0;
+	int width = 0, height = 0;
+	Rect cbox_conf = {.x = 0, .y = 0, .width = width, .height = height}; // used for cbox offset and size
 	Rect cbox; // used to actually calculate collisions
 
-	float angle;
+	float angle = 0;
 
-	float speed;
-	float maxSpeed;
+	float speed = 0;
+	float maxSpeed = 2;
 
-	int frameCount;
-	int curFrame;
-	int animFreq;
+	int frameCount = 0;
+	int curFrame = 0;
+	int animFreq = 0;
 
 	void updateCbox()
 	{
-		// if we haven't defined cbox, make a default one
-		if (!cbox_conf.x)
-		{
-			cbox_conf = {.x = 0, .y = 0, .width = width, .height = height};
-		}
-
 		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
 	}
 

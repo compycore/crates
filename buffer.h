@@ -21,9 +21,9 @@ struct GfxBufferEntity
 
 		if (debug)
 		{
-			arduboy.drawRect(x + cbox_conf.x - 1, y + cbox_conf.y - 1, cbox_conf.width + 2, cbox_conf.height + 2, BLACK);
-			arduboy.drawRect(x + cbox_conf.x + 1, y + cbox_conf.y + 1, cbox_conf.width - 2, cbox_conf.height - 2, BLACK);
-			arduboy.drawRect(x + cbox_conf.x, y + cbox_conf.y, cbox_conf.width, cbox_conf.height);
+			arduboy.drawRect(x + cbox_conf.x - 1 - camera.x, y + cbox_conf.y - 1 - camera.y, cbox_conf.width + 2, cbox_conf.height + 2, BLACK);
+			arduboy.drawRect(x + cbox_conf.x + 1 - camera.x, y + cbox_conf.y + 1 - camera.y, cbox_conf.width - 2, cbox_conf.height - 2, BLACK);
+			arduboy.drawRect(x + cbox_conf.x - camera.x, y + cbox_conf.y - camera.y, cbox_conf.width, cbox_conf.height);
 		}
 	}
 };
