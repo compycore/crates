@@ -11,7 +11,7 @@ typedef struct Menu
 	int buttonWidth = 21;
 	int buttonPaddingLeft = 16;
 	int buttonPadding = 4;
-	int buttonY = 42;
+	int buttonY = 55;
 
 	bool submenu = false;
 	int currentSubmenu = 0;
@@ -116,8 +116,7 @@ typedef struct Menu
 			submenu = false;
 		}
 
-		// a temporary graphic
-		sprites.drawOverwrite(10, 10, pablo, 0);
+		sprites.drawOverwrite(0, 0, menu_without_mask, 0);
 
 		if (!submenu) // default menu
 		{
