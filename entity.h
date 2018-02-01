@@ -8,6 +8,7 @@ struct Entity
 	Rect cbox; // used to actually calculate collisions
 
 	float angle;
+
 	float speed;
 	float maxSpeed;
 
@@ -24,6 +25,30 @@ struct Entity
 		}
 
 		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
+	}
+
+	void physics()
+	{
+		x += speed * cos(angle * 1000 / 57296);
+		y -= speed * sin(angle * 1000 / 57296);
+
+		if (x < 0)
+		{
+			x = 0;
+		}
+		else if (x + width > camera.xMax)
+		{
+			x = camera.xMax - width;
+		}
+
+		if (y < 0)
+		{
+			y = 0;
+		}
+		else if (y + height > camera.yMax)
+		{
+			y = camera.yMax - height;
+		}
 	}
 
 	void collide(Rect other)
@@ -63,32 +88,6 @@ struct Entity
 			{
 				y += translateY;
 			}
-		}
-	}
-
-	void physics()
-	{
-		float visualAngle = angle / 360 * rotationAngles * (360 / rotationAngles);
-
-		x += speed * cos(visualAngle * 1000 / 57296);
-		y -= speed * sin(visualAngle * 1000 / 57296);
-
-		if (x < 0)
-		{
-			x = 0;
-		}
-		else if (x + width > camera.xMax)
-		{
-			x = camera.xMax - width;
-		}
-
-		if (y < 0)
-		{
-			y = 0;
-		}
-		else if (y + height > camera.yMax)
-		{
-			y = camera.yMax - height;
 		}
 	}
 

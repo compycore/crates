@@ -12,4 +12,4 @@ Sprites sprites;
 Camera camera;
 
 bool debug = false;
-int rotationAngles = 13;
+int rotationAngles = 25;
