@@ -36,7 +36,7 @@ bool gfxBufferEntitySort(const GfxBufferEntity& e1, const GfxBufferEntity& e2)
 
 struct GfxBuffer
 {
-	std::vector<GfxBufferEntity> buffer;
+	Vector<GfxBufferEntity> buffer;
 
 	void add(GfxBufferEntity entity)
 	{

@@ -1,4 +1,5 @@
 #include "globals.h"
+#include "vector.h"
 #include "images.h"
 #include "utils.h"
 #include "svg.h"
@@ -20,7 +21,7 @@ Player player;
 Police police;
 Cactus cactus;
 
-std::vector<Dust> dust;
+Vector<Dust> dust;
 
 void setup()
 {
