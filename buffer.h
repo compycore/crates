@@ -45,7 +45,7 @@ struct GfxBuffer
 
 	void sort()
 	{
-		std::sort(buffer.begin(), buffer.end(), gfxBufferEntitySort);
+		// std::sort(buffer.begin(), buffer.end(), gfxBufferEntitySort);
 	}
 
 	void clear()

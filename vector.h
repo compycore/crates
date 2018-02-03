@@ -29,10 +29,33 @@ struct Vector
 		return *this;
 	}; // Needed for memory management
 
+	void clear()
+	{
+		d_size = 0;
+	}
+
+	void erase(int index)
+	{
+		for (int i = index; i < d_size; ++i)
+		{
+			d_data[i] = d_data[i + 1]; // Copy next element left
+		}
+	}
+
+	int begin()
+	{
+		return 0;
+	}
+
+	int end()
+	{
+		return d_size;
+	}
+
 	void push_back(Data const &x)
 	{
 		d_data[d_size++] = x;
-	}; // Adds new value. If needed, allocates more space
+	}; // Adds new value
 
 	size_t size() const
 	{
