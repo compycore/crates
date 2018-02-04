@@ -5,6 +5,7 @@ class Vector
 	size_t d_size; // Stores no. of actually stored objects
 	size_t d_capacity; // Stores allocated capacity
 	Data *d_data; // Stores data
+
 public:
 	Vector() : d_size(0), d_capacity(0), d_data(0) {}; // Default constructor
 
@@ -33,7 +34,7 @@ public:
 	{
 		if (d_capacity == d_size) resize();
 		d_data[d_size++] = x;
-	}; // Adds new value. If needed, allocates more space
+	}; // Adds new value and allocates more space if needed
 
 	void clear()
 	{
@@ -73,5 +74,5 @@ private:
 		memcpy(newdata, d_data, d_size * sizeof(Data));
 		free(d_data);
 		d_data = newdata;
-	};// Allocates double the old space
+	}; // Allocates double the old space
 };
