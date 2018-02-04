@@ -1,3 +1,4 @@
+// TODO minimize this code
 typedef struct Menu
 {
 	bool selected = false;
@@ -116,7 +117,7 @@ typedef struct Menu
 			submenu = false;
 		}
 
-		sprites.drawOverwrite(0, 0, menu_without_mask, 0);
+		sprites.drawOverwrite(10, 2, menu_without_mask, 0);
 
 		if (!submenu) // default menu
 		{

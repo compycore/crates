@@ -8,7 +8,7 @@ Arduboy2Base arduboy;
 Arduboy2Audio audio;
 ArduboyTones sound(arduboy.audio.enabled);
 Sprites sprites;
-//Camera camera;
+Camera camera;
 
-//bool debug = false;
-//int rotationAngles = 25;
+bool debug = false;
+int rotationAngles = 25;

@@ -40,6 +40,8 @@ struct Vector
 		{
 			d_data[i] = d_data[i + 1]; // Copy next element left
 		}
+
+		d_size--;
 	}
 
 	int begin()
@@ -62,13 +64,13 @@ struct Vector
 		return d_size;
 	}; // Size getter
 
-	Data const &operator[](size_t idx) const
+	Data const &operator[](size_t index) const
 	{
-		return d_data[idx];
+		return d_data[index];
 	}; // Const getter
 
-	Data &operator[](size_t idx)
+	Data &operator[](size_t index)
 	{
-		return d_data[idx];
+		return d_data[index];
 	}; // Changeable getter
 };
