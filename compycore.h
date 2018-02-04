@@ -68,7 +68,7 @@ typedef struct Compycore
 			sprites.drawPlusMask(30, 46, logo, 0);
 		}
 
-		arduboy.display();
+		arduboy.display(CLEAR_BUFFER);
 		return false;
 	}
 } Compycore;

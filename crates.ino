@@ -49,13 +49,14 @@ void loop()
 	// arduboy setup for each frame
 	if (!(arduboy.nextFrame())) return;
 	arduboy.pollButtons();
-	arduboy.clear();
 
 	// draw the intro logo if we haven't finished that already
 	if (!(compycore.introduce())) return;
 
 	// show the menu if we haven't already picked an option
 	if (!(menu.show())) return;
+
+	arduboy.fillScreen();
 
 	// clear the draw buffer
 	gfxBuffer.clear();
@@ -99,5 +100,5 @@ void loop()
 	gfxBuffer.draw();
 
 	// draw everything to the screen
-	arduboy.display();
+	arduboy.display(CLEAR_BUFFER);
 }
