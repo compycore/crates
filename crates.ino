@@ -1,7 +1,7 @@
 #include "globals.h"
 #include "images.h"
 #include "utils.h"
-//#include "svg.h"
+#include "svg.h"
 #include "buffer.h"
 #include "compycore.h"
 #include "menu.h"
@@ -16,9 +16,9 @@ Compycore compycore;
 Menu menu;
 Player player;
 GfxBuffer gfxBuffer;
+SVG svg;
 
 /*
-	 SVG svg;
 	 Police police;
 	 Cactus cactus;
 
@@ -101,8 +101,8 @@ void loop()
 	// sort the draw buffer
 	gfxBuffer.sort();
 
-	svg.map(0,0,2);
 	 */
+	svg.map(0,0,2);
 
 	// draw the draw buffer
 	gfxBuffer.draw();
