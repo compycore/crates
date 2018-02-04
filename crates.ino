@@ -1,5 +1,4 @@
 #include "globals.h"
-#include "vector.h"
 #include "images.h"
 #include "utils.h"
 //#include "svg.h"

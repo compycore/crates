@@ -17,6 +17,8 @@ struct GfxBufferEntity
 
 	void draw()
 	{
+		arduboy.print(camera.x);
+		arduboy.print(x);
 		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
 
 		if (debug)
@@ -41,6 +43,7 @@ struct GfxBuffer
 	void add(GfxBufferEntity entity)
 	{
 		buffer.push_back(entity);
+		arduboy.print(buffer.size());
 	}
 
 	void sort()
@@ -51,6 +54,7 @@ struct GfxBuffer
 	void clear()
 	{
 		buffer.clear();
+		arduboy.print(buffer.size());
 	}
 
 	void draw()
