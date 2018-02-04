@@ -73,7 +73,7 @@ void loop()
 
 	// generate more dust
 	if (random(100)<8 && player.speed > 0) {
-		dust.push_back(Dust(player.x+player.width/2, player.y+player.height/2, player.angle, player.speed/2));
+		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle, player.speed/2));
 	}
 
 	cactus.update();
