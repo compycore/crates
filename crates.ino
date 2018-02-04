@@ -73,7 +73,7 @@ void loop()
 	}
 
 	// generate more dust
-	if (random(100)<8 && player.speed > 0) {
+	if (random(100)<4 && player.speed > 0) {
 		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle, player.speed/2));
 	}
 
@@ -89,7 +89,7 @@ void loop()
 	police.collide(cactus.cbox);
 
 	// make the camera follow the player
-	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 16);
+	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);
 
 	// sort the draw buffer
 	// gfxBuffer.sort();
