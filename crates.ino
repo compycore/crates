@@ -11,6 +11,7 @@
 #include "police.h"
 #include "cactus.h"
 #include "dust.h"
+#include "skid.h"
 
 Compycore compycore;
 Menu menu;
@@ -21,6 +22,7 @@ Police police;
 Cactus cactus;
 
 Vector<Dust> dust;
+Vector<Skid> skids;
 
 void setup()
 {
@@ -75,6 +77,22 @@ void loop()
 	// generate more dust
 	if (random(100)<4 && player.speed > 0) {
 		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle, player.speed/2));
+	}
+
+	// handle skids
+	for (int i=0; i < skids.size(); i++) {
+		if (skids[i].ttl>0) {
+			skids[i].update();
+			skids[i].draw();
+		} else {
+			skids.erase(i);
+			i--;
+		}
+	}
+
+	// generate more skids
+	if (arduboy.pressed(DOWN_BUTTON)) {
+		skids.push_back(Skid(player.x+player.width/2-4, player.y+player.height/2-4, player.angle));
 	}
 
 	cactus.update();
