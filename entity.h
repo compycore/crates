@@ -1,20 +1,12 @@
-struct Entity
+struct Entity: Simple
 {
-	int ttl = 0;
-
-	float x = 0, y = 0;
 	int width = 0, height = 0;
 	Rect cbox_conf = {.x = 0, .y = 0, .width = width, .height = height}; // used for cbox offset and size
 	Rect cbox; // used to actually calculate collisions
 
 	float angle = 0;
-
 	float speed = 0;
 	float maxSpeed = 2;
-
-	int frameCount = 0;
-	int curFrame = 0;
-	int animFreq = 0;
 
 	void updateCbox()
 	{
@@ -85,29 +77,9 @@ struct Entity
 		}
 	}
 
-	void animate()
-	{
-		if (arduboy.everyXFrames(animFreq))
-		{
-			if (curFrame < frameCount - 1)
-			{
-				curFrame += 1;
-			}
-			else
-			{
-				curFrame = 0;
-			}
-		}
-	}
-
-	void sketch(unsigned char sprite[])
-	{
-		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
-	}
-
+	// add the entity to the draw buffer
 	void buffer(GfxBuffer &gfxBuffer, unsigned char sprite[])
 	{
-		// add the entity to the draw buffer
 		gfxBuffer.add(GfxBufferEntity(int(x), int(y), sprite, curFrame, cbox_conf));
 	}
 };

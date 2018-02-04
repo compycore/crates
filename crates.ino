@@ -5,6 +5,7 @@
 #include "buffer.h"
 #include "compycore.h"
 #include "menu.h"
+#include "simple.h"
 #include "entity.h"
 #include "car.h"
 #include "player.h"
@@ -21,7 +22,7 @@ SVG svg;
 Police police;
 Cactus cactus;
 
-Vector<Dust> dust;
+// Vector<Dust> dust;
 Vector<Skid> skids;
 
 void setup()
@@ -63,21 +64,23 @@ void loop()
 	// clear the draw buffer
 	gfxBuffer.clear();
 
+	/*
 	// handle dust
 	for (int i=0; i < dust.size(); i++) {
-		if (dust[i].ttl>0) {
-			dust[i].update();
-			dust[i].draw();
-		} else {
-			dust.erase(i);
-			i--;
-		}
+	if (dust[i].ttl>0) {
+	dust[i].update();
+	dust[i].draw();
+	} else {
+	dust.erase(i);
+	i--;
+	}
 	}
 
 	// generate more dust
 	if (random(100)<4 && player.speed > 0) {
-		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle, player.speed/2));
+	dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle));
 	}
+	 */
 
 	// handle skids
 	for (int i=0; i < skids.size(); i++) {
@@ -92,7 +95,9 @@ void loop()
 
 	// generate more skids
 	if (arduboy.pressed(DOWN_BUTTON)) {
-		skids.push_back(Skid(player.x+player.width/2-4, player.y+player.height/2-4, player.angle));
+		if (arduboy.everyXFrames(2)) {
+			skids.push_back(Skid(player.x, player.y, player.curFrame));
+		}
 	}
 
 	cactus.update();

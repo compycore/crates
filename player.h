@@ -3,8 +3,8 @@ struct Player: Car
 	Player()
 	{
 		angle = random(360);
-		width = 20, height = 16;
 		x = 20, y = 20;
+		width = 20, height = 16;
 		cbox_conf = {.x = 6, .y = 5, .width = 8, .height = 8};
 
 		frameCount = rotationAngles - 1;
@@ -19,6 +19,7 @@ struct Player: Car
 
 	void draw(GfxBuffer &gfxBuffer)
 	{
-		buffer(gfxBuffer, car_plus_mask);
+		//buffer(gfxBuffer, car_plus_mask);
+		buffer(gfxBuffer, skid_plus_mask);
 	}
 };
