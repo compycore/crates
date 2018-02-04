@@ -6,7 +6,6 @@ typedef struct Menu
 	int currentSelection = 1;
 
 	int selectionWidth = 23;
-	int selectionWidthSubmenu = 21;
 	int selectionHeight = 9;
 
 	int buttonWidth = 21;
@@ -35,14 +34,7 @@ typedef struct Menu
 		// load the current audio state when we're on the default menu
 		if (!submenu)
 		{
-			if (audio.enabled())
-			{
-				currentSubmenuSelection = 0;
-			}
-			else
-			{
-				currentSubmenuSelection = 1;
-			}
+			currentSubmenuSelection = 1 - audio.enabled();
 		}
 
 		// selection movement
