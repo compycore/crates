@@ -1,8 +1,10 @@
 struct Dust: Simple
 {
-	Dust(float X, float Y, float Angle)
+	Dust(float X, float Y, float Angle, float Speed)
 	{
 		x = X, y = Y;
+		angle = Angle;
+		speed = Speed;
 
 		frameCount = 4;
 		animFreq = 8;
@@ -18,6 +20,7 @@ struct Dust: Simple
 		}
 
 		animate();
+		physics();
 	}
 
 	void draw()

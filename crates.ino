@@ -21,7 +21,7 @@ SVG svg;
 Cactus cactus;
 
 Vector<Dust, 3> dust;
-Vector<Skid, 30> skids; // skid ttl and vector size should match
+Vector<Skid, 15> skids; // skid ttl and vector size should match
 
 void setup()
 {
@@ -75,7 +75,7 @@ void loop()
 
 	// generate more dust
 	if (random(100)<2 && player.speed > 0) {
-		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle));
+		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle, player.speed/2));
 	}
 
 	// handle skids
