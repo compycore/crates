@@ -48,13 +48,7 @@ struct Vector
 		d_size--;
 	}
 
-	// const getter
-	T const &operator[](int idx) const
-	{
-		return d_data[idx];
-	}
-
-	// changeable getter
+	// getter
 	T &operator[](int idx)
 	{
 		return d_data[idx];
