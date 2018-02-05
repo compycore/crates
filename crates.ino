@@ -22,7 +22,7 @@ SVG svg;
 Police police;
 Cactus cactus;
 
-// Vector<Dust> dust;
+Vector<Dust> dust;
 Vector<Skid> skids;
 
 void setup()
@@ -64,23 +64,21 @@ void loop()
 	// clear the draw buffer
 	gfxBuffer.clear();
 
-	/*
 	// handle dust
 	for (int i=0; i < dust.size(); i++) {
-	if (dust[i].ttl>0) {
-	dust[i].update();
-	dust[i].draw();
-	} else {
-	dust.erase(i);
-	i--;
-	}
+		if (dust[i].ttl>0) {
+			dust[i].update();
+			dust[i].draw();
+		} else {
+			dust.erase(i);
+			i--;
+		}
 	}
 
 	// generate more dust
-	if (random(100)<4 && player.speed > 0) {
-	dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle));
+	if (random(100)<2 && player.speed > 0) {
+		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle));
 	}
-	 */
 
 	// handle skids
 	for (int i=0; i < skids.size(); i++) {
