@@ -4,7 +4,7 @@ struct Cactus: Entity
 	{
 		width = 14, height = 16;
 		x = 30, y = 30;
-		cbox_conf = {.x = 2, .y = 5, .width = 10, .height = 10};
+		cbox_conf = {.x = 2, .y = 4, .width = 10, .height = 10};
 	}
 
 	void update()

@@ -9,7 +9,6 @@
 #include "entity.h"
 #include "car.h"
 #include "player.h"
-#include "police.h"
 #include "cactus.h"
 #include "dust.h"
 #include "skid.h"
@@ -19,11 +18,10 @@ Menu menu;
 Player player;
 GfxBuffer gfxBuffer;
 SVG svg;
-Police police;
 Cactus cactus;
 
 Vector<Dust, 3> dust;
-Vector<Skid, 10> skids; // skid ttl and vector size should match
+Vector<Skid, 30> skids; // skid ttl and vector size should match
 
 void setup()
 {
@@ -102,10 +100,6 @@ void loop()
 	player.update();
 	player.draw(gfxBuffer);
 	player.collide(cactus.cbox);
-
-	police.update();
-	police.draw(gfxBuffer);
-	police.collide(cactus.cbox);
 
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);
