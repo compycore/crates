@@ -7,20 +7,14 @@ struct Car: Entity
 	{
 		speed += accel;
 
-		if (speed > maxSpeed)
-		{
-			speed = maxSpeed;
-		}
+		if (speed > maxSpeed) speed = maxSpeed;
 	}
 
 	void decelerate()
 	{
-		speed -= accel;
+		speed -= accel * 2;
 
-		if (speed < 0)
-		{
-			speed = 0;
-		}
+		if (speed < 0) speed = 0;
 	}
 
 	void control()
@@ -38,6 +32,7 @@ struct Car: Entity
 		}
 
 		angle = normalizeAngle(angle);
+		curFrame = angleToFrame(angle, frameCount);
 
 		if (arduboy.pressed(A_BUTTON))
 		{
@@ -47,7 +42,5 @@ struct Car: Entity
 		{
 			decelerate();
 		}
-
-		curFrame = angleToFrame(angle, frameCount);
 	}
 };
