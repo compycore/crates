@@ -20,6 +20,6 @@ struct Player: Car
 	void draw(GfxBuffer &gfxBuffer)
 	{
 		//buffer(gfxBuffer, car_plus_mask);
-		buffer(gfxBuffer, skid_plus_mask);
+		buffer(gfxBuffer, car_plus_mask);
 	}
 };

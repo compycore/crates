@@ -2,8 +2,8 @@
 template<typename Data>
 class Vector
 {
-	size_t d_size; // Stores no. of actually stored objects
-	size_t d_capacity; // Stores allocated capacity
+	unsigned int d_size; // Stores no. of actually stored objects
+	unsigned int d_capacity; // Stores allocated capacity
 	Data *d_data; // Stores data
 
 public:
@@ -41,7 +41,7 @@ public:
 		d_size = 0;
 	}
 
-	size_t size() const
+	unsigned int size() const
 	{
 		return d_size;
 	}; // Size getter
@@ -56,12 +56,12 @@ public:
 		d_size--;
 	}
 
-	Data const &operator[](size_t idx) const
+	Data const &operator[](unsigned int idx) const
 	{
 		return d_data[idx];
 	}; // Const getter
 
-	Data &operator[](size_t idx)
+	Data &operator[](unsigned int idx)
 	{
 		return d_data[idx];
 	}; // Changeable getter

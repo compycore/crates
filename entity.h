@@ -1,6 +1,6 @@
 struct Entity: Simple
 {
-	int width = 0, height = 0;
+	unsigned int width = 0, height = 0;
 	Rect cbox_conf = {.x = 0, .y = 0, .width = width, .height = height}; // used for cbox offset and size
 	Rect cbox; // used to actually calculate collisions
 

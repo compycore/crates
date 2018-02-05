@@ -2,11 +2,11 @@ struct Simple
 {
 	float x = 0, y = 0;
 
-	int ttl = 0;
+	unsigned int ttl = 0;
 
-	int frameCount = 0;
-	int curFrame = 0;
-	int animFreq = 0;
+	unsigned int frameCount = 0;
+	unsigned int curFrame = 0;
+	unsigned int animFreq = 0;
 
 	void animate()
 	{
