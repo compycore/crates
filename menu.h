@@ -109,10 +109,10 @@ typedef struct Menu
 			submenu = false;
 		}
 
-		sprites.drawOverwrite(10, 2, menu_without_mask, 0);
-
 		if (!submenu) // default menu
 		{
+			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
+
 			// selection box
 			int selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
 			arduboy.fillRect(selectionX, buttonY - 1, selectionWidth, selectionHeight);
@@ -126,8 +126,14 @@ typedef struct Menu
 			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, info_plus_mask, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3), buttonY, conf_plus_mask, 0);
 		}
+		else if (currentSubmenu == 2) // info menu
+		{
+			sprites.drawOverwrite(32, 0, qrcode, 0);
+		}
 		else if (currentSubmenu == 3) // configuration menu
 		{
+			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
+
 			int selectionX = 0;
 			int selectionWidthSubmenu = 0;
 
@@ -152,7 +158,7 @@ typedef struct Menu
 			sprites.drawPlusMask(37 + 19 + 4 + 11 + 4, buttonY, off_plus_mask, 0);
 		}
 
-		arduboy.display();
+		arduboy.display(CLEAR_BUFFER);
 		return false;
 	}
 } Menu;
