@@ -8,10 +8,10 @@
 #include "simple.h"
 #include "entity.h"
 #include "car.h"
-#include "player.h"
 #include "cactus.h"
 #include "dust.h"
 #include "skid.h"
+#include "player.h"
 
 Compycore compycore;
 Menu menu;
@@ -19,9 +19,6 @@ Player player;
 GfxBuffer gfxBuffer;
 SVG svg;
 Cactus cactus;
-
-Vector<Dust, 3> dust;
-Vector<Skid, 15> skids; // skid ttl and vector size should match
 
 void setup()
 {
@@ -62,38 +59,6 @@ void loop()
 	// clear the draw buffer
 	gfxBuffer.clear();
 
-	// handle dust
-	for (int i=0; i < dust.size(); i++) {
-		if (dust[i].ttl>0) {
-			dust[i].update();
-			dust[i].draw();
-		} else {
-			dust.erase(i);
-			i--;
-		}
-	}
-
-	// generate more dust
-	if (random(100)<2 && player.speed > 0) {
-		dust.push_back(Dust(player.x+player.width/2-4, player.y+player.height/2-4, player.angle, player.speed/2));
-	}
-
-	// handle skids
-	for (int i=0; i < skids.size(); i++) {
-		if (skids[i].ttl>0) {
-			skids[i].update();
-			skids[i].draw();
-		} else {
-			skids.erase(i);
-			i--;
-		}
-	}
-
-	// generate more skids
-	if (arduboy.pressed(DOWN_BUTTON)) {
-		skids.push_back(Skid(player.x, player.y, player.curFrame));
-	}
-
 	cactus.update();
 	cactus.draw(gfxBuffer);
 
@@ -104,9 +69,7 @@ void loop()
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);
 
-	// sort the draw buffer
-	// gfxBuffer.sort();
-
+	// draw the map lines
 	svg.map(0,0,2);
 
 	// draw the draw buffer
