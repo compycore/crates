@@ -22,8 +22,8 @@ SVG svg;
 Police police;
 Cactus cactus;
 
-Vector<Dust> dust;
-Vector<Skid> skids;
+Vector<Dust, 3> dust;
+Vector<Skid, 3> skids;
 
 void setup()
 {

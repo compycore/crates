@@ -8,11 +8,6 @@ struct Entity: Simple
 	float speed = 0;
 	float maxSpeed = 2;
 
-	void updateCbox()
-	{
-		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
-	}
-
 	void physics()
 	{
 		x += speed * cos(angle * 1000 / 57296);
@@ -35,6 +30,11 @@ struct Entity: Simple
 		{
 			y = camera.yMax - height;
 		}
+	}
+
+	void updateCbox()
+	{
+		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
 	}
 
 	void collide(Rect other)
