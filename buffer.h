@@ -19,7 +19,7 @@ struct GfxBufferEntity
 	{
 		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
 
-		if (debug)
+		if (DEBUG)
 		{
 			arduboy.drawRect(x + cbox_conf.x - 1 - camera.x, y + cbox_conf.y - 1 - camera.y, cbox_conf.width + 2, cbox_conf.height + 2, BLACK);
 			arduboy.drawRect(x + cbox_conf.x + 1 - camera.x, y + cbox_conf.y + 1 - camera.y, cbox_conf.width - 2, cbox_conf.height - 2, BLACK);

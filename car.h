@@ -17,6 +17,11 @@ struct Car: Entity
 		if (speed < 0) speed = 0;
 	}
 
+	void follow(int X, int Y)
+	{
+		angle = findAngle(x, y, X, Y) * 57296 / 1000;
+	}
+
 	void control()
 	{
 		if (speed > 0)
@@ -31,9 +36,6 @@ struct Car: Entity
 			}
 		}
 
-		angle = normalizeAngle(angle);
-		curFrame = angleToFrame(angle, frameCount);
-
 		if (arduboy.pressed(A_BUTTON))
 		{
 			accelerate();
@@ -42,5 +44,11 @@ struct Car: Entity
 		{
 			decelerate();
 		}
+	}
+
+	void updateAngle()
+	{
+		angle = normalizeAngle(angle);
+		curFrame = angleToFrame(angle, frameCount);
 	}
 };

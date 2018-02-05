@@ -5,11 +5,11 @@
 #include "camera.h"
 
 Arduboy2Base arduboy;
-// Arduboy2 arduboy; // for debug only
+//Arduboy2 arduboy; // for debug only
 Arduboy2Audio audio;
 ArduboyTones sound(arduboy.audio.enabled);
 Sprites sprites;
 Camera camera;
 
-bool debug = false;
-int rotationAngles = 25;
+bool DEBUG = false;
+int ANGLES = 25;

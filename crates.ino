@@ -12,10 +12,12 @@
 #include "dust.h"
 #include "skid.h"
 #include "player.h"
+#include "police.h"
 
 Compycore compycore;
 Menu menu;
 Player player;
+Police police;
 GfxBuffer gfxBuffer;
 SVG svg;
 Cactus cactus;
@@ -65,6 +67,10 @@ void loop()
 	player.update();
 	player.draw(gfxBuffer);
 	player.collide(cactus.cbox);
+
+	police.update();
+	police.follow(player.x, player.y);
+	police.draw(gfxBuffer);
 
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);

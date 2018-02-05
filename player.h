@@ -10,7 +10,7 @@ struct Player: Car
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
-		frameCount = rotationAngles - 1;
+		frameCount = ANGLES - 1;
 	}
 
 	void update()
@@ -18,6 +18,7 @@ struct Player: Car
 		control();
 		physics();
 		updateCbox();
+		updateAngle();
 
 		// handle dust
 		for (int i = 0; i < dust.size(); i++)
@@ -64,7 +65,6 @@ struct Player: Car
 
 	void draw(GfxBuffer &gfxBuffer)
 	{
-		//buffer(gfxBuffer, car_plus_mask);
 		buffer(gfxBuffer, car_plus_mask);
 	}
 };
