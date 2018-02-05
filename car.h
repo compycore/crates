@@ -19,7 +19,7 @@ struct Car: Entity
 
 	void follow(int X, int Y)
 	{
-		angle = findAngle(x, y, X, Y) * 57296 / 1000;
+		angle = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
 	}
 
 	void control()
