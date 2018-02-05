@@ -6,6 +6,7 @@
 #include "compycore.h"
 #include "menu.h"
 #include "simple.h"
+#include "solid.h"
 #include "entity.h"
 #include "car.h"
 #include "player.h"

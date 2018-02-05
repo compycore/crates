@@ -31,7 +31,7 @@
 			var p1 = points[i].split(",");
 			var p2 = points[i + 1].split(",");
 
-			result += "arduboy.drawLine(x+" + p1[0] + "*scale-camera.x,y+" + p1[1] + "*scale-camera.y,x+" + p2[0] + "*scale-camera.x,y+" + p2[1] + "*scale-camera.y);";
+			result += "arduboy.drawLine(x+" + p1[0] + "*scale-camera.x,y+" + p1[1] + "*scale-camera.y,x+" + p2[0] + "*scale-camera.x,y+" + p2[1] + "*scale-camera.y, BLACK);";
 		}
 
 		console.log(result);
@@ -51,7 +51,7 @@
 				var p2 = points[0].split(",");
 			}
 
-			result += "arduboy.drawLine(x+" + p1[0] + "*scale-camera.x,y+" + p1[1] + "*scale-camera.y,x+" + p2[0] + "*scale-camera.x,y+" + p2[1] + "*scale-camera.y);";
+			result += "arduboy.drawLine(x+" + p1[0] + "*scale-camera.x,y+" + p1[1] + "*scale-camera.y,x+" + p2[0] + "*scale-camera.x,y+" + p2[1] + "*scale-camera.y, BLACK);";
 		}
 
 		console.log(result);

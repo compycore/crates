@@ -1,4 +1,4 @@
-struct Cactus: Entity
+struct Cactus: Solid
 {
 	Cactus()
 	{
