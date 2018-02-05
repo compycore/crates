@@ -23,7 +23,7 @@ Police police;
 Cactus cactus;
 
 Vector<Dust, 3> dust;
-Vector<Skid, 3> skids;
+Vector<Skid, 10> skids; // skid ttl and vector size should match
 
 void setup()
 {
@@ -93,9 +93,7 @@ void loop()
 
 	// generate more skids
 	if (arduboy.pressed(DOWN_BUTTON)) {
-		if (arduboy.everyXFrames(2)) {
-			skids.push_back(Skid(player.x, player.y, player.curFrame));
-		}
+		skids.push_back(Skid(player.x, player.y, player.curFrame));
 	}
 
 	cactus.update();

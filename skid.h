@@ -6,7 +6,7 @@ struct Skid: Simple
 
 		curFrame = CurFrame;
 
-		ttl = 20;
+		ttl = 10;
 	}
 
 	void update()
