@@ -71,6 +71,8 @@ void loop()
 	police.update();
 	police.follow(player.x, player.y);
 	police.draw(gfxBuffer);
+	police.collide(cactus.cbox);
+	police.collide(player.cbox);
 
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);

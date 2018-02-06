@@ -6,7 +6,14 @@ struct Car: Entity
 
 	void accelerate()
 	{
-		speed += accel;
+		if (speed > 0)
+		{
+			speed += accel;
+		}
+		else
+		{
+			speed += accel * 4;
+		}
 
 		if (speed > maxSpeed) speed = maxSpeed;
 	}
@@ -23,7 +30,7 @@ struct Car: Entity
 
 	void control()
 	{
-		if (speed > 0)
+		if (speed != 0)
 		{
 			if (arduboy.pressed(LEFT_BUTTON))
 			{
