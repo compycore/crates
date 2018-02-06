@@ -2,6 +2,7 @@ struct Car: Entity
 {
 	float turnSpeed = 3;
 	float accel = 0.02;
+	float maxReverseSpeed = -1;
 
 	void accelerate()
 	{
@@ -12,9 +13,7 @@ struct Car: Entity
 
 	void decelerate()
 	{
-		speed -= accel * 2;
-
-		if (speed < 0) speed = 0;
+		if (speed > maxReverseSpeed) speed -= accel * 2;
 	}
 
 	void follow(int X, int Y)
