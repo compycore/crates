@@ -7,7 +7,7 @@ struct Flash: Simple
 		speed = Speed;
 
 		frameCount = 2;
-		animFreq = 8;
+		animFreq = 5;
 
 		ttl = frameCount;
 	}

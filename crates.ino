@@ -2,7 +2,6 @@
 #include "images.h"
 #include "utils.h"
 #include "svg.h"
-#include "buffer.h"
 #include "compycore.h"
 #include "menu.h"
 #include "simple.h"
@@ -10,16 +9,16 @@
 #include "car.h"
 #include "cactus.h"
 #include "dust.h"
+#include "flash.h"
 #include "skid.h"
 #include "player.h"
 #include "police.h"
 
 Compycore compycore;
 Menu menu;
+SVG svg;
 Player player;
 Police police;
-GfxBuffer gfxBuffer;
-SVG svg;
 Cactus cactus;
 
 void setup()
@@ -56,32 +55,24 @@ void loop()
 	// show the menu if we haven't already picked an option
 	if (!(menu.show())) return;
 
-	arduboy.fillScreen();
-
-	// clear the draw buffer
-	gfxBuffer.clear();
+	// draw the map lines
+	svg.map(0,0,2);
 
 	cactus.update();
-	cactus.draw(gfxBuffer);
+	cactus.draw();
 
 	player.update();
-	player.draw(gfxBuffer);
+	player.draw();
 	player.collide(cactus.cbox);
 
 	police.update();
 	police.follow(player.x, player.y);
-	police.draw(gfxBuffer);
+	police.draw();
 	police.collide(cactus.cbox);
 	police.collide(player.cbox);
 
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);
-
-	// draw the map lines
-	svg.map(0,0,2);
-
-	// draw the draw buffer
-	gfxBuffer.draw();
 
 	// draw everything to the screen
 	arduboy.display(CLEAR_BUFFER);

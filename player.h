@@ -33,9 +33,8 @@ struct Player: Car
 		}
 	}
 
-	void draw(GfxBuffer &gfxBuffer)
+	void draw()
 	{
-		// TODO Make this a helper function
 		// handle skids
 		for (int i = 0; i < skids.size(); i++)
 		{
@@ -51,7 +50,6 @@ struct Player: Car
 			}
 		}
 
-		// TODO Make this a helper function
 		// handle dust
 		for (int i = 0; i < dust.size(); i++)
 		{
@@ -67,6 +65,6 @@ struct Player: Car
 			}
 		}
 
-		buffer(gfxBuffer, car_plus_mask);
+		sketch(car_plus_mask);
 	}
 };

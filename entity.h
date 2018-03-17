@@ -47,10 +47,4 @@ struct Entity: Simple
 			}
 		}
 	}
-
-	// add the entity to the draw buffer
-	void buffer(GfxBuffer &gfxBuffer, unsigned char sprite[])
-	{
-		gfxBuffer.add(GfxBufferEntity(int(x), int(y), sprite, curFrame, cbox_conf));
-	}
 };

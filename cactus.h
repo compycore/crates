@@ -12,8 +12,8 @@ struct Cactus: Entity
 		updateCbox();
 	}
 
-	void draw(GfxBuffer &gfxBuffer)
+	void draw()
 	{
-		buffer(gfxBuffer, cactus_plus_mask);
+		sketch(cactus_plus_mask);
 	}
 };
