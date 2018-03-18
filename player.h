@@ -1,6 +1,5 @@
 struct Player: Car
 {
-	Vector<Dust, 2> dust;
 	Vector<Skid, 15> skids; // skid ttl and vector size should match
 
 	Player()

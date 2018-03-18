@@ -1,6 +1,5 @@
 struct Police: Car
 {
-	Vector<Dust, 2> dust;
 	Vector<Flash, 1> flash;
 
 	Police()

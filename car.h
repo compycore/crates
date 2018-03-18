@@ -1,5 +1,7 @@
 struct Car: Entity
 {
+	Vector<Dust, 3> dust;
+
 	float turnRate = 3.5;
 	float turnSpeed = 0.5;
 	float accel = 0.02;
