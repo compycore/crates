@@ -9,7 +9,6 @@ struct Police: Car
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
 		accel = 0.01;
-		maxSpeed = 1.8;
 
 		frameCount = ANGLES - 1;
 	}

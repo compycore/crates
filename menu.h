@@ -121,7 +121,6 @@ typedef struct Menu
 			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
 
 			// buttons
-			sprites.drawPlusMask(buttonPaddingLeft, buttonY, help_plus_mask, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, play_plus_mask, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, info_plus_mask, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3), buttonY, conf_plus_mask, 0);

@@ -8,12 +8,6 @@ struct Entity: Simple
 		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
 	}
 
-	void updateAngle()
-	{
-		angle = normalizeAngle(angle);
-		curFrame = angleToFrame(angle, frameCount);
-	}
-
 	void collide(Rect other)
 	{
 		// preliminary solid collisions

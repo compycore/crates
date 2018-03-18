@@ -30,9 +30,11 @@ struct Simple
 
 	void physics()
 	{
+		// apply momentum according to the current angle
 		x += speed * cos(angle * 1000 / 57296);
 		y -= speed * sin(angle * 1000 / 57296);
 
+		// contain to the screen
 		if (x < 0)
 		{
 			x = 0;
@@ -42,6 +44,7 @@ struct Simple
 			x = camera.xMax - width;
 		}
 
+		// contain to the screen
 		if (y < 0)
 		{
 			y = 0;

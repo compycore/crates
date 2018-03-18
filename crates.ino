@@ -60,7 +60,6 @@ void loop()
 	// draw the map lines
 	svg.map(0,0,2);
 
-	cactus.update();
 	cactus.draw();
 
 	crate.update();
@@ -68,13 +67,11 @@ void loop()
 
 	player.update();
 	player.draw();
-	player.collide(cactus.cbox);
 	player.collide(crate.cbox);
 
 	police.update();
 	police.follow(player.x, player.y);
 	police.draw();
-	police.collide(cactus.cbox);
 	police.collide(player.cbox);
 
 	// make the camera follow the player

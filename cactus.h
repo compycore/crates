@@ -1,15 +1,9 @@
-struct Cactus: Entity
+struct Cactus: Simple
 {
 	Cactus()
 	{
-		width = 14, height = 16;
+		width = 10, height = 16;
 		x = 30, y = 30;
-		cbox_conf = {.x = 2, .y = 3, .width = 10, .height = 11};
-	}
-
-	void update()
-	{
-		updateCbox();
 	}
 
 	void draw()

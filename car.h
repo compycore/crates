@@ -26,6 +26,12 @@ struct Car: Entity
 		if (speed > maxReverseSpeed) speed -= accel * 2;
 	}
 
+	void updateAngle()
+	{
+		angle = normalizeAngle(angle);
+		curFrame = angleToFrame(angle, frameCount);
+	}
+
 	void follow(int X, int Y)
 	{
 		if (speed > turnSpeed)
