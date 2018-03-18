@@ -3,7 +3,7 @@ typedef struct Menu
 {
 	bool selected = false;
 
-	int currentSelection = 1;
+	int currentSelection = 0;
 
 	int selectionWidth = 23;
 	int selectionHeight = 9;
@@ -59,7 +59,7 @@ typedef struct Menu
 		{
 			if (!submenu)
 			{
-				if (currentSelection < 3)
+				if (currentSelection < 2)
 				{
 					currentSelection++;
 				}
@@ -78,7 +78,7 @@ typedef struct Menu
 		{
 			if (!submenu) // default menu
 			{
-				if (currentSelection == 1)
+				if (currentSelection == 0)
 				{
 					selected = true;
 					return true;
@@ -89,7 +89,7 @@ typedef struct Menu
 					submenu = true;
 				}
 			}
-			else if (currentSubmenu == 3)   // configuration menu
+			else if (currentSubmenu == 2)   // configuration menu
 			{
 				if (currentSubmenuSelection == 0)
 				{
@@ -121,15 +121,15 @@ typedef struct Menu
 			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
 
 			// buttons
-			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, play_plus_mask, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, info_plus_mask, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3), buttonY, conf_plus_mask, 0);
+			sprites.drawPlusMask(buttonPaddingLeft, buttonY, play_plus_mask, 0);
+			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, info_plus_mask, 0);
+			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, conf_plus_mask, 0);
 		}
-		else if (currentSubmenu == 2) // info menu
+		else if (currentSubmenu == 1) // info menu
 		{
 			sprites.drawOverwrite(32, 0, qrcode, 0);
 		}
-		else if (currentSubmenu == 3) // configuration menu
+		else if (currentSubmenu == 2) // configuration menu
 		{
 			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
 
