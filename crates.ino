@@ -8,6 +8,7 @@
 #include "entity.h"
 #include "car.h"
 #include "cactus.h"
+#include "crate.h"
 #include "dust.h"
 #include "flash.h"
 #include "skid.h"
@@ -20,6 +21,7 @@ SVG svg;
 Player player;
 Police police;
 Cactus cactus;
+Crate crate;
 
 void setup()
 {
@@ -61,9 +63,13 @@ void loop()
 	cactus.update();
 	cactus.draw();
 
+	crate.update();
+	crate.draw();
+
 	player.update();
 	player.draw();
 	player.collide(cactus.cbox);
+	player.collide(crate.cbox);
 
 	police.update();
 	police.follow(player.x, player.y);

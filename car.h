@@ -1,6 +1,7 @@
 struct Car: Entity
 {
-	float turnSpeed = 3;
+	float turnRate = 3.5;
+	float turnSpeed = 0.5;
 	float accel = 0.02;
 	float maxReverseSpeed = -1;
 
@@ -25,20 +26,25 @@ struct Car: Entity
 
 	void follow(int X, int Y)
 	{
-		angle = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
+		if (speed > turnSpeed)
+		{
+			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
+			float shortest_angle = ((((angleToTarget - int(angle)) % 360) + 540) % 360) - 180;
+			angle += shortest_angle * 0.05;
+		}
 	}
 
 	void control()
 	{
-		if (speed != 0)
+		if (speed > turnSpeed)
 		{
 			if (arduboy.pressed(LEFT_BUTTON))
 			{
-				angle += turnSpeed;
+				angle += turnRate;
 			}
 			else if (arduboy.pressed(RIGHT_BUTTON))
 			{
-				angle -= turnSpeed;
+				angle -= turnRate;
 			}
 		}
 
@@ -50,11 +56,5 @@ struct Car: Entity
 		{
 			decelerate();
 		}
-	}
-
-	void updateAngle()
-	{
-		angle = normalizeAngle(angle);
-		curFrame = angleToFrame(angle, frameCount);
 	}
 };
