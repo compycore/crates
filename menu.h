@@ -78,8 +78,10 @@ typedef struct Menu
 		{
 			if (!submenu) // default menu
 			{
+				// the play button
 				if (currentSelection == 0)
 				{
+					arduboy.initRandomSeed();
 					selected = true;
 					return true;
 				}
