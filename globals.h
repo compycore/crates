@@ -3,8 +3,8 @@
 #include "vector.h"
 #include "camera.h"
 
-// Arduboy2Base arduboy;
-Arduboy2 arduboy; // for debug only
+Arduboy2Base arduboy;
+// Arduboy2 arduboy; // for debug only
 Arduboy2Audio audio;
 ArduboyTones sound(arduboy.audio.enabled);
 Camera camera;

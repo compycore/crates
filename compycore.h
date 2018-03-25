@@ -13,13 +13,13 @@ typedef struct Compycore
 			introduced = true;
 			return true;
 		}
+		else if (y < 5)
+		{
+			y++;
+			ardbitmap.drawCompressed(x, y, MICHAEL, WHITE, ALIGN_NONE, MIRROR_NONE);
+		}
 		else
 		{
-			if (y < 5)
-			{
-				y++;
-			}
-
 			if (arduboy.everyXFrames(150))
 			{
 				introduced = true;
