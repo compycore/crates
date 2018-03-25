@@ -55,8 +55,8 @@ struct Simple
 		}
 	}
 
-	void sketch(unsigned char sprite[])
+	void sketch(const uint8_t *sprite)
 	{
-		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
+		ardbitmap.drawCompressed(x - camera.x, y - camera.y, sprite[curFrame], WHITE, ALIGN_NONE, MIRROR_NONE);
 	}
 };

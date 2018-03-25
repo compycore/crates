@@ -2,6 +2,7 @@
 #include "images.h"
 #include "utils.h"
 #include "svg.h"
+#include "compycore-image.h"
 #include "compycore.h"
 #include "menu.h"
 #include "simple.h"

@@ -12,6 +12,6 @@ Camera camera;
 // make an ArdBitmap instance that will use the given the screen buffer and dimensions
 #define ARDBITMAP_SBUF arduboy.getBuffer()
 #include <ArdBitmap.h>
-ArdBitmap<WIDTH, HEIGHT> ardbitmap
+ArdBitmap<WIDTH, HEIGHT> ardbitmap;
 
 int ANGLES = 25;

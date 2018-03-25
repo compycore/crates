@@ -113,7 +113,7 @@ typedef struct Menu
 
 		if (!submenu) // default menu
 		{
-			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
+			// sprites.drawOverwrite(10, 2, menu_without_mask, 0);
 
 			// selection box
 			int selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
@@ -123,17 +123,17 @@ typedef struct Menu
 			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
 
 			// buttons
-			sprites.drawPlusMask(buttonPaddingLeft, buttonY, play_plus_mask, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, info_plus_mask, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, conf_plus_mask, 0);
+			// sprites.drawPlusMask(buttonPaddingLeft, buttonY, play_plus_mask, 0);
+			// sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, info_plus_mask, 0);
+			// sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, conf_plus_mask, 0);
 		}
 		else if (currentSubmenu == 1) // info menu
 		{
-			sprites.drawOverwrite(32, 0, qrcode, 0);
+			// sprites.drawOverwrite(32, 0, qrcode, 0);
 		}
 		else if (currentSubmenu == 2) // configuration menu
 		{
-			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
+			// sprites.drawOverwrite(10, 2, menu_without_mask, 0);
 
 			int selectionX = 0;
 			int selectionWidthSubmenu = 0;
@@ -154,9 +154,9 @@ typedef struct Menu
 
 			sketchSelectionBox(selectionX, buttonY - 1, selectionWidthSubmenu, selectionHeight);
 
-			sprites.drawPlusMask(37, buttonY, sfx_plus_mask, 0);
-			sprites.drawPlusMask(37 + 19 + 4, buttonY, on_plus_mask, 0);
-			sprites.drawPlusMask(37 + 19 + 4 + 11 + 4, buttonY, off_plus_mask, 0);
+			// sprites.drawPlusMask(37, buttonY, sfx_plus_mask, 0);
+			// sprites.drawPlusMask(37 + 19 + 4, buttonY, on_plus_mask, 0);
+			// sprites.drawPlusMask(37 + 19 + 4 + 11 + 4, buttonY, off_plus_mask, 0);
 		}
 
 		arduboy.display(CLEAR_BUFFER);
