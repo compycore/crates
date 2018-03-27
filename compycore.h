@@ -33,7 +33,7 @@ typedef struct Compycore
 			}
 
 			ardbitmap.drawCompressed(x, y, MICHAEL, WHITE, ALIGN_NONE, MIRROR_NONE);
-			// TODO add a black box over Michael's usual eye
+			arduboy.fillRect(x + 32, y + 25, 8, 6, BLACK);
 			ardbitmap.drawCompressed(x + 32, y + 25, WINK, WHITE, ALIGN_NONE, MIRROR_NONE);
 			ardbitmap.drawCompressed(30, 46, COMPYCORE_BLACK, BLACK, ALIGN_NONE, MIRROR_NONE);
 			ardbitmap.drawCompressed(30, 46, COMPYCORE_WHITE, WHITE, ALIGN_NONE, MIRROR_NONE);
