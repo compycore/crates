@@ -65,7 +65,7 @@ struct Player: Car
 		}
 
 		// TODO move this to the car class
-		if (angle > 90 && angle < 180)
+		if (angle > 90 && angle < 270)
 		{
 			ardbitmap.drawCompressed(x - camera.x, y - camera.y, PLAYER[curFrame], WHITE, ALIGN_NONE, MIRROR_HORIZONTAL);
 		}
