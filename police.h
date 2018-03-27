@@ -50,7 +50,15 @@ struct Police: Car
 			}
 		}
 
-		// sketch(police_plus_mask);
+		// TODO move this to the car class
+		if (angle > 90 && angle < 270)
+		{
+			ardbitmap.drawCompressed(x - camera.x, y - camera.y, POLICE[curFrame], WHITE, ALIGN_NONE, MIRROR_HORIZONTAL);
+		}
+		else
+		{
+			ardbitmap.drawCompressed(x - camera.x, y - camera.y, POLICE[curFrame], WHITE, ALIGN_NONE, MIRROR_NONE);
+		}
 
 		// TODO maybe don't use a vector for this
 		// handle flash

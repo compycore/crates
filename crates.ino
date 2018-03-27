@@ -16,6 +16,7 @@
 #include "skid.h"
 #include "player-image.h"
 #include "player.h"
+#include "police-image.h"
 #include "police.h"
 
 Compycore compycore;
