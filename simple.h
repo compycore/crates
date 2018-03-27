@@ -57,6 +57,6 @@ struct Simple
 
 	void sketch(const uint8_t *sprite, uint8_t color = WHITE, uint8_t mirror = MIRROR_NONE, uint8_t align = ALIGN_NONE)
 	{
-		ardbitmap.drawCompressed((int16_t) x - camera.x, (int16_t) y - camera.y, sprite, color, align, mirror);
+		ardbitmap.drawCompressed((uint8_t) (x - camera.x), (uint8_t) (y - camera.y), sprite, color, align, mirror);
 	}
 };

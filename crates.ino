@@ -15,6 +15,7 @@
 #include "flash.h"
 #include "skid.h"
 #include "player-image.h"
+#include "player-mask.h"
 #include "player.h"
 #include "police-image.h"
 #include "police.h"
