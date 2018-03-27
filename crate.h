@@ -15,6 +15,6 @@ struct Crate: Entity
 
 	void draw()
 	{
-		sketch(crate_plus_mask);
+		// sketch(crate_plus_mask);
 	}
 };

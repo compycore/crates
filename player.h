@@ -64,6 +64,14 @@ struct Player: Car
 			}
 		}
 
-		sketch(car_plus_mask);
+		// TODO move this to the car class
+		if (angle > 90 && angle < 180)
+		{
+			ardbitmap.drawCompressed(x - camera.x, y - camera.y, PLAYER[curFrame], WHITE, ALIGN_NONE, MIRROR_HORIZONTAL);
+		}
+		else
+		{
+			ardbitmap.drawCompressed(x - camera.x, y - camera.y, PLAYER[curFrame], WHITE, ALIGN_NONE, MIRROR_NONE);
+		}
 	}
 };

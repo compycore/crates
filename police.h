@@ -50,7 +50,7 @@ struct Police: Car
 			}
 		}
 
-		sketch(police_plus_mask);
+		// sketch(police_plus_mask);
 
 		// TODO maybe don't use a vector for this
 		// handle flash

@@ -14,6 +14,7 @@
 #include "crate.h"
 #include "flash.h"
 #include "skid.h"
+#include "player-image.h"
 #include "player.h"
 #include "police.h"
 

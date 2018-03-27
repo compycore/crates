@@ -25,6 +25,6 @@ struct Flash: Simple
 
 	void draw()
 	{
-		sketch(flash_plus_mask);
+		// sketch(flash_plus_mask);
 	}
 };

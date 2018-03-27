@@ -7,11 +7,11 @@ struct Simple
 	float speed = 0;
 	float maxSpeed = 2;
 
-	unsigned int ttl = 0;
+	unsigned char ttl = 0;
 
-	unsigned int frameCount = 0;
-	unsigned int curFrame = 0;
-	unsigned int animFreq = 0;
+	unsigned char frameCount = 0;
+	unsigned char curFrame = 0;
+	unsigned char animFreq = 0;
 
 	void animate()
 	{
@@ -53,10 +53,5 @@ struct Simple
 		{
 			y = camera.yMax - height;
 		}
-	}
-
-	void sketch(const uint8_t *sprite)
-	{
-		ardbitmap.drawCompressed(x - camera.x, y - camera.y, sprite[curFrame], WHITE, ALIGN_NONE, MIRROR_NONE);
 	}
 };

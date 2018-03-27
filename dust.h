@@ -25,6 +25,6 @@ struct Dust: Simple
 
 	void draw()
 	{
-		sketch(dust_plus_mask);
+		// sketch(dust_plus_mask);
 	}
 };
