@@ -113,7 +113,7 @@ typedef struct Menu
 
 		if (!submenu) // default menu
 		{
-			// sprites.drawOverwrite(10, 2, menu_without_mask, 0);
+			ardbitmap.drawCompressed(10, 2, MENU, WHITE, ALIGN_NONE, MIRROR_NONE);
 
 			// selection box
 			int selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);

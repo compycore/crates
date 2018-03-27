@@ -4,6 +4,7 @@
 #include "svg.h"
 #include "compycore-image.h"
 #include "compycore.h"
+#include "menu-image.h"
 #include "menu.h"
 #include "simple.h"
 #include "entity.h"
