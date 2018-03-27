@@ -18,6 +18,7 @@
 #include "player-mask.h"
 #include "player.h"
 #include "police-image.h"
+#include "police-mask.h"
 #include "police.h"
 
 Compycore compycore;

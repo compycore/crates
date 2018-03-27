@@ -53,10 +53,12 @@ struct Police: Car
 		if (angle > 90 && angle < 270)
 		{
 			sketch(POLICE[curFrame], WHITE, MIRROR_HORIZONTAL);
+			sketch(POLICE_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
 		}
 		else
 		{
 			sketch(POLICE[curFrame]);
+			sketch(POLICE_MASK[curFrame], BLACK);
 		}
 
 		// TODO maybe don't use a vector for this
