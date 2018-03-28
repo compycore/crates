@@ -130,6 +130,7 @@ typedef struct Menu
 		else if (currentSubmenu == 1) // info menu
 		{
 			// sprites.drawOverwrite(32, 0, qrcode, 0);
+			ardbitmap.drawCompressed(32, 0, QRCODE, WHITE, ALIGN_NONE, MIRROR_NONE);
 		}
 		else if (currentSubmenu == 2) // configuration menu
 		{

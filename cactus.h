@@ -8,6 +8,6 @@ struct Cactus: Simple
 
 	void draw()
 	{
-		// sketch(cactus_plus_mask);
+		sketch(CACTUS);
 	}
 };
