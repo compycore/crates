@@ -8,6 +8,7 @@
 #include "menu.h"
 #include "simple.h"
 #include "entity.h"
+#include "dust-image.h"
 #include "dust.h"
 #include "car.h"
 #include "cactus-image.h"
