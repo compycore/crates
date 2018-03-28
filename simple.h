@@ -1,6 +1,7 @@
 struct Simple
 {
 	float x = 0, y = 0;
+	// TODO extract this from the compressed image
 	int width = 0, height = 0;
 
 	float angle = 0;
@@ -57,6 +58,6 @@ struct Simple
 
 	void sketch(const uint8_t *sprite, uint8_t color = WHITE, uint8_t mirror = MIRROR_NONE, uint8_t align = ALIGN_NONE)
 	{
-		ardbitmap.drawCompressed((uint8_t) (x - camera.x), (uint8_t) (y - camera.y), sprite, color, align, mirror);
+		ardbitmap.drawCompressed((int16_t) (x - camera.x), (int16_t) (y - camera.y), sprite, color, align, mirror);
 	}
 };
