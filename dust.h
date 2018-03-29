@@ -1,4 +1,4 @@
-struct Dust: Simple
+struct Dust: Entity
 {
 	Dust(float X, float Y, float Angle, float Speed)
 	{

@@ -1,6 +1,6 @@
 struct Player: Car
 {
-	Vector<Skid, 15> skids; // skid ttl and vector size should match
+	Vector<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
 
 	Player()
 	{
@@ -28,7 +28,10 @@ struct Player: Car
 		// generate more skids
 		if (arduboy.pressed(B_BUTTON) && speed > 0)
 		{
-			skids.push_back(Skid(x, y, curFrame));
+			if (arduboy.everyXFrames(2))
+			{
+				skids.push_back(Skid(x, y, curFrame));
+			}
 		}
 	}
 

@@ -1,6 +1,6 @@
 struct Police: Car
 {
-	Flash flash = Flash(0, 0);
+	Flash flash;
 
 	Police()
 	{
@@ -12,6 +12,8 @@ struct Police: Car
 		accel = 0.01;
 
 		frameCount = ANGLES - 1;
+
+		flash = Flash();
 	}
 
 	void update()

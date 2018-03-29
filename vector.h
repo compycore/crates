@@ -22,7 +22,16 @@ struct Vector
 	// adds a new value and allocates more space if needed (and allowed)
 	void push_back(T const &x)
 	{
-		if (d_size < d_capacity) d_data[d_size++] = x;
+		if (d_size < d_capacity)
+		{
+			d_data[d_size++] = x;
+		}
+		else
+		{
+			// free the memory for the constructor we just passed in since we can't use it
+			// this should limit us to using push_back only when we're creating a new object
+			free(&x);
+		};
 	}
 
 	// wipe the array

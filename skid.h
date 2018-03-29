@@ -1,4 +1,4 @@
-struct Skid: Simple
+struct Skid: Entity
 {
 	Skid(float X, float Y, int CurFrame)
 	{
@@ -6,7 +6,7 @@ struct Skid: Simple
 
 		curFrame = CurFrame;
 
-		ttl = 15;
+		ttl = 10;
 	}
 
 	void update()
