@@ -15,6 +15,7 @@
 #include "cactus.h"
 #include "crate-image.h"
 #include "crate.h"
+#include "flash-image.h"
 #include "flash.h"
 #include "skid-image.h"
 #include "skid.h"

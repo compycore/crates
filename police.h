@@ -1,6 +1,6 @@
 struct Police: Car
 {
-	Vector<Flash, 1> flash;
+	Flash flash = Flash(0, 0);
 
 	Police()
 	{
@@ -20,11 +20,9 @@ struct Police: Car
 		updateAngle();
 		accelerate();
 
-		// flash the lights
-		if (arduboy.everyXFrames(22))
-		{
-			flash.push_back(Flash(x + width / 2 - 5, y + height / 2 - 7, angle, speed));
-		}
+		// position the light flash
+		flash.x = x + width / 2 - 8;
+		flash.y = y + height / 2 - 6;
 
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
@@ -61,20 +59,7 @@ struct Police: Car
 			sketch(POLICE_MASK[curFrame], BLACK);
 		}
 
-		// TODO maybe don't use a vector for this
-		// handle flash
-		for (int i = 0; i < flash.size(); i++)
-		{
-			if (flash[i].ttl > 0)
-			{
-				flash[i].update();
-				flash[i].draw();
-			}
-			else
-			{
-				flash.erase(i);
-				i--;
-			}
-		}
+		flash.update();
+		flash.draw();
 	}
 };
