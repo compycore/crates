@@ -59,11 +59,11 @@ struct Car: Entity
 			}
 		}
 
-		if (arduboy.pressed(A_BUTTON))
+		if (arduboy.pressed(B_BUTTON))
 		{
 			accelerate();
 		}
-		else if (arduboy.pressed(B_BUTTON))
+		else if (arduboy.pressed(A_BUTTON))
 		{
 			decelerate();
 		}

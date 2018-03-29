@@ -74,7 +74,7 @@ typedef struct Menu
 		}
 
 		// selection with a and b
-		if (arduboy.justPressed(A_BUTTON))
+		if (arduboy.justPressed(B_BUTTON))
 		{
 			if (!submenu) // default menu
 			{
@@ -106,7 +106,7 @@ typedef struct Menu
 				submenu = false;
 			}
 		}
-		else if (arduboy.justPressed(B_BUTTON))
+		else if (arduboy.justPressed(A_BUTTON))
 		{
 			submenu = false;
 		}

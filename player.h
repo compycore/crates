@@ -29,7 +29,7 @@ struct Player: Car
 		}
 
 		// generate more skids
-		if (arduboy.pressed(B_BUTTON) && speed > 0)
+		if (arduboy.pressed(A_BUTTON) && speed > 0)
 		{
 			if (arduboy.everyXFrames(2))
 			{
