@@ -30,7 +30,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-Police police;
+Vector<Police, 2> police;
 Cactus cactus;
 Crate crate;
 
@@ -53,6 +53,12 @@ void loop()
 	// show the menu if we haven't already picked an option
 	if (!(menu.show())) return;
 
+	// TODO don't use a magic number
+	// TODO spawn randomly or based on player performance
+	if (police.size() < police.capacity()) {
+		police.push_back(Police());
+	}
+
 	// draw the map lines
 	svg.map(0,0,2);
 
@@ -65,10 +71,14 @@ void loop()
 	player.draw();
 	player.collide(crate.cbox);
 
-	police.update();
-	police.follow(player.x, player.y);
-	police.draw();
-	police.collide(player.cbox);
+	// handle police
+	for (int i = 0; i < police.size(); i++)
+	{
+		police[i].update();
+		police[i].follow(player.x, player.y);
+		police[i].draw();
+		police[i].collide(player.cbox);
+	}
 
 	// make the camera follow the player
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);

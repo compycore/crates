@@ -4,6 +4,7 @@ struct Police: Car
 
 	Police()
 	{
+		// TODO generate anywhere off the current screen
 		x = 50, y = 50;
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};

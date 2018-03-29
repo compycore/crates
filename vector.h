@@ -37,6 +37,12 @@ struct Vector
 		return d_size;
 	};
 
+	// TODO see if there's a standard name for this
+	int capacity() const
+	{
+		return d_capacity;
+	};
+
 	// delete an index
 	void erase(int index)
 	{
