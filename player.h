@@ -22,7 +22,10 @@ struct Player: Car
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
 		{
-			dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+			if (dust.size() < dust.capacity())
+			{
+				dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+			}
 		}
 
 		// generate more skids
@@ -30,7 +33,10 @@ struct Player: Car
 		{
 			if (arduboy.everyXFrames(2))
 			{
-				skids.push_back(Skid(x, y, curFrame));
+				if (skids.size() < skids.capacity())
+				{
+					skids.push_back(Skid(x, y, curFrame));
+				}
 			}
 		}
 	}

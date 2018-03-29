@@ -26,12 +26,6 @@ struct Vector
 		{
 			d_data[d_size++] = x;
 		}
-		else
-		{
-			// free the memory for the constructor we just passed in since we can't use it
-			// this should limit us to using push_back only when we're creating a new object
-			free(&x);
-		};
 	}
 
 	// wipe the array

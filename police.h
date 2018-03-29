@@ -31,7 +31,10 @@ struct Police: Car
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
 		{
-			dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+			if (dust.size() < dust.capacity())
+			{
+				dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+			}
 		}
 	}
 
