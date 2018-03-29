@@ -5,11 +5,12 @@ struct Police: Car
 	Police()
 	{
 		// TODO generate anywhere off the current screen
-		x = 50, y = 50;
+		x = random(300), y = random(300);
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
-		accel = 0.01;
+		accel = 0.01 + (1 / (5 + random(5)));
+		followTurnRate = followTurnRate + (1 / (40 + random(10)));
 
 		frameCount = ANGLES - 1;
 

@@ -3,7 +3,9 @@ struct Car: Entity
 	Vector<Dust, 1> dust;
 
 	float turnRate = 3.5;
-	float turnSpeed = 0.5;
+	float followTurnRate = 0.05;
+	// the speed you must reach before turning is allowed
+	float turnSpeed = 0.35;
 	float accel = 0.02;
 	float maxReverseSpeed = -1;
 
@@ -38,7 +40,7 @@ struct Car: Entity
 		{
 			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
 			float shortest_angle = ((((angleToTarget - int(angle)) % 360) + 540) % 360) - 180;
-			angle += shortest_angle * 0.05;
+			angle += shortest_angle * followTurnRate;
 		}
 	}
 

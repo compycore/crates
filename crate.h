@@ -9,7 +9,6 @@ struct Crate: Entity
 
 	void update()
 	{
-		physics();
 		updateCbox();
 	}
 
