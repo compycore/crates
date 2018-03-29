@@ -26,7 +26,7 @@ struct Police: Car
 
 		// position the light flash
 		flash.x = x + width / 2 - 8;
-		flash.y = y + height / 2 - 6;
+		flash.y = y + height / 2 - 7;
 
 		// generate more dust
 		if (random(100) < 2 && speed > 0)

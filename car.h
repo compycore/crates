@@ -1,6 +1,7 @@
 struct Car: Entity
 {
-	Vector<Dust, 2> dust;
+	// TODO don't use a vector for this if there's only one
+	Vector<Dust, 1> dust;
 
 	float turnRate = 3.5;
 	float followTurnRate = 0.05;

@@ -30,7 +30,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-Vector<Police, 3> police;
+Vector<Police, 5> police;
 Cactus cactus;
 Crate crate;
 
@@ -78,6 +78,13 @@ void loop()
 		police[i].follow(player.x, player.y);
 		police[i].draw();
 		police[i].collide(player.cbox);
+
+		for (int j = 0; j < police.size(); j++)
+		{
+			if (j != i) {
+				police[i].collide(police[j].cbox);
+			}
+		}
 	}
 
 	// make the camera follow the player
