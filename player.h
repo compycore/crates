@@ -44,7 +44,7 @@ struct Player: Car
 	void draw()
 	{
 		// handle skids
-		for (int i = 0; i < skids.size(); i++)
+		for (unsigned char i = 0; i < skids.size(); i++)
 		{
 			if (skids[i].ttl > 0)
 			{
@@ -60,7 +60,7 @@ struct Player: Car
 
 		/*
 		// handle dust
-		for (int i = 0; i < dust.size(); i++)
+		for (unsigned char i = 0; i < dust.size(); i++)
 		{
 		    if (dust[i].ttl > 0)
 		    {

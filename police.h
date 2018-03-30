@@ -34,7 +34,7 @@ struct Police: Car
 	{
 		/*
 		// handle dust
-		for (int i = 0; i < dust.size(); i++)
+		for (unsigned char i = 0; i < dust.size(); i++)
 		{
 		    if (dust[i].ttl > 0)
 		    {

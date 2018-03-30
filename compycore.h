@@ -2,8 +2,8 @@ typedef struct Compycore
 {
 	bool introduced = false;
 	bool winked = false;
-	int x = 29;
-	int y = -46;
+	char x = 29;
+	char y = -46;
 
 	bool introduce()
 	{

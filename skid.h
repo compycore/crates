@@ -1,6 +1,6 @@
 struct Skid: Entity
 {
-	Skid(float X, float Y, int CurFrame)
+	Skid(float X, float Y, unsigned char CurFrame)
 	{
 		x = X, y = Y;
 

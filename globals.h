@@ -14,4 +14,4 @@ Camera camera;
 #include <ArdBitmap.h>
 ArdBitmap<WIDTH, HEIGHT> ardbitmap;
 
-int ANGLES = 25;
+unsigned char ANGLES = 25;

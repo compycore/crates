@@ -72,14 +72,14 @@ void loop()
 	player.collide(crate.cbox);
 
 	// handle police
-	for (int i = 0; i < police.size(); i++)
+	for (unsigned char i = 0; i < police.size(); i++)
 	{
 		police[i].update();
 		police[i].follow(player.x, player.y);
 		police[i].draw();
 		police[i].collide(player.cbox);
 
-		for (int j = 0; j < police.size(); j++)
+		for (unsigned char j = 0; j < police.size(); j++)
 		{
 			if (j != i) {
 				police[i].collide(police[j].cbox);

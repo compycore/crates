@@ -1,6 +1,6 @@
-int angleToFrame(float angle, int frameCount)
+unsigned char angleToFrame(float angle, unsigned char frameCount)
 {
-	return int(angle / 360 * frameCount);
+	return (unsigned char)(angle / 360 * frameCount);
 }
 
 float normalizeAngle(float angle)

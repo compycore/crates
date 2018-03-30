@@ -1,9 +1,9 @@
 // minimal class to replace std::vector
-template<typename T, int Capacity>
+template<typename T, unsigned char Capacity>
 struct Vector
 {
-	int d_size = 0; // stores the number of actually stored objects
-	int d_capacity; // stores allocated capacity
+	unsigned char d_size = 0; // stores the number of actually stored objects
+	unsigned char d_capacity; // stores allocated capacity
 	T *d_data; // stores the actual data
 
 	// default constructor
@@ -35,21 +35,21 @@ struct Vector
 	}
 
 	// size getter
-	int size() const
+	unsigned char size() const
 	{
 		return d_size;
 	};
 
 	// TODO see if there's a standard name for this
-	int capacity() const
+	unsigned char capacity() const
 	{
 		return d_capacity;
 	};
 
 	// delete an index
-	void erase(int index)
+	void erase(unsigned char index)
 	{
-		for (int i = index; i < d_size; i++)
+		for (unsigned char i = index; i < d_size; i++)
 		{
 			d_data[i] = d_data[i + 1]; // copy next element left
 		}
@@ -58,8 +58,8 @@ struct Vector
 	}
 
 	// getter
-	T &operator[](int idx)
+	T &operator[](unsigned char index)
 	{
-		return d_data[idx];
+		return d_data[index];
 	}
 };
