@@ -58,30 +58,32 @@ struct Player: Car
 			}
 		}
 
+		/*
 		// handle dust
 		for (int i = 0; i < dust.size(); i++)
 		{
-			if (dust[i].ttl > 0)
-			{
-				dust[i].update();
-				dust[i].draw();
-			}
-			else
-			{
-				dust.erase(i);
-				i--;
-			}
+		    if (dust[i].ttl > 0)
+		    {
+		        dust[i].update();
+		        dust[i].draw();
+		    }
+		    else
+		    {
+		        dust.erase(i);
+		        i--;
+		    }
 		}
+		*/
 
 		if (angle > 90 && angle < 270)
 		{
 			sketch(PLAYER[curFrame], WHITE, MIRROR_HORIZONTAL);
-			sketch(PLAYER_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
+			// sketch(PLAYER_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
 		}
 		else
 		{
 			sketch(PLAYER[curFrame]);
-			sketch(PLAYER_MASK[curFrame], BLACK);
+			// sketch(PLAYER_MASK[curFrame], BLACK);
 		}
 	}
 };

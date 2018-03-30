@@ -10,7 +10,7 @@ ArduboyTones sound(arduboy.audio.enabled);
 Camera camera;
 
 // make an ArdBitmap instance that will use the given the screen buffer and dimensions
-#define ARDBITMAP_SBUF arduboy.getBuffer()
+#define ARDBITMAP_SBUF arduboy.sBuffer
 #include <ArdBitmap.h>
 ArdBitmap<WIDTH, HEIGHT> ardbitmap;
 

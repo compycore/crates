@@ -60,7 +60,7 @@ void loop()
 	}
 
 	// draw the map lines
-	svg.map(0,0,2);
+	svg.map(0,0,1);
 
 	cactus.draw();
 

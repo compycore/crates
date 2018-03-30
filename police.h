@@ -40,33 +40,35 @@ struct Police: Car
 
 	void draw()
 	{
+		/*
 		// handle dust
 		for (int i = 0; i < dust.size(); i++)
 		{
-			if (dust[i].ttl > 0)
-			{
-				dust[i].update();
-				dust[i].draw();
-			}
-			else
-			{
-				dust.erase(i);
-				i--;
-			}
+		    if (dust[i].ttl > 0)
+		    {
+		        dust[i].update();
+		        dust[i].draw();
+		    }
+		    else
+		    {
+		        dust.erase(i);
+		        i--;
+		    }
 		}
+		*/
 
 		if (angle > 90 && angle < 270)
 		{
 			sketch(POLICE[curFrame], WHITE, MIRROR_HORIZONTAL);
-			sketch(POLICE_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
+			// sketch(POLICE_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
 		}
 		else
 		{
 			sketch(POLICE[curFrame]);
-			sketch(POLICE_MASK[curFrame], BLACK);
+			// sketch(POLICE_MASK[curFrame], BLACK);
 		}
 
-		flash.update();
-		flash.draw();
+		// flash.update();
+		// flash.draw();
 	}
 };
