@@ -75,15 +75,15 @@ struct Player: Car
 		}
 		*/
 
-		if (angle > 90 && angle < 270)
-		{
-			sketch(PLAYER[curFrame], WHITE, MIRROR_HORIZONTAL);
-			// sketch(PLAYER_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
-		}
-		else
-		{
-			sketch(PLAYER[curFrame]);
-			// sketch(PLAYER_MASK[curFrame], BLACK);
-		}
+		//if (angle > 90 && angle < 270)
+		//{
+		//sketch(PLAYER[curFrame], WHITE, MIRROR_HORIZONTAL);
+		// sketch(PLAYER_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
+		//}
+		//else
+		//{
+		sketch(PLAYER[curFrame]);
+		// sketch(PLAYER_MASK[curFrame], BLACK);
+		//}
 	}
 };
