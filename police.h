@@ -1,7 +1,5 @@
 struct Police: Car
 {
-	Flash flash;
-
 	Police()
 	{
 		// TODO generate anywhere off the current screen
@@ -13,8 +11,6 @@ struct Police: Car
 		followTurnRate = followTurnRate + (1 / (40 + random(10)));
 
 		frameCount = ANGLES - 1;
-
-		flash = Flash();
 	}
 
 	void update()
@@ -23,10 +19,6 @@ struct Police: Car
 		updateCbox();
 		updateAngle();
 		accelerate();
-
-		// position the light flash
-		flash.x = x + width / 2 - 8;
-		flash.y = y + height / 2 - 7;
 
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
@@ -57,18 +49,19 @@ struct Police: Car
 		}
 		*/
 
-		if (angle > 90 && angle < 270)
-		{
-			sketch(POLICE[curFrame], WHITE, MIRROR_HORIZONTAL);
-			// sketch(POLICE_MASK[curFrame], BLACK, MIRROR_HORIZONTAL);
-		}
-		else
-		{
-			sketch(POLICE[curFrame]);
-			// sketch(POLICE_MASK[curFrame], BLACK);
-		}
+		//if (angle > 90 && angle < 270)
+		//{
+		//sketch(POLICE[curFrame], WHITE, MIRROR_HORIZONTAL);
+		//}
+		//else
+		//{
+		sketch(POLICE[curFrame]);
+		//}
 
-		// flash.update();
-		// flash.draw();
+		// flash the lights
+		if (arduboy.everyXFrames(5))
+		{
+			arduboy.fillRect(x - camera.x + width / 2 - 5, y - camera.y + height / 2 - 7, 10, 4, WHITE);
+		}
 	}
 };
