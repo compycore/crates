@@ -1,65 +1,52 @@
 // minimal class to replace std::vector
-template<typename T, unsigned char Capacity>
+template<typename T, uint8_t Capacity>
 struct List
 {
-	unsigned char d_size = 0; // stores the number of actually stored objects
-	unsigned char d_capacity; // stores allocated capacity
-	T *d_data; // stores the actual data
-
-	// default constructor
-	List()
-	{
-		d_capacity = Capacity;
-		d_data = (T *)malloc(d_capacity * sizeof(T));
-	}
-
-	// destructor
-	~List()
-	{
-		free(d_data);
-	}
+	uint8_t count = 0; // stores the number of actually stored objects
+	T data[Capacity]; // stores the actual data
 
 	// adds a new value and allocates more space if needed (and allowed)
-	void add(T const &x)
+	void add(T const &item)
 	{
-		if (d_size < d_capacity)
+		if (count < Capacity)
 		{
-			d_data[d_size++] = x;
+			data[count++] = item;
 		}
 	}
 
 	// wipe the array
 	void clear()
 	{
-		d_size = 0;
+		// technically this should loop through and manually destroy each item
+		count = 0;
 	}
 
-	// size getter
-	unsigned char size() const
+	// count getter
+	uint8_t size() const
 	{
-		return d_size;
+		return count;
 	};
 
 	// TODO see if there's a standard name for this
-	unsigned char capacity() const
+	uint8_t capacity() const
 	{
-		return d_capacity;
+		return Capacity;
 	};
 
 	// delete an index
-	void erase(unsigned char index)
+	void erase(uint8_t index)
 	{
-		for (unsigned char i = index; i < d_size; i++)
+		for (uint8_t i = index; i < count; i++)
 		{
-			d_data[i] = d_data[i + 1]; // copy next element left
+			data[i] = data[i + 1]; // copy next element left
 		}
 
-		d_size--;
+		count--;
 	}
 
 	// getter
-	T &operator[](unsigned char index)
+	T &operator[](uint8_t index)
 	{
-		return d_data[index];
+		return data[index];
 	}
 };

@@ -8,7 +8,6 @@ struct Player: Car
 		x = 20, y = 20;
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
-
 		frameCount = ANGLES - 1;
 	}
 
