@@ -49,15 +49,7 @@ struct Police: Car
 		}
 		*/
 
-		//if (angle > 90 && angle < 270)
-		//{
-		//sketch(POLICE[curFrame], WHITE, MIRROR_HORIZONTAL);
-		//}
-		//else
-		//{
-		// sketch(POLICE[curFrame]);
-		//}
-		sketch(POLICE);
+		sketch(POLICE, curFrame);
 
 		// flash the lights
 		if (arduboy.everyXFrames(5))
