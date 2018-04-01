@@ -16,13 +16,15 @@ struct Skid: Entity
 
 	void draw()
 	{
+		/*
 		if (angle > 90 && angle < 270)
 		{
-			sketch(SKID[curFrame], WHITE, MIRROR_HORIZONTAL);
+		    sketch(SKID[curFrame], WHITE, MIRROR_HORIZONTAL);
 		}
 		else
 		{
-			sketch(SKID[curFrame]);
-		}
+		*/
+		// sketch(SKID);
+		// }
 	}
 };

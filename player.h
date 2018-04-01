@@ -81,7 +81,7 @@ struct Player: Car
 		//}
 		//else
 		//{
-		sketch(PLAYER[curFrame]);
+		sketch(PLAYER);
 		// sketch(PLAYER_MASK[curFrame], BLACK);
 		//}
 	}

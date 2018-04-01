@@ -55,7 +55,7 @@ struct Police: Car
 		//}
 		//else
 		//{
-		sketch(POLICE[curFrame]);
+		// sketch(POLICE[curFrame]);
 		//}
 
 		// flash the lights

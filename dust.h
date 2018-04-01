@@ -25,6 +25,6 @@ struct Dust: Entity
 
 	void draw()
 	{
-		sketch(DUST[curFrame]);
+		// sketch(DUST[curFrame]);
 	}
 };

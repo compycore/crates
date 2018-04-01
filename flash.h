@@ -13,6 +13,6 @@ struct Flash: Simple
 
 	void draw()
 	{
-		sketch(FLASH[curFrame]);
+		// sketch(FLASH[curFrame]);
 	}
 };

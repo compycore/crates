@@ -7,6 +7,6 @@ struct Cactus: Simple
 
 	void draw()
 	{
-		sketch(CACTUS);
+		// sketch(CACTUS);
 	}
 };

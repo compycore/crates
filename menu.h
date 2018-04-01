@@ -113,7 +113,7 @@ typedef struct Menu
 
 		if (!submenu) // default menu
 		{
-			ardbitmap.drawCompressed(10, 2, MENU, WHITE, ALIGN_NONE, MIRROR_NONE);
+			//ardbitmap.drawCompressed(10, 2, MENU, WHITE, ALIGN_NONE, MIRROR_NONE);
 
 			// selection box
 			uint8_t selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
@@ -130,7 +130,7 @@ typedef struct Menu
 		else if (currentSubmenu == 1) // info menu
 		{
 			// sprites.drawOverwrite(32, 0, qrcode, 0);
-			ardbitmap.drawCompressed(32, 0, QRCODE, WHITE, ALIGN_NONE, MIRROR_NONE);
+			//ardbitmap.drawCompressed(32, 0, QRCODE, WHITE, ALIGN_NONE, MIRROR_NONE);
 		}
 		else if (currentSubmenu == 2) // configuration menu
 		{
