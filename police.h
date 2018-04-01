@@ -57,6 +57,7 @@ struct Police: Car
 		//{
 		// sketch(POLICE[curFrame]);
 		//}
+		sketch(POLICE);
 
 		// flash the lights
 		if (arduboy.everyXFrames(5))
