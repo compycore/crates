@@ -1,6 +1,6 @@
 struct Player: Car
 {
-	Vector<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
+	List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
 
 	Player()
 	{
@@ -24,7 +24,7 @@ struct Player: Car
 		{
 			if (dust.size() < dust.capacity())
 			{
-				dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+				dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
 			}
 		}
 
@@ -35,7 +35,7 @@ struct Player: Car
 			{
 				if (skids.size() < skids.capacity())
 				{
-					skids.push_back(Skid(x, y, curFrame));
+					skids.add(Skid(x, y, curFrame));
 				}
 			}
 		}
@@ -44,7 +44,7 @@ struct Player: Car
 	void draw()
 	{
 		// handle skids
-		for (unsigned char i = 0; i < skids.size(); i++)
+		for (uint8_t i = 0; i < skids.size(); i++)
 		{
 			if (skids[i].ttl > 0)
 			{
@@ -60,7 +60,7 @@ struct Player: Car
 
 		/*
 		// handle dust
-		for (unsigned char i = 0; i < dust.size(); i++)
+		for (uint8_t i = 0; i < dust.size(); i++)
 		{
 		    if (dust[i].ttl > 0)
 		    {

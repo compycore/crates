@@ -1,26 +1,26 @@
 // minimal class to replace std::vector
 template<typename T, unsigned char Capacity>
-struct Vector
+struct List
 {
 	unsigned char d_size = 0; // stores the number of actually stored objects
 	unsigned char d_capacity; // stores allocated capacity
 	T *d_data; // stores the actual data
 
 	// default constructor
-	Vector()
+	List()
 	{
 		d_capacity = Capacity;
 		d_data = (T *)malloc(d_capacity * sizeof(T));
 	}
 
 	// destructor
-	~Vector()
+	~List()
 	{
 		free(d_data);
 	}
 
 	// adds a new value and allocates more space if needed (and allowed)
-	void push_back(T const &x)
+	void add(T const &x)
 	{
 		if (d_size < d_capacity)
 		{

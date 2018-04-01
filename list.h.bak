@@ -1,0 +1,66 @@
+#pragma once
+
+// minimal class to replace std::vector
+template<typename T, uint8_t Capacity>
+struct List
+{
+private:
+	uint8_t d_size = 0; // stores the number of actually stored objects
+	T d_data[Capacity]; // stores the actual data
+
+public:
+	// default constructor
+	List() = default;
+
+	// adds a new value and allocates more space if needed (and allowed)
+	void add(T const &x)
+	{
+		if (d_size < Capacity)
+		{
+			d_data[d_size++] = x;
+		}
+	}
+
+	// wipe the array
+	void clear()
+	{
+		// technically this should loop through and manually destroy each item
+		d_size = 0;
+	}
+
+	// size getter
+	uint8_t size() const
+	{
+		return d_size;
+	};
+
+	// TODO see if there's a standard name for this
+	constexpr uint8_t capacity() const
+	{
+		return Capacity;
+	};
+
+	// delete an index
+	void erase(uint8_t index)
+	{
+		for (uint8_t i = index; i < d_size; i++)
+		{
+			d_data[i] = d_data[i + 1]; // copy next element left
+		}
+
+		d_data[d_size].~T(); // explicitly destroy leftover element
+
+		d_size--;
+	}
+
+	// getter
+	T & operator[](uint8_t idx)
+	{
+		return d_data[idx];
+	}
+
+	T const & operator[](uint8_t idx) const
+	{
+		return d_data[idx];
+	}
+};

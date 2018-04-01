@@ -3,21 +3,21 @@ typedef struct Menu
 {
 	bool selected = false;
 
-	unsigned char currentSelection = 0;
+	uint8_t currentSelection = 0;
 
-	unsigned char selectionWidth = 23;
-	unsigned char selectionHeight = 9;
+	uint8_t selectionWidth = 23;
+	uint8_t selectionHeight = 9;
 
-	unsigned char buttonWidth = 21;
-	unsigned char buttonPaddingLeft = 16;
-	unsigned char buttonPadding = 4;
-	unsigned char buttonY = 55;
+	uint8_t buttonWidth = 21;
+	uint8_t buttonPaddingLeft = 16;
+	uint8_t buttonPadding = 4;
+	uint8_t buttonY = 55;
 
 	bool submenu = false;
-	unsigned char currentSubmenu = 0;
-	unsigned char currentSubmenuSelection = 0;
+	uint8_t currentSubmenu = 0;
+	uint8_t currentSubmenuSelection = 0;
 
-	void sketchSelectionBox(unsigned char x, unsigned char y, unsigned char width, unsigned char height)
+	void sketchSelectionBox(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
 	{
 		arduboy.fillRect(x, y, width, height);
 		arduboy.drawRect(x - 1, y - 1, width + 2, height + 2, BLACK);
@@ -116,7 +116,7 @@ typedef struct Menu
 			ardbitmap.drawCompressed(10, 2, MENU, WHITE, ALIGN_NONE, MIRROR_NONE);
 
 			// selection box
-			unsigned char selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
+			uint8_t selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
 			arduboy.fillRect(selectionX, buttonY - 1, selectionWidth, selectionHeight);
 			arduboy.drawRect(selectionX - 1, buttonY - 2, selectionWidth + 2, selectionHeight + 2, BLACK);
 
@@ -136,8 +136,8 @@ typedef struct Menu
 		{
 			// sprites.drawOverwrite(10, 2, menu_without_mask, 0);
 
-			unsigned char selectionX = 0;
-			unsigned char selectionWidthSubmenu = 0;
+			uint8_t selectionX = 0;
+			uint8_t selectionWidthSubmenu = 0;
 
 			// selection box configuration
 			if (currentSubmenuSelection == 0)

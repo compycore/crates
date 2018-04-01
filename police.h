@@ -25,7 +25,7 @@ struct Police: Car
 		{
 			if (dust.size() < dust.capacity())
 			{
-				dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+				dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
 			}
 		}
 	}
@@ -34,7 +34,7 @@ struct Police: Car
 	{
 		/*
 		// handle dust
-		for (unsigned char i = 0; i < dust.size(); i++)
+		for (uint8_t i = 0; i < dust.size(); i++)
 		{
 		    if (dust[i].ttl > 0)
 		    {

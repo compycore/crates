@@ -30,7 +30,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-Vector<Police, 5> police;
+List<Police, 5> police;
 Cactus cactus;
 Crate crate;
 
@@ -56,7 +56,7 @@ void loop()
 	// TODO don't use a magic number
 	// TODO spawn randomly or based on player performance
 	if (police.size() < police.capacity()) {
-		police.push_back(Police());
+		police.add(Police());
 	}
 
 	// draw the map lines

@@ -1,4 +1,4 @@
-const unsigned char PROGMEM FLASH_0[] = {
+const uint8_t PROGMEM FLASH_0[] = {
 	0x0f, 0x07, 0x5f, 0xe8, 0x9b, 0xb6, 0x6f, 0xfa, 0x05,
 };
 
@@ -9,7 +9,7 @@ const unsigned char PROGMEM FLASH_0[] = {
 // Ratio: 0.5625
 
 
-const unsigned char PROGMEM FLASH_1[] =
+const uint8_t PROGMEM FLASH_1[] =
 {
 	0x0f, 0x07, 0x2c, 0x58, 0xd8, 0x2c, 0x29, 0x75, 0x20, 0x6f, 0x90, 0x61, 0x29, 0xae, 0x54, 0x16,
 	0x2c, 0x00,
@@ -22,7 +22,7 @@ const unsigned char PROGMEM FLASH_1[] =
 // Ratio: 1.125
 
 
-const unsigned char *FLASH[] =
+const uint8_t *FLASH[] =
 {
 	FLASH_0,
 	FLASH_1,

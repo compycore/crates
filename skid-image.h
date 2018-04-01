@@ -1,4 +1,4 @@
-const unsigned char PROGMEM SKID_0[] ={
+const uint8_t PROGMEM SKID_0[] ={
 0x13, 0x0f, 0x7f, 0x51, 0x60, 0xf0, 0x39, 0x60, 0x00, 0x9f, 0x02,
 };
 
@@ -9,7 +9,7 @@ const unsigned char PROGMEM SKID_0[] ={
 // Ratio: 0.275
 
 
-const unsigned char PROGMEM SKID_1[] ={
+const uint8_t PROGMEM SKID_1[] ={
 0x13, 0x4f, 0x7f, 0xd2, 0x0c, 0x3e, 0xc4, 0x64, 0xf0, 0x2d,
 };
 
@@ -20,7 +20,7 @@ const unsigned char PROGMEM SKID_1[] ={
 // Ratio: 0.25
 
 
-const unsigned char PROGMEM SKID_2[] ={
+const uint8_t PROGMEM SKID_2[] ={
 0x13, 0x0f, 0x7f, 0x4a, 0x26, 0x77, 0xdf, 0x30, 0xd9, 0x4c, 0x26, 0xdf, 0x00,
 };
 
@@ -31,7 +31,7 @@ const unsigned char PROGMEM SKID_2[] ={
 // Ratio: 0.325
 
 
-const unsigned char PROGMEM SKID_3[] ={
+const uint8_t PROGMEM SKID_3[] ={
 0x13, 0x0f, 0x7f, 0x4a, 0x26, 0x0f, 0x58, 0x46, 0x79, 0xc4, 0x64, 0xf2, 0x0d,
 };
 
@@ -42,7 +42,7 @@ const unsigned char PROGMEM SKID_3[] ={
 // Ratio: 0.325
 
 
-const unsigned char PROGMEM SKID_4[] ={
+const uint8_t PROGMEM SKID_4[] ={
 0x13, 0x0f, 0x7f, 0x4b, 0x26, 0x6f, 0x94, 0xc9, 0x1b, 0x26, 0x1f, 0x03,
 };
 
@@ -53,7 +53,7 @@ const unsigned char PROGMEM SKID_4[] ={
 // Ratio: 0.3
 
 
-const unsigned char PROGMEM SKID_5[] ={
+const uint8_t PROGMEM SKID_5[] ={
 0x13, 0x0f, 0x7f, 0x53, 0x26, 0x83, 0x87, 0x96, 0xc9, 0x47, 0x01,
 };
 
@@ -64,7 +64,7 @@ const unsigned char PROGMEM SKID_5[] ={
 // Ratio: 0.275
 
 
-const unsigned char PROGMEM SKID_6[] ={
+const uint8_t PROGMEM SKID_6[] ={
 0x13, 0x0f, 0x7f, 0x53, 0x06, 0xf0, 0x11, 0x60, 0xf2, 0x49,
 };
 
@@ -75,7 +75,7 @@ const unsigned char PROGMEM SKID_6[] ={
 // Ratio: 0.25
 
 
-const unsigned char PROGMEM SKID_7[] ={
+const uint8_t PROGMEM SKID_7[] ={
 0x13, 0x0f, 0x7f, 0x53, 0x0b, 0x7e, 0x03, 0x5c, 0x7e, 0x11,
 };
 
@@ -86,7 +86,7 @@ const unsigned char PROGMEM SKID_7[] ={
 // Ratio: 0.25
 
 
-const unsigned char PROGMEM SKID_8[] ={
+const uint8_t PROGMEM SKID_8[] ={
 0x13, 0x0f, 0x7f, 0x51, 0x26, 0x17, 0xde, 0x30, 0x39, 0xf0, 0x49,
 };
 
@@ -97,7 +97,7 @@ const unsigned char PROGMEM SKID_8[] ={
 // Ratio: 0.275
 
 
-const unsigned char PROGMEM SKID_9[] ={
+const uint8_t PROGMEM SKID_9[] ={
 0x13, 0x0f, 0x7f, 0x51, 0x1f, 0x52, 0xe4, 0x15, 0x93, 0x4f, 0x01,
 };
 
@@ -108,7 +108,7 @@ const unsigned char PROGMEM SKID_9[] ={
 // Ratio: 0.275
 
 
-const unsigned char PROGMEM SKID_10[] ={
+const uint8_t PROGMEM SKID_10[] ={
 0x13, 0x4f, 0x7f, 0x4b, 0x26, 0xef, 0x0c, 0x93, 0x77, 0x7e, 0x0a,
 };
 
@@ -119,7 +119,7 @@ const unsigned char PROGMEM SKID_10[] ={
 // Ratio: 0.275
 
 
-const unsigned char PROGMEM SKID_11[] ={
+const uint8_t PROGMEM SKID_11[] ={
 0x13, 0x0f, 0x7f, 0x4a, 0x26, 0x8b, 0xc9, 0x4b, 0x26, 0x83, 0xc9, 0xe4, 0x1b,
 };
 
@@ -130,7 +130,7 @@ const unsigned char PROGMEM SKID_11[] ={
 // Ratio: 0.325
 
 
-const unsigned char PROGMEM SKID_12[] ={
+const uint8_t PROGMEM SKID_12[] ={
 0x13, 0x0f, 0x7f, 0x4b, 0x26, 0x83, 0x0f, 0xb1, 0x32, 0xf8, 0x16,
 };
 
@@ -141,7 +141,7 @@ const unsigned char PROGMEM SKID_12[] ={
 // Ratio: 0.275
 
 
-const unsigned char *SKID[] =
+const uint8_t *SKID[] =
 {
 	SKID_0,
 	SKID_1,

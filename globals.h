@@ -1,6 +1,6 @@
 #include <Arduboy2.h>
 #include <ArduboyTones.h>
-#include "vector.h"
+#include "list.h"
 #include "camera.h"
 
 Arduboy2Base arduboy;
@@ -14,4 +14,4 @@ Camera camera;
 #include <ArdBitmap.h>
 ArdBitmap<WIDTH, HEIGHT> ardbitmap;
 
-unsigned char ANGLES = 25;
+uint8_t ANGLES = 25;

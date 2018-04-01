@@ -2,9 +2,9 @@ struct Simple
 {
 	float x = 0, y = 0;
 
-	unsigned char frameCount = 0;
-	unsigned char curFrame = 0;
-	unsigned char animFreq = 0;
+	uint8_t frameCount = 0;
+	uint8_t curFrame = 0;
+	uint8_t animFreq = 0;
 
 	void animate()
 	{

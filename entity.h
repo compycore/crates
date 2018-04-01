@@ -1,12 +1,12 @@
 struct Entity: Simple
 {
 	// TODO extract this from the compressed image
-	unsigned char width = 0, height = 0;
+	uint8_t width = 0, height = 0;
 
 	Rect cbox_conf = {.x = 0, .y = 0, .width = width, .height = height}; // used for cbox offset and size
 	Rect cbox; // used to actually calculate collisions
 
-	unsigned char ttl = 0;
+	uint8_t ttl = 0;
 
 	float angle = 0;
 	float speed = 0;
