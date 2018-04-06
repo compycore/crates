@@ -20,14 +20,16 @@ struct Police: Car
 		updateAngle();
 		accelerate();
 
+		/*
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
 		{
-			if (dust.size() < dust.capacity())
-			{
-				dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
-			}
+		    if (!dust.full())
+		    {
+		        dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+		    }
 		}
+		*/
 	}
 
 	void draw()

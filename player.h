@@ -1,6 +1,6 @@
 struct Player: Car
 {
-	List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
+	// List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
 
 	Player()
 	{
@@ -13,49 +13,59 @@ struct Player: Car
 
 	void update()
 	{
+		// arduboy.println(angle);
+
 		control();
 		physics();
 		updateCbox();
 		updateAngle();
 
+		// arduboy.println(angle);
+
+		/*
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
 		{
-			if (dust.size() < dust.capacity())
-			{
-				dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
-			}
+		    if (!dust.full())
+		    {
+		        dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+		    }
 		}
+		*/
 
+		/*
 		// generate more skids
 		if (arduboy.pressed(A_BUTTON) && speed > 0)
 		{
-			if (arduboy.everyXFrames(2))
-			{
-				if (skids.size() < skids.capacity())
-				{
-					skids.add(Skid(x, y, curFrame));
-				}
-			}
+		    if (arduboy.everyXFrames(2))
+		    {
+		        if (!skids.full())
+		        {
+		            skids.add(Skid(x, y, curFrame));
+		        }
+		    }
 		}
+		*/
 	}
 
 	void draw()
 	{
+		/*
 		// handle skids
 		for (uint8_t i = 0; i < skids.size(); i++)
 		{
-			if (skids[i].ttl > 0)
-			{
-				skids[i].update();
-				skids[i].draw();
-			}
-			else
-			{
-				skids.erase(i);
-				i--;
-			}
+		    if (skids[i].ttl > 0)
+		    {
+		        skids[i].update();
+		        skids[i].draw();
+		    }
+		    else
+		    {
+		        skids.erase(i);
+		        i--;
+		    }
 		}
+		*/
 
 		/*
 		// handle dust

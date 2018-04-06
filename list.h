@@ -3,19 +3,7 @@ template<typename T, int Capacity>
 struct List
 {
 	int d_size = 0; // stores the number of actually stored objects
-	T *d_data; // stores the actual data
-
-	// default constructor
-	List()
-	{
-		d_data = (T *)malloc(Capacity * sizeof(T));
-	}
-
-	// destructor
-	~List()
-	{
-		free(d_data);
-	}
+	T d_data[Capacity]; // stores the actual data
 
 	// adds a new value and allocates more space if needed (and allowed)
 	void add(T const &x)
@@ -38,6 +26,11 @@ struct List
 	int capacity() const
 	{
 		return Capacity;
+	};
+
+	bool full() const
+	{
+		return d_size == Capacity;
 	};
 
 	// delete an index

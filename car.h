@@ -1,8 +1,5 @@
 struct Car: Entity
 {
-	// TODO don't use a vector for this if there's only one
-	List<Dust, 1> dust;
-
 	float turnRate = 3.5;
 	float followTurnRate = 0.05;
 	// the speed you must reach before turning is allowed

@@ -1,5 +1,7 @@
 struct Dust: Entity
 {
+	Dust() = default;
+
 	Dust(float X, float Y, float Angle, float Speed)
 	{
 		x = X, y = Y;
@@ -25,6 +27,6 @@ struct Dust: Entity
 
 	void draw()
 	{
-		// sketch(DUST[curFrame]);
+		// sketch(DUST, curFrame);
 	}
 };

@@ -26,7 +26,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-List<Police, 3> police;
+List<Police, 8> police;
 Cactus cactus;
 Crate crate;
 
@@ -39,6 +39,8 @@ void setup()
 
 void loop()
 {
+	// arduboy.setCursor(0,0);
+
 	// arduboy setup for each frame
 	if (!(arduboy.nextFrame())) return;
 	arduboy.pollButtons();
@@ -51,7 +53,7 @@ void loop()
 
 	// TODO don't use a magic number
 	// TODO spawn randomly or based on player performance
-	if (police.size() < police.capacity()) {
+	if (!police.full()) {
 		police.add(Police());
 	}
 
