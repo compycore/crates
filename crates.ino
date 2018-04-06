@@ -26,7 +26,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-List<Police, 5> police;
+List<Police, 3> police;
 Cactus cactus;
 Crate crate;
 

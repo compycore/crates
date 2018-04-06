@@ -16,7 +16,7 @@ typedef struct Compycore
 		else if (y < 5)
 		{
 			y++;
-			//ardbitmap.drawCompressed(x, y, MICHAEL, WHITE, ALIGN_NONE, MIRROR_NONE);
+			arduboy.drawCompressed(x, y, MICHAEL, WHITE);
 		}
 		else
 		{
@@ -32,11 +32,11 @@ typedef struct Compycore
 				winked = true;
 			}
 
-			//ardbitmap.drawCompressed(x, y, MICHAEL, WHITE, ALIGN_NONE, MIRROR_NONE);
+			arduboy.drawCompressed(x, y, MICHAEL, WHITE);
 			arduboy.fillRect(x + 32, y + 25, 8, 6, BLACK);
-			//ardbitmap.drawCompressed(x + 32, y + 25, WINK, WHITE, ALIGN_NONE, MIRROR_NONE);
-			//ardbitmap.drawCompressed(30, 46, COMPYCORE_BLACK, BLACK, ALIGN_NONE, MIRROR_NONE);
-			//ardbitmap.drawCompressed(30, 46, COMPYCORE_WHITE, WHITE, ALIGN_NONE, MIRROR_NONE);
+			sprites.drawSelfMasked(x + 32, y + 25, WINK, 0);
+			arduboy.fillRect(30, 47, WIDTH, 5, BLACK);
+			arduboy.drawCompressed(30, 46, COMPYCORE, WHITE);
 		}
 
 		arduboy.display(CLEAR_BUFFER);
