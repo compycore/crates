@@ -12,7 +12,7 @@ float normalizeAngle(float angle)
 	return angle;
 }
 
-double findAngle(int x1, int y1, int x2, int y2)
+float findAngle(int x1, int y1, int x2, int y2)
 {
 	return atan2(y2 - y1, x1 - x2);
 }
