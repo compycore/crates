@@ -113,7 +113,7 @@ typedef struct Menu
 
 		if (!submenu) // default menu
 		{
-			//ardbitmap.drawCompressed(10, 2, MENU, WHITE, ALIGN_NONE, MIRROR_NONE);
+			arduboy.drawCompressed(10, 2, MENU, WHITE);
 
 			// selection box
 			uint8_t selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
