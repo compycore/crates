@@ -1,24 +1,14 @@
 typedef struct Menu
 {
 	bool selected = false;
-
 	uint8_t currentSelection = 1;
-
-	uint8_t selectionWidth = 23;
-	uint8_t selectionHeight = 10;
-
-	uint8_t buttonWidth = 21;
-	uint8_t buttonPaddingLeft = 16;
-	uint8_t buttonPadding = 4;
-	uint8_t buttonY = 56;
-
 	bool submenu = false;
 	uint8_t currentSubmenu = 0;
 
-	void sketchSelectionBox(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
+	void sketchSelectionBox(uint8_t x, uint8_t y)
 	{
-		arduboy.fillRect(x, y, width, height);
-		arduboy.drawRect(x - 1, y - 1, width + 2, height + 1, BLACK);
+		arduboy.fillRect(x, y, 23, 10);
+		arduboy.drawRect(x - 1, y - 1, 25, 11, BLACK);
 	}
 
 	bool show()
@@ -78,19 +68,16 @@ typedef struct Menu
 			arduboy.drawCompressed(0, 0, MENU, WHITE);
 
 			// selection box
-			uint8_t selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
-			arduboy.fillRect(selectionX, buttonY - 1, selectionWidth, selectionHeight);
-			arduboy.drawRect(selectionX - 1, buttonY - 2, selectionWidth + 2, selectionHeight + 1, BLACK);
-
-			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
+			uint8_t selectionX = 15 + (currentSelection * 21) + (currentSelection * 4);
+			sketchSelectionBox(selectionX, 55);
 
 			// TODO Use magic numbers
 			// buttons
-			sprites.drawPlusMask(buttonPaddingLeft, buttonY, MENU_INFO, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, MENU_PLAY, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, MENU_HELP, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3), buttonY, MENU_FX, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3) + 15, buttonY, MENU_FX_NY, audio.enabled());
+			sprites.drawPlusMask(16, 56, MENU_INFO, 0);
+			sprites.drawPlusMask(41, 56, MENU_PLAY, 0);
+			sprites.drawPlusMask(66, 56, MENU_HELP, 0);
+			sprites.drawPlusMask(91, 56, MENU_FX, 0);
+			sprites.drawPlusMask(106, 56, MENU_FX_NY, audio.enabled());
 		}
 		else if (currentSubmenu == 0) // info menu
 		{
