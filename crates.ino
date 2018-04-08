@@ -4,6 +4,7 @@
 #include "compycore-image.h"
 #include "compycore.h"
 #include "qrcode-image.h"
+#include "instructions-image.h"
 #include "menu-image.h"
 #include "menu.h"
 #include "simple.h"

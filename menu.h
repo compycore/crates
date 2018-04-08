@@ -11,7 +11,7 @@ typedef struct Menu
 	uint8_t buttonWidth = 21;
 	uint8_t buttonPaddingLeft = 16;
 	uint8_t buttonPadding = 4;
-	uint8_t buttonY = 55;
+	uint8_t buttonY = 56;
 
 	bool submenu = false;
 	uint8_t currentSubmenu = 0;
@@ -38,37 +38,20 @@ typedef struct Menu
 		}
 
 		// selection movement
-		if (arduboy.justPressed(LEFT_BUTTON))
+		if (!submenu)
 		{
-			if (!submenu)
+			if (arduboy.justPressed(LEFT_BUTTON))
 			{
 				if (currentSelection > 0)
 				{
 					currentSelection--;
 				}
 			}
-			else
+			else if (arduboy.justPressed(RIGHT_BUTTON))
 			{
-				if (currentSubmenuSelection > 0)
-				{
-					currentSubmenuSelection--;
-				}
-			}
-		}
-		else if (arduboy.justPressed(RIGHT_BUTTON))
-		{
-			if (!submenu)
-			{
-				if (currentSelection < 2)
+				if (currentSelection < 3)
 				{
 					currentSelection++;
-				}
-			}
-			else
-			{
-				if (currentSubmenuSelection < 1)
-				{
-					currentSubmenuSelection++;
 				}
 			}
 		}
@@ -113,51 +96,28 @@ typedef struct Menu
 
 		if (!submenu) // default menu
 		{
-			arduboy.drawCompressed(10, 2, MENU, WHITE);
+			arduboy.drawCompressed(0, 0, MENU, WHITE);
 
 			// selection box
 			uint8_t selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
 			arduboy.fillRect(selectionX, buttonY - 1, selectionWidth, selectionHeight);
-			arduboy.drawRect(selectionX - 1, buttonY - 2, selectionWidth + 2, selectionHeight + 2, BLACK);
+			arduboy.drawRect(selectionX - 1, buttonY - 2, selectionWidth + 2, selectionHeight + 1, BLACK);
 
 			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
 
 			// buttons
-			// sprites.drawPlusMask(buttonPaddingLeft, buttonY, play_plus_mask, 0);
-			// sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, info_plus_mask, 0);
-			// sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, conf_plus_mask, 0);
+			sprites.drawPlusMask(buttonPaddingLeft, buttonY, MENU_INFO, 0);
+			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, MENU_PLAY, 0);
+			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, MENU_HELP, 0);
+			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3), buttonY, MENU_FX, 0);
 		}
 		else if (currentSubmenu == 1) // info menu
 		{
-			// sprites.drawOverwrite(32, 0, qrcode, 0);
-			//ardbitmap.drawCompressed(32, 0, QRCODE, WHITE, ALIGN_NONE, MIRROR_NONE);
+			arduboy.drawCompressed(32, 0, QRCODE, WHITE);
 		}
-		else if (currentSubmenu == 2) // configuration menu
+		else if (currentSubmenu == 3) // help menu
 		{
-			// sprites.drawOverwrite(10, 2, menu_without_mask, 0);
-
-			uint8_t selectionX = 0;
-			uint8_t selectionWidthSubmenu = 0;
-
-			// selection box configuration
-			if (currentSubmenuSelection == 0)
-			{
-				// on
-				selectionX = 37 + 19 + 4 - 1;
-				selectionWidthSubmenu = 13;
-			}
-			else if (currentSubmenuSelection == 1)
-			{
-				// off
-				selectionX = 37 + 19 + 4 + 11 + 4 - 1;
-				selectionWidthSubmenu = 18;
-			}
-
-			sketchSelectionBox(selectionX, buttonY - 1, selectionWidthSubmenu, selectionHeight);
-
-			// sprites.drawPlusMask(37, buttonY, sfx_plus_mask, 0);
-			// sprites.drawPlusMask(37 + 19 + 4, buttonY, on_plus_mask, 0);
-			// sprites.drawPlusMask(37 + 19 + 4 + 11 + 4, buttonY, off_plus_mask, 0);
+			arduboy.drawCompressed(0, 0, INSTRUCTIONS, WHITE);
 		}
 
 		arduboy.display(CLEAR_BUFFER);
