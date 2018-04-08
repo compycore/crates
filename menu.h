@@ -41,7 +41,7 @@ typedef struct Menu
 				selected = true;
 				return true;
 			}
-			else if (currentSubmenu == 3) // configuration menu
+			else if (currentSelection == 3) // configuration menu
 			{
 				audio.toggle();
 				audio.saveOnOff();
