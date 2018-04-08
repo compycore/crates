@@ -2,8 +2,8 @@ typedef struct Compycore
 {
 	bool introduced = false;
 	bool winked = false;
-	char x = 29;
-	char y = -46;
+	uint8_t x = 29;
+	int8_t y = -46;
 
 	bool introduce()
 	{
@@ -33,9 +33,8 @@ typedef struct Compycore
 			}
 
 			arduboy.drawCompressed(x, y, MICHAEL, WHITE);
-			arduboy.fillRect(x + 32, y + 25, 8, 6, BLACK);
-			sprites.drawSelfMasked(x + 32, y + 25, WINK, 0);
-			arduboy.fillRect(30, 47, WIDTH, 5, BLACK);
+			sprites.drawOverwrite(x + 32, y + 25, WINK, 0);
+			arduboy.fillRect(30, 47, WIDTH, 5, BLACK); // mask the logo text
 			arduboy.drawCompressed(30, 46, COMPYCORE, WHITE);
 		}
 
