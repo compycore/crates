@@ -1,6 +1,6 @@
-int angleToFrame(float angle, int frameCount)
+uint8_t angleToFrame(float angle, uint8_t frameCount)
 {
-	return int(angle / 360 * frameCount);
+	return (uint8_t)(angle / 360 * frameCount);
 }
 
 float normalizeAngle(float angle)
@@ -12,7 +12,7 @@ float normalizeAngle(float angle)
 	return angle;
 }
 
-double findAngle(int x1, int y1, int x2, int y2)
+float findAngle(int x1, int y1, int x2, int y2)
 {
 	return atan2(y2 - y1, x1 - x2);
 }

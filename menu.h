@@ -1,27 +1,9 @@
-// TODO minimize this code
 typedef struct Menu
 {
 	bool selected = false;
-
-	int currentSelection = 0;
-
-	int selectionWidth = 23;
-	int selectionHeight = 9;
-
-	int buttonWidth = 21;
-	int buttonPaddingLeft = 16;
-	int buttonPadding = 4;
-	int buttonY = 55;
-
+	uint8_t currentSelection = 1;
 	bool submenu = false;
-	int currentSubmenu = 0;
-	int currentSubmenuSelection = 0;
-
-	void sketchSelectionBox(int x, int y, int width, int height)
-	{
-		arduboy.fillRect(x, y, width, height);
-		arduboy.drawRect(x - 1, y - 1, width + 2, height + 2, BLACK);
-	}
+	uint8_t currentSubmenu = 0;
 
 	bool show()
 	{
@@ -31,132 +13,75 @@ typedef struct Menu
 			return true;
 		}
 
-		// load the current audio state when we're on the default menu
+		// selection movement
 		if (!submenu)
 		{
-			currentSubmenuSelection = 1 - audio.enabled();
-		}
-
-		// selection movement
-		if (arduboy.justPressed(LEFT_BUTTON))
-		{
-			if (!submenu)
+			if (arduboy.justPressed(LEFT_BUTTON))
 			{
 				if (currentSelection > 0)
 				{
 					currentSelection--;
 				}
 			}
-			else
+			else if (arduboy.justPressed(RIGHT_BUTTON))
 			{
-				if (currentSubmenuSelection > 0)
-				{
-					currentSubmenuSelection--;
-				}
-			}
-		}
-		else if (arduboy.justPressed(RIGHT_BUTTON))
-		{
-			if (!submenu)
-			{
-				if (currentSelection < 2)
+				if (currentSelection < 3)
 				{
 					currentSelection++;
-				}
-			}
-			else
-			{
-				if (currentSubmenuSelection < 1)
-				{
-					currentSubmenuSelection++;
 				}
 			}
 		}
 
 		// selection with a and b
-		if (arduboy.justPressed(A_BUTTON))
+		if (arduboy.justPressed(B_BUTTON))
 		{
-			if (!submenu) // default menu
+			if (currentSelection == 1) // play button
 			{
-				// the play button
-				if (currentSelection == 0)
-				{
-					arduboy.initRandomSeed();
-					selected = true;
-					return true;
-				}
-				else
-				{
-					currentSubmenu = currentSelection;
-					submenu = true;
-				}
+				arduboy.initRandomSeed();
+				selected = true;
+				return true;
 			}
-			else if (currentSubmenu == 2)   // configuration menu
+			else if (currentSubmenu == 3) // configuration menu
 			{
-				if (currentSubmenuSelection == 0)
-				{
-					audio.on();
-				}
-				else if (currentSubmenuSelection == 1)
-				{
-					audio.off();
-				}
-
+				audio.toggle();
 				audio.saveOnOff();
-				submenu = false;
+			}
+			else
+			{
+				currentSubmenu = currentSelection;
+				submenu = true;
 			}
 		}
-		else if (arduboy.justPressed(B_BUTTON))
+		else if (arduboy.justPressed(A_BUTTON))
 		{
 			submenu = false;
 		}
 
+		// drawing
 		if (!submenu) // default menu
 		{
-			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
+			arduboy.drawCompressed(0, 0, MENU, WHITE);
 
 			// selection box
-			int selectionX = buttonPaddingLeft - 1 + (currentSelection * buttonWidth) + (currentSelection * buttonPadding);
-			arduboy.fillRect(selectionX, buttonY - 1, selectionWidth, selectionHeight);
-			arduboy.drawRect(selectionX - 1, buttonY - 2, selectionWidth + 2, selectionHeight + 2, BLACK);
+			uint8_t selectionX = currentSelection * 25 + 15;
+			arduboy.fillRect(selectionX, 55, 23, 10);
+			arduboy.drawRect(selectionX - 1, 54, 25, 11, BLACK);
 
-			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
-
+			// TODO Use magic numbers
 			// buttons
-			sprites.drawPlusMask(buttonPaddingLeft, buttonY, play_plus_mask, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, info_plus_mask, 0);
-			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, conf_plus_mask, 0);
+			sprites.drawPlusMask(16, 56, MENU_INFO, 0);
+			sprites.drawPlusMask(41, 56, MENU_PLAY, 0);
+			sprites.drawPlusMask(66, 56, MENU_HELP, 0);
+			sprites.drawPlusMask(91, 56, MENU_FX, 0);
+			sprites.drawPlusMask(106, 56, MENU_FX_NY, audio.enabled());
 		}
-		else if (currentSubmenu == 1) // info menu
+		else if (currentSubmenu == 0) // info menu
 		{
-			sprites.drawOverwrite(32, 0, qrcode, 0);
+			arduboy.drawCompressed(32, 0, QRCODE, WHITE);
 		}
-		else if (currentSubmenu == 2) // configuration menu
+		else if (currentSubmenu == 2) // help menu
 		{
-			sprites.drawOverwrite(10, 2, menu_without_mask, 0);
-
-			int selectionX = 0;
-			int selectionWidthSubmenu = 0;
-
-			// selection box configuration
-			if (currentSubmenuSelection == 0)
-			{
-				// on
-				selectionX = 37 + 19 + 4 - 1;
-				selectionWidthSubmenu = 13;
-			}
-			else if (currentSubmenuSelection == 1)
-			{
-				// off
-				selectionX = 37 + 19 + 4 + 11 + 4 - 1;
-				selectionWidthSubmenu = 18;
-			}
-
-			sketchSelectionBox(selectionX, buttonY - 1, selectionWidthSubmenu, selectionHeight);
-
-			sprites.drawPlusMask(37, buttonY, sfx_plus_mask, 0);
-			sprites.drawPlusMask(37 + 19 + 4, buttonY, on_plus_mask, 0);
-			sprites.drawPlusMask(37 + 19 + 4 + 11 + 4, buttonY, off_plus_mask, 0);
+			arduboy.drawCompressed(0, 0, INSTRUCTIONS, WHITE);
 		}
 
 		arduboy.display(CLEAR_BUFFER);

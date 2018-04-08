@@ -1,12 +1,12 @@
-struct Skid: Simple
+struct Skid: Entity
 {
-	Skid(float X, float Y, int CurFrame)
+	Skid(float X, float Y, uint8_t CurFrame)
 	{
 		x = X, y = Y;
 
 		curFrame = CurFrame;
 
-		ttl = 15;
+		ttl = 10;
 	}
 
 	void update()
@@ -16,6 +16,15 @@ struct Skid: Simple
 
 	void draw()
 	{
-		sprites.drawPlusMask(x - camera.x, y - camera.y, skid_plus_mask, curFrame);
+		/*
+		if (angle > 90 && angle < 270)
+		{
+		    sketch(SKID[curFrame], WHITE, MIRROR_HORIZONTAL);
+		}
+		else
+		{
+		*/
+		// sketch(SKID);
+		// }
 	}
 };

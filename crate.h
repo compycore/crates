@@ -9,12 +9,11 @@ struct Crate: Entity
 
 	void update()
 	{
-		physics();
 		updateCbox();
 	}
 
 	void draw()
 	{
-		sketch(crate_plus_mask);
+		// sketch(CRATE);
 	}
 };

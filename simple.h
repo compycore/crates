@@ -1,17 +1,10 @@
 struct Simple
 {
 	float x = 0, y = 0;
-	int width = 0, height = 0;
 
-	float angle = 0;
-	float speed = 0;
-	float maxSpeed = 2;
-
-	unsigned int ttl = 0;
-
-	unsigned int frameCount = 0;
-	unsigned int curFrame = 0;
-	unsigned int animFreq = 0;
+	uint8_t frameCount = 0;
+	uint8_t curFrame = 0;
+	uint8_t animFreq = 0;
 
 	void animate()
 	{
@@ -28,35 +21,9 @@ struct Simple
 		}
 	}
 
-	void physics()
+	void sketch(const uint8_t sprite[], const uint8_t frame = 0)
 	{
-		// apply momentum according to the current angle
-		x += speed * cos(angle * 1000 / 57296);
-		y -= speed * sin(angle * 1000 / 57296);
-
-		// contain to the screen
-		if (x < 0)
-		{
-			x = 0;
-		}
-		else if (x + width > camera.xMax)
-		{
-			x = camera.xMax - width;
-		}
-
-		// contain to the screen
-		if (y < 0)
-		{
-			y = 0;
-		}
-		else if (y + height > camera.yMax)
-		{
-			y = camera.yMax - height;
-		}
-	}
-
-	void sketch(unsigned char sprite[])
-	{
-		sprites.drawPlusMask(x - camera.x, y - camera.y, sprite, curFrame);
+		// arduboy.println((int16_t) (y - camera.y));
+		sprites.drawSelfMasked((int16_t) (x - camera.x), (int16_t) (y - camera.y), sprite, frame);
 	}
 };

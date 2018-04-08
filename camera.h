@@ -3,10 +3,10 @@ struct Camera
 	float x = 0;
 	float y = 0;
 
-	int xMax = 2000;
-	int yMax = 1000;
+	uint16_t xMax = 2000;
+	uint16_t yMax = 1000;
 
-	void follow(float followX, float followY, int xPadding, int yPadding)
+	void follow(float followX, float followY, uint8_t xPadding, uint8_t yPadding)
 	{
 		if (x + xPadding > followX)
 		{

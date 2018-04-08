@@ -1,16 +1,26 @@
 struct Police: Car
 {
-	Vector<Flash, 1> flash;
-
 	Police()
 	{
-		x = 50, y = 50;
+		// TODO generate anywhere off the current screen
+		x = random(300), y = random(300);
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
-		accel = 0.01;
+		accel = 0.01 + (1 / (5 + random(5)));
+		followTurnRate = followTurnRate + (1 / (40 + random(10)));
 
 		frameCount = ANGLES - 1;
+	}
+
+	void follow(int X, int Y)
+	{
+		if (speed > turnSpeed)
+		{
+			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
+			float shortest_angle = ((((angleToTarget - int(angle)) % 360) + 540) % 360) - 180;
+			angle += shortest_angle * followTurnRate;
+		}
 	}
 
 	void update()
@@ -20,52 +30,44 @@ struct Police: Car
 		updateAngle();
 		accelerate();
 
-		// flash the lights
-		if (arduboy.everyXFrames(22))
-		{
-			flash.push_back(Flash(x + width / 2 - 5, y + height / 2 - 7, angle, speed));
-		}
-
+		/*
 		// generate more dust
 		if (random(100) < 2 && speed > 0)
 		{
-			dust.push_back(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+		    if (!dust.full())
+		    {
+		        dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+		    }
 		}
+		*/
 	}
 
 	void draw()
 	{
+		/*
 		// handle dust
-		for (int i = 0; i < dust.size(); i++)
+		for (uint8_t i = 0; i < dust.size(); i++)
 		{
-			if (dust[i].ttl > 0)
-			{
-				dust[i].update();
-				dust[i].draw();
-			}
-			else
-			{
-				dust.erase(i);
-				i--;
-			}
+		    if (dust[i].ttl > 0)
+		    {
+		        dust[i].update();
+		        dust[i].draw();
+		    }
+		    else
+		    {
+		        dust.erase(i);
+		        i--;
+		    }
 		}
+		*/
 
-		sketch(police_plus_mask);
+		arduboy.fillRect((int16_t) (x - camera.x + 4), (int16_t) (y - camera.y + 4), width - 8, height - 7, BLACK);
+		sketch(POLICE, curFrame);
 
-		// TODO maybe don't use a vector for this
-		// handle flash
-		for (int i = 0; i < flash.size(); i++)
+		// flash the lights
+		if (arduboy.everyXFrames(5))
 		{
-			if (flash[i].ttl > 0)
-			{
-				flash[i].update();
-				flash[i].draw();
-			}
-			else
-			{
-				flash.erase(i);
-				i--;
-			}
+			arduboy.fillRect(x - camera.x + width / 2 - 5, y - camera.y + height / 2 - 7, 10, 4, WHITE);
 		}
 	}
 };
