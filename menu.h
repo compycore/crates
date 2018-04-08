@@ -1,12 +1,11 @@
-// TODO minimize this code
 typedef struct Menu
 {
 	bool selected = false;
 
-	uint8_t currentSelection = 0;
+	uint8_t currentSelection = 1;
 
 	uint8_t selectionWidth = 23;
-	uint8_t selectionHeight = 9;
+	uint8_t selectionHeight = 10;
 
 	uint8_t buttonWidth = 21;
 	uint8_t buttonPaddingLeft = 16;
@@ -15,12 +14,11 @@ typedef struct Menu
 
 	bool submenu = false;
 	uint8_t currentSubmenu = 0;
-	uint8_t currentSubmenuSelection = 0;
 
 	void sketchSelectionBox(uint8_t x, uint8_t y, uint8_t width, uint8_t height)
 	{
 		arduboy.fillRect(x, y, width, height);
-		arduboy.drawRect(x - 1, y - 1, width + 2, height + 2, BLACK);
+		arduboy.drawRect(x - 1, y - 1, width + 2, height + 1, BLACK);
 	}
 
 	bool show()
@@ -29,12 +27,6 @@ typedef struct Menu
 		if (selected)
 		{
 			return true;
-		}
-
-		// load the current audio state when we're on the default menu
-		if (!submenu)
-		{
-			currentSubmenuSelection = 1 - audio.enabled();
 		}
 
 		// selection movement
@@ -59,34 +51,21 @@ typedef struct Menu
 		// selection with a and b
 		if (arduboy.justPressed(B_BUTTON))
 		{
-			if (!submenu) // default menu
+			if (currentSelection == 1) // play button
 			{
-				// the play button
-				if (currentSelection == 0)
-				{
-					arduboy.initRandomSeed();
-					selected = true;
-					return true;
-				}
-				else
-				{
-					currentSubmenu = currentSelection;
-					submenu = true;
-				}
+				arduboy.initRandomSeed();
+				selected = true;
+				return true;
 			}
-			else if (currentSubmenu == 2)   // configuration menu
+			else if (currentSubmenu == 3) // configuration menu
 			{
-				if (currentSubmenuSelection == 0)
-				{
-					audio.on();
-				}
-				else if (currentSubmenuSelection == 1)
-				{
-					audio.off();
-				}
-
+				audio.toggle();
 				audio.saveOnOff();
-				submenu = false;
+			}
+			else
+			{
+				currentSubmenu = currentSelection;
+				submenu = true;
 			}
 		}
 		else if (arduboy.justPressed(A_BUTTON))
@@ -105,17 +84,19 @@ typedef struct Menu
 
 			sketchSelectionBox(selectionX, buttonY - 1, selectionWidth, selectionHeight);
 
+			// TODO Use magic numbers
 			// buttons
 			sprites.drawPlusMask(buttonPaddingLeft, buttonY, MENU_INFO, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + buttonWidth + buttonPadding, buttonY, MENU_PLAY, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 2) + (buttonPadding * 2), buttonY, MENU_HELP, 0);
 			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3), buttonY, MENU_FX, 0);
+			sprites.drawPlusMask(buttonPaddingLeft + (buttonWidth * 3) + (buttonPadding * 3) + 15, buttonY, MENU_FX_NY, audio.enabled());
 		}
-		else if (currentSubmenu == 1) // info menu
+		else if (currentSubmenu == 0) // info menu
 		{
 			arduboy.drawCompressed(32, 0, QRCODE, WHITE);
 		}
-		else if (currentSubmenu == 3) // help menu
+		else if (currentSubmenu == 2) // help menu
 		{
 			arduboy.drawCompressed(0, 0, INSTRUCTIONS, WHITE);
 		}

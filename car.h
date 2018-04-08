@@ -31,38 +31,4 @@ struct Car: Entity
 		angle = normalizeAngle(angle);
 		curFrame = angleToFrame(angle, frameCount);
 	}
-
-	void follow(int X, int Y)
-	{
-		if (speed > turnSpeed)
-		{
-			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
-			float shortest_angle = ((((angleToTarget - int(angle)) % 360) + 540) % 360) - 180;
-			angle += shortest_angle * followTurnRate;
-		}
-	}
-
-	void control()
-	{
-		if (speed > turnSpeed)
-		{
-			if (arduboy.pressed(LEFT_BUTTON))
-			{
-				angle += turnRate;
-			}
-			else if (arduboy.pressed(RIGHT_BUTTON))
-			{
-				angle -= turnRate;
-			}
-		}
-
-		if (arduboy.pressed(B_BUTTON))
-		{
-			accelerate();
-		}
-		else if (arduboy.pressed(A_BUTTON))
-		{
-			decelerate();
-		}
-	}
 };

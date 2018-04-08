@@ -11,6 +11,30 @@ struct Player: Car
 		frameCount = ANGLES - 1;
 	}
 
+	void control()
+	{
+		if (speed > turnSpeed)
+		{
+			if (arduboy.pressed(LEFT_BUTTON))
+			{
+				angle += turnRate;
+			}
+			else if (arduboy.pressed(RIGHT_BUTTON))
+			{
+				angle -= turnRate;
+			}
+		}
+
+		if (arduboy.pressed(B_BUTTON))
+		{
+			accelerate();
+		}
+		else if (arduboy.pressed(A_BUTTON))
+		{
+			decelerate();
+		}
+	}
+
 	void update()
 	{
 		// arduboy.println(angle);
