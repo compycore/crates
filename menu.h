@@ -5,12 +5,6 @@ typedef struct Menu
 	bool submenu = false;
 	uint8_t currentSubmenu = 0;
 
-	void sketchSelectionBox(uint8_t x, uint8_t y)
-	{
-		arduboy.fillRect(x, y, 23, 10);
-		arduboy.drawRect(x - 1, y - 1, 25, 11, BLACK);
-	}
-
 	bool show()
 	{
 		// return if we've already selected "play"
@@ -63,13 +57,15 @@ typedef struct Menu
 			submenu = false;
 		}
 
+		// drawing
 		if (!submenu) // default menu
 		{
 			arduboy.drawCompressed(0, 0, MENU, WHITE);
 
 			// selection box
-			uint8_t selectionX = 15 + (currentSelection * 21) + (currentSelection * 4);
-			sketchSelectionBox(selectionX, 55);
+			uint8_t selectionX = currentSelection * 25 + 15;
+			arduboy.fillRect(selectionX, 55, 23, 10);
+			arduboy.drawRect(selectionX - 1, 54, 25, 11, BLACK);
 
 			// TODO Use magic numbers
 			// buttons
