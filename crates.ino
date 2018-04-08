@@ -52,14 +52,13 @@ void loop()
 	// show the menu if we haven't already picked an option
 	if (!(menu.show())) return;
 
-	// TODO don't use a magic number
 	// TODO spawn randomly or based on player performance
 	if (!police.full()) {
 		police.add(Police());
 	}
 
 	// draw the map lines
-	svg.map(0,0,1);
+	svg.map(0,0,2);
 
 	cactus.draw();
 

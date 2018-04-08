@@ -1,5 +1,7 @@
 struct Police: Car
 {
+	bool flashing = false;
+
 	Police()
 	{
 		// TODO generate anywhere off the current screen
@@ -65,9 +67,14 @@ struct Police: Car
 		sketch(POLICE, curFrame);
 
 		// flash the lights
-		if (arduboy.everyXFrames(5))
+		if (arduboy.everyXFrames(10))
 		{
-			arduboy.fillRect(x - camera.x + width / 2 - 5, y - camera.y + height / 2 - 7, 10, 4, WHITE);
+			flashing = !flashing;
+		}
+
+		if (flashing)
+		{
+			arduboy.fillRect(x - camera.x + width / 2 - 4, y - camera.y + height / 2 - 6, 7, 3, WHITE);
 		}
 	}
 };
