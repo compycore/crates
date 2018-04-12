@@ -44,8 +44,8 @@ struct Entity: Simple
 		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
 	}
 
-// provide a skeleton collision callback function so there always is one
-	bool callback(char type, uint8_t damage)
+	// provide a skeleton collision callback function so there always is one
+	virtual bool callback(char type, uint8_t damage)
 	{
 		return false;  // return false if the object isn't deleted because of the collision
 	}

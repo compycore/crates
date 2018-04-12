@@ -73,7 +73,7 @@ void loop()
 	for (unsigned char i = 0; i < police.size(); i++)
 	{
 		// erase police if they have no health
-		if (police[i].health ==0) {
+		if (police[i].health == 0) {
 			police.erase(i);
 			i--;
 			continue;
