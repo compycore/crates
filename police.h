@@ -13,6 +13,8 @@ struct Police: Car
 		followTurnRate = followTurnRate + (1 / (40 + random(10)));
 
 		frameCount = ANGLES - 1;
+
+		type = 'E';
 	}
 
 	void follow(int X, int Y)
@@ -22,6 +24,21 @@ struct Police: Car
 			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
 			float shortest_angle = ((((angleToTarget - int(angle)) % 360) + 540) % 360) - 180;
 			angle += shortest_angle * followTurnRate;
+		}
+	}
+
+	bool callback(char type, uint8_t damage)
+	{
+		if (type == 'E') // only take damage from other cops
+		{
+			if (health > damage)
+			{
+				health -= damage;
+				return false;
+			}
+
+			health = 0;
+			return true; // delete if the cop has taken all the damage it can
 		}
 	}
 
