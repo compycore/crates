@@ -6,6 +6,8 @@ struct Car: Entity
 	float turnSpeed = 0.35;
 	float accel = 0.02;
 	float maxReverseSpeed = -1;
+	uint8_t damage = 3;
+	uint8_t health = 5;
 
 	void accelerate()
 	{

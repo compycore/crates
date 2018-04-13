@@ -67,20 +67,27 @@ void loop()
 
 	player.update();
 	player.draw();
-	player.collide(crate.cbox);
+	player.collide(crate.type, 0, crate.cbox);
 
 	// handle police
 	for (unsigned char i = 0; i < police.size(); i++)
 	{
+		// erase police if they have no health
+		if (police[i].health == 0) {
+			police.erase(i);
+			i--;
+			continue;
+		}
+
 		police[i].update();
 		police[i].follow(player.x, player.y);
 		police[i].draw();
-		police[i].collide(player.cbox);
+		player.collide(police[i].type, police[i].damage, police[i].cbox);
 
 		for (unsigned char j = 0; j < police.size(); j++)
 		{
 			if (j != i) {
-				police[i].collide(police[j].cbox);
+				police[i].collide(police[j].type, police[j].damage, police[j].cbox);
 			}
 		}
 	}
