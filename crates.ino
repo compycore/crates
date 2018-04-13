@@ -27,7 +27,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-List<Police, 8> police;
+List<Police, 7> police;
 Cactus cactus;
 Crate crate;
 
@@ -46,19 +46,16 @@ void loop()
 	if (!(arduboy.nextFrame())) return;
 	arduboy.pollButtons();
 
-	// draw the intro logo if we haven't finished that already
-	if (!(compycore.introduce())) return;
+	if (!(compycore.introduce())) return; // draw the intro logo if we haven't finished that already
 
-	// show the menu if we haven't already picked an option
-	if (!(menu.show())) return;
+	if (!(menu.show())) return; // show the menu if we haven't already picked an option
 
 	// TODO spawn randomly or based on player performance
 	if (!police.full()) {
 		police.add(Police());
 	}
 
-	// draw the map lines
-	svg.map(0,0,2);
+	svg.map(0,0,2); // draw the map lines
 
 	cactus.draw();
 
@@ -74,6 +71,7 @@ void loop()
 	{
 		// erase police if they have no health
 		if (police[i].health == 0) {
+			camera.shake();
 			police.erase(i);
 			i--;
 			continue;
@@ -92,9 +90,8 @@ void loop()
 		}
 	}
 
-	// make the camera follow the player
-	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24);
+	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24); // make the camera follow the player
+	camera.update(); // apply camera shake
 
-	// draw everything to the screen
-	arduboy.display(CLEAR_BUFFER);
+	arduboy.display(CLEAR_BUFFER); // draw everything to the screen
 }

@@ -3,8 +3,33 @@ struct Camera
 	float x = 0;
 	float y = 0;
 
+	float xShake = 0;
+	float yShake = 0;
+
 	uint16_t xMax = 2000;
 	uint16_t yMax = 1000;
+
+	// initiate screen shake
+	void shake(uint8_t power = 15)
+	{
+		float angle = random(100) / 100; // a value between -1 and 1
+
+		xShake = power * cos(angle);
+		yShake = power * sin(angle);
+	}
+
+	// apply screen shake
+	void update()
+	{
+		if ((abs(xShake) > 0.5) || (abs(yShake) > 0.5))
+		{
+			xShake *= -0.7 - random(20) / 100;
+			yShake *= -0.7 - random(20) / 100;
+
+			x += xShake;
+			y += yShake;
+		}
+	}
 
 	void follow(float followX, float followY, uint8_t xPadding, uint8_t yPadding)
 	{
