@@ -2,11 +2,11 @@ struct Cactus: Simple
 {
 	Cactus()
 	{
-		x = 30, y = 30;
+		x = random(camera.xMax), y = random(camera.yMax);
 	}
 
 	void draw()
 	{
-		// sketch(CACTUS);
+		sketch(CACTUS);
 	}
 };
