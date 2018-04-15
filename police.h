@@ -5,7 +5,7 @@ struct Police: Car
 	Police()
 	{
 		// TODO generate anywhere off the current screen
-		x = random(300), y = random(300);
+		x = random(camera.xMax), y = random(camera.yMax);
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 

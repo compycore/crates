@@ -6,8 +6,8 @@ struct Camera
 	float xShake = 0;
 	float yShake = 0;
 
-	uint16_t xMax = 2000;
-	uint16_t yMax = 1000;
+	uint16_t xMax = 500;
+	uint16_t yMax = 500;
 
 	// initiate screen shake
 	void shake(uint8_t power = 15)

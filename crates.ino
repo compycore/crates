@@ -28,7 +28,6 @@ Menu menu;
 SVG svg;
 Player player;
 List<Police, 7> police;
-List<Cactus, 30> cacti;
 Crate crate;
 
 void setup()
@@ -55,17 +54,7 @@ void loop()
 		police.add(Police());
 	}
 
-	// TODO spawn randomly or based on player performance
-	if (!cacti.full()) {
-		cacti.add(Cactus());
-	}
-
-	svg.map(0,0,2); // draw the map lines
-
-	for (unsigned char i = 0; i < cacti.size(); i++)
-	{
-		cacti[i].draw();
-	}
+	svg.map(0,0,1); // draw the map lines
 
 	crate.update();
 	crate.draw();
