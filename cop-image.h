@@ -1,4 +1,4 @@
-const unsigned char PROGMEM POLICE[] =
+const unsigned char PROGMEM COP[] =
 {
 // width, height,
 	20, 16,

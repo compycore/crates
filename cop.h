@@ -1,6 +1,19 @@
-struct Police: Car
+struct Cop: Police
 {
-	bool flashing = false;
+	Cop()
+	{
+		// TODO generate anywhere off the current screen
+		x = random(LEVEL_WIDTH), y = random(LEVEL_HEIGHT);
+		width = 20, height = 16;
+		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
+
+		accel = 0.01 + (1 / (5 + random(5)));
+		followTurnRate = followTurnRate + (1 / (40 + random(10)));
+
+		frameCount = ANGLES - 1;
+
+		type = 'E';
+	}
 
 	void follow(int X, int Y)
 	{
@@ -46,17 +59,27 @@ struct Police: Car
 		*/
 	}
 
-	// flash the lights
-	void flash(uint8_t xOffset, uint8_t yOffset)
+	void draw()
 	{
-		if (arduboy.everyXFrames(10))
+		/*
+		// handle dust
+		for (uint8_t i = 0; i < dust.size(); i++)
 		{
-			flashing = !flashing;
+		    if (dust[i].ttl > 0)
+		    {
+		        dust[i].update();
+		        dust[i].draw();
+		    }
+		    else
+		    {
+		        dust.erase(i);
+		        i--;
+		    }
 		}
+		*/
 
-		if (flashing)
-		{
-			arduboy.fillRect(x - camera.x + width / 2 - xOffset, y - camera.y + height / 2 - yOffset, 7, 3, WHITE);
-		}
+		arduboy.fillRect((int16_t) (x - camera.x + 4), (int16_t) (y - camera.y + 4), width - 8, height - 7, BLACK); // ghetto mask
+		sketch(COP, curFrame);
+		flash(4, 6);
 	}
 };

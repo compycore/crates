@@ -19,13 +19,14 @@
 #include "skid.h"
 #include "player-image.h"
 #include "player.h"
-#include "police-image.h"
 #include "police.h"
+#include "cop-image.h"
+#include "cop.h"
 
 Compycore compycore;
 Menu menu;
 Player player;
-List<Police, 5> police;
+List<Cop, 3> cops;
 Crate crate;
 
 void setup()
@@ -48,8 +49,8 @@ void loop()
 	if (!(menu.show())) return; // show the menu if we haven't already picked an option
 
 	// TODO spawn randomly or based on player performance
-	if (!police.full()) {
-		police.add(Police());
+	if (!cops.full()) {
+		cops.add(Cop());
 	}
 
 	drawGrid();
@@ -61,34 +62,34 @@ void loop()
 	player.draw();
 	player.collide(crate.type, 0, crate.cbox);
 
-	// handle police
-	for (unsigned char i = 0; i < police.size(); i++)
+	// handle cop
+	for (unsigned char i = 0; i < cops.size(); i++)
 	{
-		// erase police if they have no health
-		if (police[i].health == 0) {
+		// erase cops if they have no health
+		if (cops[i].health == 0) {
 			camera.shake();
-			police.erase(i);
+			cops.erase(i);
 			i--;
 			continue;
 		}
 
-		police[i].update();
-		police[i].follow(player.x, player.y);
-		police[i].draw();
-		drawLocator(police[i].x, police[i].y, police[i].width, police[i].height);
-		player.collide(police[i].type, police[i].damage, police[i].cbox);
+		cops[i].update();
+		cops[i].follow(player.x, player.y);
+		cops[i].draw();
+		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height);
+		player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
 
-		for (unsigned char j = 0; j < police.size(); j++)
+		for (unsigned char j = 0; j < cops.size(); j++)
 		{
 			if (j != i) {
-				police[i].collide(police[j].type, police[j].damage, police[j].cbox);
+				cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
 			}
 		}
 	}
 
-	drawLocator(crate.x, crate.y, crate.width, crate.height);
+	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
 
-	camera.follow(player.x+player.width/2, player.y+player.height/2, 50, 25); // make the camera follow the player
+	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 	camera.update(); // apply camera shake
 
 	arduboy.display(CLEAR_BUFFER); // draw everything to the screen
