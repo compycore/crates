@@ -34,26 +34,81 @@ void drawGrid()
 	}
 }
 
+/*
 void drawLocator(float x, float y)
 {
-	float slope = y / x;
-	uint8_t padding = 5; // cannot be zero
+    uint8_t xLocator;
+    uint8_t yLocator;
+    float slope = (y - camera.y - 32) / (x - camera.x - 64);
+    uint8_t padding = 3; // cannot be zero
+    uint8_t width = (128 - padding) / 2;
+    uint8_t height = (64 - padding) / 2;
 
-	if (x < camera.x) // left edge
+    if (y < camera.y) // top edge
+    {
+        xLocator = padding / slope;
+    }
+    else // bottom edge
+    {
+        xLocator = (64 - padding) / slope;
+    }
+
+    if (x < (camera.x + 128)) // left edge
+    {
+        yLocator = slope * padding;
+    }
+    else // right edge
+    {
+        yLocator = slope * (128 - padding);
+    }
+
+    arduboy.fillCircle(xLocator, yLocator, 2, WHITE);
+}
+*/
+
+void drawLocator(float xTarget, float yTarget)
+{
+	int xLocator;
+	int yLocator;
+
+	// change coordinate space again to center of screen
+	float xTargetCenter = xTarget - (128 / 2);
+	float yTargetCenter = yTarget - (64 / 2);
+
+	int slope = yTargetCenter / xTargetCenter;
+
+	int padding = 3;
+	int paddedWidth = 128 - padding;
+	int paddedHeight = 64 - padding;
+
+	// calculate indicator position if above or below
+	if (yTargetCenter < 0) // top of screen
 	{
-		arduboy.fillCircle(padding, slope * padding, 3, WHITE);
+		xLocator = (-paddedHeight / 2) / slope;
+		yLocator = -paddedHeight / 2;
 	}
-	else if (x > camera.x + 128) // right edge
+	else // bottom of screen
 	{
-		arduboy.fillCircle(128 - padding, slope * (128 - padding), 3, WHITE);
+		xLocator = (paddedHeight / 2) / slope;
+		yLocator = paddedHeight / 2;
 	}
 
-	if (y < camera.y) // top edge
+	//calculate indicator position if left or right
+	if (xLocator < -paddedWidth / 2) // left side
 	{
-		arduboy.fillCircle(padding / slope, padding, 3, WHITE);
+		xLocator = -paddedWidth / 2;
+		yLocator = slope * -paddedWidth / 2;
 	}
-	else if (y > camera.y + 64) // bottom edge
+	else if (xLocator > paddedWidth / 2) // right side
 	{
-		arduboy.fillCircle((64 - padding) / slope, 64 - padding, 3, WHITE);
+		xLocator = paddedWidth / 2;
+		yLocator = slope * paddedWidth / 2;
 	}
+
+	// change coordinate position back to original space
+	xLocator += 64;
+	yLocator += 32;
+
+	// apply position
+	arduboy.fillCircle(xLocator, yLocator, 2, WHITE);
 }
