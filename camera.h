@@ -28,11 +28,11 @@ struct Camera
 		}
 	}
 
-	bool canSee(float xTarget, float yTarget)
+	bool canSee(float xTarget, float yTarget, uint8_t width, uint8_t height)
 	{
-		if (xTarget > x && xTarget < x + 128)
+		if (xTarget + width > x && xTarget < x + 128)
 		{
-			if (yTarget > y && yTarget < y + 64)
+			if (yTarget + height > y && yTarget < y + 64)
 			{
 				return true;
 			}

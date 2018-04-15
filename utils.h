@@ -34,9 +34,9 @@ void drawGrid()
 	}
 }
 
-void drawLocator(float xTarget, float yTarget)
+void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height)
 {
-	if (!camera.canSee(xTarget, yTarget))
+	if (!camera.canSee(xTarget, yTarget, width, height))
 	{
 		int xLocator;
 		int yLocator;

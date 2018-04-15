@@ -57,7 +57,7 @@ void loop()
 	crate.update();
 	crate.draw();
 
-	drawLocator(crate.x, crate.y);
+	drawLocator(crate.x, crate.y, crate.width, crate.height);
 
 	player.update();
 	player.draw();
