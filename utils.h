@@ -34,7 +34,7 @@ void drawGrid()
 	}
 }
 
-void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, uint8_t radius = 1)
+void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, uint8_t radius = 1, bool filled = true)
 {
 	if (!camera.canSee(xTarget, yTarget, width, height))
 	{
@@ -79,6 +79,13 @@ void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, ui
 		yLocator += 32;
 
 		// apply position
-		arduboy.fillCircle(xLocator, yLocator, radius, WHITE);
+		if (filled)
+		{
+			arduboy.fillCircle(xLocator, yLocator, radius, WHITE);
+		}
+		else
+		{
+			arduboy.drawCircle(xLocator, yLocator, radius, WHITE);
+		}
 	}
 }
