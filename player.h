@@ -39,25 +39,10 @@ struct Player: Car
 
 	void update()
 	{
-		// arduboy.println(angle);
-
 		control();
 		physics();
 		updateCbox();
 		updateAngle();
-
-		// arduboy.println(angle);
-
-		/*
-		// generate more dust
-		if (random(100) < 2 && speed > 0)
-		{
-		    if (!dust.full())
-		    {
-		        dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
-		    }
-		}
-		*/
 
 		/*
 		// generate more skids
@@ -88,23 +73,6 @@ struct Player: Car
 		    else
 		    {
 		        skids.erase(i);
-		        i--;
-		    }
-		}
-		*/
-
-		/*
-		// handle dust
-		for (uint8_t i = 0; i < dust.size(); i++)
-		{
-		    if (dust[i].ttl > 0)
-		    {
-		        dust[i].update();
-		        dust[i].draw();
-		    }
-		    else
-		    {
-		        dust.erase(i);
 		        i--;
 		    }
 		}

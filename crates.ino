@@ -27,6 +27,7 @@ Compycore compycore;
 Menu menu;
 Player player;
 List<Cop, 3> cops;
+List<Dust, 3> dust; // same dust count as police
 Crate crate;
 
 void setup()
@@ -62,12 +63,29 @@ void loop()
 	player.draw();
 	player.collide(crate.type, 0, crate.cbox);
 
+
+	// handle dust
+	for (uint8_t i = 0; i < dust.size(); i++)
+	{
+		if (dust[i].ttl > 0)
+		{
+			dust[i].update();
+			dust[i].draw();
+		}
+		else
+		{
+			dust.erase(i);
+			i--;
+		}
+	}
+
 	// handle cop
 	for (unsigned char i = 0; i < cops.size(); i++)
 	{
 		// erase cops if they have no health
 		if (cops[i].health == 0) {
 			camera.shake();
+			dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2));
 			cops.erase(i);
 			i--;
 			continue;

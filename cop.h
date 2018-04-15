@@ -21,38 +21,10 @@ struct Cop: Police
 		updateCbox();
 		updateAngle();
 		accelerate();
-
-		/*
-		// generate more dust
-		if (random(100) < 2 && speed > 0)
-		{
-		    if (!dust.full())
-		    {
-		        dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
-		    }
-		}
-		*/
 	}
 
 	void draw()
 	{
-		/*
-		// handle dust
-		for (uint8_t i = 0; i < dust.size(); i++)
-		{
-		    if (dust[i].ttl > 0)
-		    {
-		        dust[i].update();
-		        dust[i].draw();
-		    }
-		    else
-		    {
-		        dust.erase(i);
-		        i--;
-		    }
-		}
-		*/
-
 		arduboy.fillRect((int16_t) (x - camera.x + 4), (int16_t) (y - camera.y + 4), width - 8, height - 7, BLACK); // ghetto mask
 		sketch(COP, curFrame);
 		flash(4, 6);
