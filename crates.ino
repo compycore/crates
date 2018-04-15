@@ -25,7 +25,7 @@
 Compycore compycore;
 Menu menu;
 Player player;
-List<Police, 0> police;
+List<Police, 5> police;
 Crate crate;
 
 void setup()
@@ -57,8 +57,6 @@ void loop()
 	crate.update();
 	crate.draw();
 
-	drawLocator(crate.x, crate.y, crate.width, crate.height);
-
 	player.update();
 	player.draw();
 	player.collide(crate.type, 0, crate.cbox);
@@ -77,6 +75,7 @@ void loop()
 		police[i].update();
 		police[i].follow(player.x, player.y);
 		police[i].draw();
+		drawLocator(police[i].x, police[i].y, police[i].width, police[i].height);
 		player.collide(police[i].type, police[i].damage, police[i].cbox);
 
 		for (unsigned char j = 0; j < police.size(); j++)
@@ -86,6 +85,8 @@ void loop()
 			}
 		}
 	}
+
+	drawLocator(crate.x, crate.y, crate.width, crate.height);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 50, 25); // make the camera follow the player
 	camera.update(); // apply camera shake

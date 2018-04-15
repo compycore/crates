@@ -19,7 +19,7 @@ float findAngle(int x1, int y1, int x2, int y2)
 
 void drawGrid()
 {
-	uint8_t spacing = 100;
+	uint8_t spacing = 125; // LEVEL_WIDTH and LEVEL_HEIGHT must be evenly divisible by this number
 
 	// horizontal lines
 	for (uint8_t y = 0; y < LEVEL_HEIGHT / spacing; y++)
