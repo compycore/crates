@@ -87,7 +87,7 @@ void loop()
 		}
 	}
 
-	camera.follow(player.x+player.width/2, player.y+player.height/2, 32, 24); // make the camera follow the player
+	camera.follow(player.x+player.width/2, player.y+player.height/2, 50, 25); // make the camera follow the player
 	camera.update(); // apply camera shake
 
 	arduboy.display(CLEAR_BUFFER); // draw everything to the screen

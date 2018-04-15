@@ -47,7 +47,7 @@ void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height)
 
 		float slope = yTargetCenter / xTargetCenter;
 
-		int padding = 3;
+		int padding = 4;
 		int paddedWidth = 128 - padding * 2;
 		int paddedHeight = 64 - padding * 2;
 
