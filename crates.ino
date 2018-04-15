@@ -57,6 +57,8 @@ void loop()
 	crate.update();
 	crate.draw();
 
+	drawLocator(crate.x, crate.y);
+
 	player.update();
 	player.draw();
 	player.collide(crate.type, 0, crate.cbox);

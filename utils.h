@@ -33,3 +33,27 @@ void drawGrid()
 		arduboy.drawFastVLine(x * spacing - camera.x, 0, 64, WHITE);
 	}
 }
+
+void drawLocator(float x, float y)
+{
+	float slope = y / x;
+	uint8_t padding = 5; // cannot be zero
+
+	if (x < camera.x) // left edge
+	{
+		arduboy.fillCircle(padding, slope * padding, 3, WHITE);
+	}
+	else if (x > camera.x + 128) // right edge
+	{
+		arduboy.fillCircle(128 - padding, slope * (128 - padding), 3, WHITE);
+	}
+
+	if (y < camera.y) // top edge
+	{
+		arduboy.fillCircle(padding / slope, padding, 3, WHITE);
+	}
+	else if (y > camera.y + 64) // bottom edge
+	{
+		arduboy.fillCircle((64 - padding) / slope, 64 - padding, 3, WHITE);
+	}
+}
