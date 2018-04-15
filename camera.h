@@ -28,6 +28,19 @@ struct Camera
 		}
 	}
 
+	bool canSee(float xTarget, float yTarget)
+	{
+		if (xTarget > x && xTarget < x + 128)
+		{
+			if (yTarget > y && yTarget < y + 64)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	void follow(float followX, float followY, uint8_t xPadding, uint8_t yPadding)
 	{
 		if (x + xPadding > followX)

@@ -25,7 +25,7 @@
 Compycore compycore;
 Menu menu;
 Player player;
-List<Police, 5> police;
+List<Police, 0> police;
 Crate crate;
 
 void setup()
