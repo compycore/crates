@@ -24,7 +24,6 @@
 
 Compycore compycore;
 Menu menu;
-SVG svg;
 Player player;
 List<Police, 5> police;
 Crate crate;
