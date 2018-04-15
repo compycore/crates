@@ -6,9 +6,6 @@ struct Camera
 	float xShake = 0;
 	float yShake = 0;
 
-	uint16_t xMax = 500;
-	uint16_t yMax = 500;
-
 	// initiate screen shake
 	void shake(uint8_t power = 15)
 	{
@@ -46,9 +43,9 @@ struct Camera
 		{
 			x = 0;
 		}
-		else if (x + 128 > xMax)
+		else if (x + 128 > LEVEL_WIDTH)
 		{
-			x = xMax - 128;
+			x = LEVEL_WIDTH - 128;
 		}
 
 		if (y + yPadding > followY)
@@ -64,9 +61,9 @@ struct Camera
 		{
 			y = 0;
 		}
-		else if (y + 64 > yMax)
+		else if (y + 64 > LEVEL_HEIGHT)
 		{
-			y = yMax - 64;
+			y = LEVEL_HEIGHT - 64;
 		}
 	}
 };

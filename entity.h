@@ -23,9 +23,9 @@ struct Entity: Simple
 		{
 			x = 0;
 		}
-		else if (x + width > camera.xMax)
+		else if (x + width > LEVEL_WIDTH)
 		{
-			x = camera.xMax - width;
+			x = LEVEL_WIDTH - width;
 		}
 
 		// contain to the screen
@@ -33,9 +33,9 @@ struct Entity: Simple
 		{
 			y = 0;
 		}
-		else if (y + height > camera.yMax)
+		else if (y + height > LEVEL_HEIGHT)
 		{
-			y = camera.yMax - height;
+			y = LEVEL_HEIGHT - height;
 		}
 	}
 

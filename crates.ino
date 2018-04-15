@@ -1,6 +1,5 @@
 #include "globals.h"
 #include "utils.h"
-#include "svg.h"
 #include "compycore-image.h"
 #include "compycore.h"
 #include "qrcode-image.h"
@@ -27,7 +26,7 @@ Compycore compycore;
 Menu menu;
 SVG svg;
 Player player;
-List<Police, 7> police;
+List<Police, 5> police;
 Crate crate;
 
 void setup()
@@ -54,7 +53,7 @@ void loop()
 		police.add(Police());
 	}
 
-	svg.map(0,0,1); // draw the map lines
+	drawGrid();
 
 	crate.update();
 	crate.draw();

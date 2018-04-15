@@ -2,7 +2,7 @@ struct Cactus: Simple
 {
 	Cactus()
 	{
-		x = random(camera.xMax), y = random(camera.yMax);
+		x = random(LEVEL_WIDTH), y = random(LEVEL_HEIGHT);
 	}
 
 	void draw()
