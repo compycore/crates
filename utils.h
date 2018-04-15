@@ -47,31 +47,30 @@ void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, ui
 
 		float slope = yTargetCenter / xTargetCenter;
 
-		int padding = 4;
-		int paddedWidth = 128 - padding * 2;
-		int paddedHeight = 64 - padding * 2;
+		int paddedWidth = 126;
+		int paddedHeight = 62;
 
 		// calculate indicator position if above or below
 		if (yTargetCenter < 0) // top of screen
 		{
-			xLocator = (-1 * paddedHeight / 2) / slope;
-			yLocator = -1 * paddedHeight / 2;
+			xLocator = (-paddedHeight / 2) / slope;
+			yLocator = -paddedHeight / 2;
 		}
 		else // bottom of screen
 		{
 			xLocator = (paddedHeight / 2) / slope;
-			yLocator = paddedHeight / 2;
+			yLocator = paddedHeight / 2 - 1;
 		}
 
 		//calculate indicator position if left or right
-		if (xLocator < -1 * paddedWidth / 2) // left side
+		if (xLocator < -paddedWidth / 2) // left side
 		{
-			xLocator = -1 * paddedWidth / 2;
-			yLocator = slope * -1 * paddedWidth / 2;
+			xLocator = -paddedWidth / 2;
+			yLocator = slope * -paddedWidth / 2;
 		}
 		else if (xLocator > paddedWidth / 2) // right side
 		{
-			xLocator = paddedWidth / 2;
+			xLocator = paddedWidth / 2 - 1;
 			yLocator = slope * paddedWidth / 2;
 		}
 

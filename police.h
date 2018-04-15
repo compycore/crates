@@ -27,25 +27,6 @@ struct Police: Car
 		}
 	}
 
-	void update()
-	{
-		physics();
-		updateCbox();
-		updateAngle();
-		accelerate();
-
-		/*
-		// generate more dust
-		if (random(100) < 2 && speed > 0)
-		{
-		    if (!dust.full())
-		    {
-		        dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
-		    }
-		}
-		*/
-	}
-
 	// flash the lights
 	void flash(uint8_t xOffset, uint8_t yOffset)
 	{
