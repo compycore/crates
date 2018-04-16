@@ -3,6 +3,7 @@ struct Camera
 	float x = 0;
 	float y = 0;
 
+	// TODO maybe move this to use Points and Rects (the issue is that I use floats for all the x and y coords and a Point is int16_t
 	bool canSee(float xTarget, float yTarget, uint8_t width, uint8_t height)
 	{
 		if (xTarget + width > x && xTarget < x + 128)

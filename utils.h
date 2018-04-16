@@ -1,3 +1,18 @@
+Point randomOffScreen(uint16_t width, uint16_t height)
+{
+	Point point;
+	point.x = random(width);
+	point.y = random(height);
+
+	while (camera.canSee(point.x, point.y, 0, 0))
+	{
+		point.x = random(width);
+		point.y = random(height);
+	}
+
+	return point;
+}
+
 uint8_t angleToFrame(float angle, uint8_t frameCount)
 {
 	return (uint8_t)(angle / 360 * frameCount);

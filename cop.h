@@ -1,9 +1,9 @@
 struct Cop: Police
 {
+	Point spawnPoint = randomOffScreen(LEVEL_WIDTH, LEVEL_HEIGHT);
 	Cop()
 	{
-		// TODO generate anywhere off the current screen
-		x = random(LEVEL_WIDTH), y = random(LEVEL_HEIGHT);
+		x = spawnPoint.x, y = spawnPoint.y;
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
