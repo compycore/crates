@@ -84,7 +84,6 @@ void loop()
 	{
 		// erase cops if they have no health
 		if (cops[i].health == 0) {
-			camera.shake();
 			dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2));
 			cops.erase(i);
 			i--;
@@ -108,7 +107,6 @@ void loop()
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
-	camera.update(); // apply camera shake
 
 	arduboy.display(CLEAR_BUFFER); // draw everything to the screen
 }
