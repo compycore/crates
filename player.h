@@ -28,6 +28,7 @@ struct Player: Car
 			}
 		}
 
+		// the arduboy has its butons flipped in my opinion
 		if (arduboy.pressed(B_BUTTON))
 		{
 			accelerate();

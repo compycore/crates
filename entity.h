@@ -1,6 +1,6 @@
 struct Entity: Simple
 {
-	char type = 'G';
+	char type = 'G'; // a generic type indicator
 	uint8_t width = 0, height = 0;
 
 	Rect cbox_conf = {.x = 0, .y = 0, .width = width, .height = height}; // used for cbox offset and size
@@ -95,6 +95,6 @@ struct Entity: Simple
 			return cb;
 		}
 
-		return false;
+		return false; // return false if there wasn't a collision at all
 	}
 };

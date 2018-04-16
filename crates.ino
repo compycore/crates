@@ -7,6 +7,7 @@
 #include "instructions-image.h"
 #include "menu-image.h"
 #include "menu.h"
+#include "busted-image.h"
 #include "simple.h"
 #include "entity.h"
 #include "dust-image.h"
