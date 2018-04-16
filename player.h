@@ -85,7 +85,7 @@ struct Player: Car
 
 		/*
 		// generate more skids
-		if (arduboy.pressed(A_BUTTON) && speed > 0)
+		if (arduboy.pressed(A_BUTTON) && speed)
 		{
 		    if (arduboy.everyXFrames(2))
 		    {
@@ -104,7 +104,7 @@ struct Player: Car
 		// handle skids
 		for (uint8_t i = 0; i < skids.size(); i++)
 		{
-		    if (skids[i].ttl > 0)
+		    if (skids[i].ttl)
 		    {
 		        skids[i].update();
 		        skids[i].draw();

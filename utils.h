@@ -58,7 +58,7 @@ void drawNumber(uint8_t x, uint8_t y, uint16_t number, uint8_t maxDigits = 6)
 	// pad the score with zeroes
 	for (uint8_t i = 0; i < maxDigits - strlen(chars); i++)
 	{
-		sprites.drawSelfMasked(x, y, NUMBERS, 0);
+		sprites.drawPlusMask(x, y, NUMBERS, 0);
 		x += visualWidth;
 	}
 

@@ -18,7 +18,7 @@ typedef struct Menu
 		{
 			if (arduboy.justPressed(LEFT_BUTTON))
 			{
-				if (currentSelection > 0)
+				if (currentSelection)
 				{
 					currentSelection--;
 				}
@@ -37,8 +37,8 @@ typedef struct Menu
 		{
 			if (currentSelection == 1) // play button
 			{
-				arduboy.initRandomSeed();
 				selected = true;
+				arduboy.initRandomSeed();
 				return true;
 			}
 			else if (currentSelection == 3) // configuration menu

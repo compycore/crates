@@ -60,7 +60,7 @@ void loop()
 	// handle dust
 	for (uint8_t i = 0; i < dust.size(); i++)
 	{
-		if (dust[i].ttl > 0)
+		if (dust[i].ttl)
 		{
 			dust[i].update();
 			dust[i].draw();

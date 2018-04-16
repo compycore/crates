@@ -6,22 +6,22 @@ typedef struct Busted
 
 	void gameOver()
 	{
-		if (y < 26)
+		if (y < 25)
 		{
 			y++;
-			sprites.drawPlusMask(x, y, BUSTED, 0);
 		}
 		else
 		{
 			// after a pause, return to the menu and reset the player to play again
-			if (arduboy.everyXFrames(500))
+			if (arduboy.everyXFrames(250))
 			{
 				// TODO maybe repopulate cops too
+				SCORE = 0;
 				menu = Menu();
 				player = Player();
 			}
-
-			sprites.drawPlusMask(x, y, BUSTED, 0);
 		}
+
+		sprites.drawPlusMask(x, y, BUSTED, 0);
 	}
 } Busted;

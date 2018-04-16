@@ -11,7 +11,7 @@ struct Car: Entity
 
 	void accelerate()
 	{
-		if (speed > 0)
+		if (speed)
 		{
 			speed += accel;
 		}
