@@ -1,4 +1,5 @@
 #include "globals.h"
+#include "numbers-image.h"
 #include "utils.h"
 #include "compycore-image.h"
 #include "compycore.h"
@@ -29,6 +30,7 @@ Player player;
 List<Cop, 3> cops;
 List<Dust, 3> dust; // same dust count as police
 Crate crate;
+uint16_t score = 0;
 
 void setup()
 {
@@ -107,6 +109,7 @@ void loop()
 		}
 	}
 
+	prettyPrintNumber(1, 1, String(score));
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player

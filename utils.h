@@ -34,12 +34,29 @@ void drawGrid()
 	}
 }
 
+void prettyPrintNumber(uint8_t x, uint8_t y, String number, uint8_t maxDigits = 6)
+{
+	uint8_t charWidth = 5;
+
+	// pad the score with zeroes
+	while (number.length() < maxDigits)
+	{
+		number = "0" + number;
+	}
+
+	for (int i = 0; i < number.length(); i++)
+	{
+		sprites.drawPlusMask(x, y, NUMBERS, int(number.charAt(i)) - 48);
+		x += charWidth;
+	}
+}
+
 void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, uint8_t radius = 1, bool filled = true)
 {
 	if (!camera.canSee(xTarget, yTarget, width, height))
 	{
-		int xLocator;
-		int yLocator;
+		int16_t xLocator;
+		int16_t yLocator;
 
 		// change coordinate space again to center of screen
 		float xTargetCenter = xTarget - camera.x - 64;
@@ -47,8 +64,8 @@ void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, ui
 
 		float slope = yTargetCenter / xTargetCenter;
 
-		int paddedWidth = 126;
-		int paddedHeight = 62;
+		int8_t paddedWidth = 126;
+		int8_t paddedHeight = 62;
 
 		// calculate indicator position if above or below
 		if (yTargetCenter < 0) // top of screen
@@ -74,18 +91,14 @@ void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, ui
 			yLocator = slope * paddedWidth / 2;
 		}
 
-		// change coordinate position back to original space
-		xLocator += 64;
-		yLocator += 32;
-
-		// apply position
+		// apply position after changing the coordinate system back to normal
 		if (filled)
 		{
-			arduboy.fillCircle(xLocator, yLocator, radius, WHITE);
+			arduboy.fillCircle(xLocator + 64, yLocator + 32, radius, WHITE);
 		}
 		else
 		{
-			arduboy.drawCircle(xLocator, yLocator, radius, WHITE);
+			arduboy.drawCircle(xLocator + 64, yLocator + 32, radius, WHITE);
 		}
 	}
 }
