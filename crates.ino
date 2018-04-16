@@ -99,7 +99,10 @@ void loop()
 		for (unsigned char j = 0; j < cops.size(); j++)
 		{
 			if (j != i) {
-				cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
+				// only allow collisions if both cops are on the screen
+				if (camera.canSee(cops[i].x, cops[i].y, cops[i].width, cops[i].height) && camera.canSee(cops[j].x, cops[j].y, cops[j].width, cops[j].height)) {
+					cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
+				}
 			}
 		}
 	}
