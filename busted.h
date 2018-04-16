@@ -16,6 +16,7 @@ typedef struct Busted
 			if (arduboy.everyXFrames(250))
 			{
 				// TODO maybe repopulate cops too
+				y = -46; // reset the BUSTED logo's position
 				SCORE = 0;
 				menu = Menu();
 				player = Player();
