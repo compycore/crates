@@ -65,6 +65,11 @@ void loop()
 	player.draw();
 	player.collide(crate.type, 0, crate.cbox);
 
+	// increase the score just for surviving
+	if (arduboy.everyXFrames(60))
+	{
+		score++;
+	}
 
 	// handle dust
 	for (uint8_t i = 0; i < dust.size(); i++)
@@ -110,7 +115,6 @@ void loop()
 	}
 
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
-	score++;
 	drawNumber(2, 2, score);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
