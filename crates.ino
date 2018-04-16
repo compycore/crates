@@ -78,7 +78,10 @@ void loop()
 		// TODO maybe do this inside the cop class...?
 		// erase cops if they have no health
 		if (cops[i].health == 0) {
-			SCORE += 3; // award the player for destroying a cop
+			if (player.health) {
+				SCORE += 3; // award the player for destroying a cop
+			}
+
 			dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2));
 			cops.erase(i);
 			i--;
