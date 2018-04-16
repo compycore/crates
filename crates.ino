@@ -86,10 +86,15 @@ void loop()
 		}
 
 		cops[i].update();
-		cops[i].follow(player.x, player.y);
 		cops[i].draw();
 		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height);
-		player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
+
+		// only collide with the player if it still exists
+		if (player.health > 0) {
+			player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
+		}
+
+		cops[i].follow(player.x, player.y);
 
 		for (uint8_t j = 0; j < cops.size(); j++)
 		{
