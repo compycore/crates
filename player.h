@@ -16,7 +16,7 @@ struct Player: Car
 
 	void control()
 	{
-		if (health > 0)
+		if (health)
 		{
 			if (speed > turnSpeed)
 			{
@@ -117,7 +117,7 @@ struct Player: Car
 		}
 		*/
 
-		if (health > 0)
+		if (health)
 		{
 			// TODO add flashing for when we get hit by an enemy
 			arduboy.fillRect(int16_t(x - camera.x + 4), int16_t(y - camera.y + 4), width - 8, height - 7, BLACK); // ghetto mask

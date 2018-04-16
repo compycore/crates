@@ -64,7 +64,7 @@ void drawNumber(uint8_t x, uint8_t y, uint16_t number, uint8_t maxDigits = 6)
 
 	for (uint8_t i = 0; i < strlen(chars); i++)
 	{
-		sprites.drawSelfMasked(x, y, NUMBERS, uint8_t(chars[i]) - 48);
+		sprites.drawPlusMask(x, y, NUMBERS, uint8_t(chars[i]) - 48);
 		x += visualWidth;
 	}
 }

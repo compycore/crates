@@ -19,7 +19,6 @@ Sprites sprites;  // Use this to optimize for execution speed
 
 // general image imports
 #include "numbers-image.h"
-#include "busted-image.h"
 #include "qrcode-image.h"
 #include "instructions-image.h"
 
@@ -64,3 +63,7 @@ Crate crate;
 #include "drop-image.h"
 #include "drop.h"
 Drop drop;
+
+#include "busted-image.h"
+#include "busted.h"
+Busted busted;

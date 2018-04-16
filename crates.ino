@@ -52,7 +52,7 @@ void loop()
 	}
 
 	// increase the score just for surviving
-	if (arduboy.everyXFrames(60))
+	if (player.health && arduboy.everyXFrames(60))
 	{
 		SCORE++;
 	}
@@ -90,7 +90,7 @@ void loop()
 		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height);
 
 		// only collide with the player if it still exists
-		if (player.health > 0) {
+		if (player.health) {
 			player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
 		}
 
@@ -99,10 +99,7 @@ void loop()
 		for (uint8_t j = 0; j < cops.size(); j++)
 		{
 			if (j != i) {
-				// only allow collisions if both cops are on the screen
-				if (camera.canSee(cops[i].x, cops[i].y, cops[i].width, cops[i].height) && camera.canSee(cops[j].x, cops[j].y, cops[j].width, cops[j].height)) {
-					cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
-				}
+				cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
 			}
 		}
 	}
@@ -112,6 +109,10 @@ void loop()
 	drawNumber(2, 2, SCORE);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
+
+	if (player.health == 0) {
+		busted.gameOver();
+	}
 
 	arduboy.display(CLEAR_BUFFER); // draw everything to the screen
 }
