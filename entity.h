@@ -50,13 +50,13 @@ struct Entity: Simple
 		return false;  // return false if the object isn't deleted because of the collision
 	}
 
-	void collide(char type, uint8_t damage, Rect other)
+	bool collide(char type, uint8_t damage, Rect other)
 	{
-		// preliminary solid collisions
-		if (arduboy.collide(cbox, other))
+		if (arduboy.collide(cbox, other)) // preliminary solid collisions
 		{
-			// don't go to the trouble of separating objects if the object in question gets deleted because of the simple collision check
-			if (!callback(type, damage))
+			bool cb = callback(type, damage);
+
+			if (!cb) // don't go to the trouble of separating objects if the object in question gets deleted because of the simple collision check
 			{
 				float translateX = 0;
 				float translateY = 0;
@@ -91,6 +91,10 @@ struct Entity: Simple
 					y += translateY;
 				}
 			}
+
+			return cb;
 		}
+
+		return false;
 	}
 };

@@ -33,7 +33,6 @@ List<Cop, 3> cops;
 List<Dust, 3> dust; // same dust count as police
 Crate crate;
 Drop drop;
-uint16_t score = 0;
 
 void setup()
 {
@@ -69,8 +68,18 @@ void loop()
 
 	player.update();
 	player.draw();
-	player.collide(crate.type, 0, crate.cbox);
-	player.collide(drop.type, 0, drop.cbox);
+
+	if (player.collide(crate.type, 0, crate.cbox))
+	{
+		// TODO make this more exciting for the player
+		crate = Crate(); // move the crate to a new spot
+	}
+
+	if (player.collide(drop.type, 0, drop.cbox))
+	{
+		// TODO make this more exciting for the player
+		drop = Drop(); // move the drop to a new spot
+	}
 
 	// increase the score just for surviving
 	if (arduboy.everyXFrames(60))
@@ -123,6 +132,7 @@ void loop()
 	}
 
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
+	drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
 	drawNumber(2, 2, score);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player

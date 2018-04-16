@@ -2,6 +2,8 @@ uint8_t ANGLES = 25;
 uint16_t LEVEL_WIDTH = 500;
 uint16_t LEVEL_HEIGHT = 500;
 
+uint16_t score = 0;
+
 #include <Arduboy2.h>
 #include <ArduboyTones.h>
 #include <Sprites.h>

@@ -1,6 +1,7 @@
 struct Player: Car
 {
 	// List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
+	bool hasCrate = false;
 
 	Player()
 	{
@@ -35,6 +36,24 @@ struct Player: Car
 		{
 			decelerate();
 		}
+	}
+
+	bool callback(char type, uint8_t damage)
+	{
+		if (type == 'C')
+		{
+			hasCrate = true;
+			score += 5;
+			return true; // delete the crate
+		}
+		else if (type == 'D')
+		{
+			hasCrate = false;
+			score += 10;
+			return true; // delete the drop point
+		}
+
+		return false;
 	}
 
 	void update()
