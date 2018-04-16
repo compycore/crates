@@ -16,6 +16,8 @@
 #include "cactus.h"
 #include "crate-image.h"
 #include "crate.h"
+#include "drop-image.h"
+#include "drop.h"
 #include "skid-image.h"
 #include "skid.h"
 #include "player-image.h"
@@ -30,6 +32,7 @@ Player player;
 List<Cop, 3> cops;
 List<Dust, 3> dust; // same dust count as police
 Crate crate;
+Drop drop;
 uint16_t score = 0;
 
 void setup()
@@ -61,9 +64,13 @@ void loop()
 	crate.update();
 	crate.draw();
 
+	drop.update();
+	drop.draw();
+
 	player.update();
 	player.draw();
 	player.collide(crate.type, 0, crate.cbox);
+	player.collide(drop.type, 0, drop.cbox);
 
 	// increase the score just for surviving
 	if (arduboy.everyXFrames(60))
