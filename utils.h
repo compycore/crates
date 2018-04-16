@@ -34,20 +34,23 @@ void drawGrid()
 	}
 }
 
-void prettyPrintNumber(uint8_t x, uint8_t y, String number, uint8_t maxDigits = 6)
+void drawNumber(uint8_t x, uint8_t y, uint16_t number, uint8_t maxDigits = 6)
 {
-	uint8_t charWidth = 5;
+	uint8_t visualWidth = 5;
+	char chars[maxDigits];
+	itoa(number, chars, 10);
 
 	// pad the score with zeroes
-	while (number.length() < maxDigits)
+	for (uint8_t i = 0; i < maxDigits - strlen(chars); i++)
 	{
-		number = "0" + number;
+		sprites.drawSelfMasked(x, y, NUMBERS, 0);
+		x += visualWidth;
 	}
 
-	for (int i = 0; i < number.length(); i++)
+	for (uint8_t i = 0; i < strlen(chars); i++)
 	{
-		sprites.drawPlusMask(x, y, NUMBERS, int(number.charAt(i)) - 48);
-		x += charWidth;
+		sprites.drawSelfMasked(x, y, NUMBERS, uint8_t(chars[i]) - 48);
+		x += visualWidth;
 	}
 }
 

@@ -82,7 +82,7 @@ void loop()
 	}
 
 	// handle cop
-	for (unsigned char i = 0; i < cops.size(); i++)
+	for (uint8_t i = 0; i < cops.size(); i++)
 	{
 		// erase cops if they have no health
 		if (cops[i].health == 0) {
@@ -98,7 +98,7 @@ void loop()
 		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height);
 		player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
 
-		for (unsigned char j = 0; j < cops.size(); j++)
+		for (uint8_t j = 0; j < cops.size(); j++)
 		{
 			if (j != i) {
 				// only allow collisions if both cops are on the screen
@@ -109,8 +109,9 @@ void loop()
 		}
 	}
 
-	prettyPrintNumber(1, 1, String(score));
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
+	score++;
+	drawNumber(2, 2, score);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 
