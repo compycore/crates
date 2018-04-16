@@ -1,3 +1,8 @@
+uint8_t angleToFrame(float angle, uint8_t frameCount)
+{
+	return (uint8_t)(angle / 360 * frameCount);
+}
+
 Point randomOffScreen(uint16_t width, uint16_t height)
 {
 	Point point;
@@ -11,11 +16,6 @@ Point randomOffScreen(uint16_t width, uint16_t height)
 	}
 
 	return point;
-}
-
-uint8_t angleToFrame(float angle, uint8_t frameCount)
-{
-	return (uint8_t)(angle / 360 * frameCount);
 }
 
 float normalizeAngle(float angle)

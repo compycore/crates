@@ -1,39 +1,8 @@
 #include "globals.h"
-#include "numbers-image.h"
-#include "utils.h"
-#include "compycore-image.h"
-#include "compycore.h"
-#include "qrcode-image.h"
-#include "instructions-image.h"
-#include "menu-image.h"
-#include "menu.h"
-#include "busted-image.h"
-#include "simple.h"
-#include "entity.h"
-#include "dust-image.h"
-#include "dust.h"
-#include "car.h"
-#include "cactus-image.h"
-#include "cactus.h"
-#include "crate-image.h"
-#include "crate.h"
-#include "drop-image.h"
-#include "drop.h"
-#include "skid-image.h"
-#include "skid.h"
-#include "player-image.h"
-#include "player.h"
-#include "police.h"
-#include "cop-image.h"
-#include "cop.h"
-
-Compycore compycore;
-Menu menu;
-Player player;
-List<Cop, 3> cops;
-List<Dust, 3> dust; // same dust count as police
-Crate crate;
-Drop drop;
+// #include "cactus-image.h"
+// #include "cactus.h"
+// #include "skid-image.h"
+// #include "skid.h"
 
 void setup()
 {
@@ -85,7 +54,7 @@ void loop()
 	// increase the score just for surviving
 	if (arduboy.everyXFrames(60))
 	{
-		score++;
+		SCORE++;
 	}
 
 	// handle dust
@@ -106,9 +75,10 @@ void loop()
 	// handle cop
 	for (uint8_t i = 0; i < cops.size(); i++)
 	{
+		// TODO maybe do this inside the cop class...?
 		// erase cops if they have no health
 		if (cops[i].health == 0) {
-			score += 3; // award the player for destroying a cop
+			SCORE += 3; // award the player for destroying a cop
 			dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2));
 			cops.erase(i);
 			i--;
@@ -134,7 +104,7 @@ void loop()
 
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
 	drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
-	drawNumber(2, 2, score);
+	drawNumber(2, 2, SCORE);
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 

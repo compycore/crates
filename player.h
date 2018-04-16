@@ -16,41 +16,58 @@ struct Player: Car
 
 	void control()
 	{
-		if (speed > turnSpeed)
+		if (health > 0)
 		{
-			if (arduboy.pressed(LEFT_BUTTON))
+			if (speed > turnSpeed)
 			{
-				angle += turnRate;
+				if (arduboy.pressed(LEFT_BUTTON))
+				{
+					angle += turnRate;
+				}
+				else if (arduboy.pressed(RIGHT_BUTTON))
+				{
+					angle -= turnRate;
+				}
 			}
-			else if (arduboy.pressed(RIGHT_BUTTON))
-			{
-				angle -= turnRate;
-			}
-		}
 
-		// the arduboy has its butons flipped in my opinion
-		if (arduboy.pressed(B_BUTTON))
-		{
-			accelerate();
-		}
-		else if (arduboy.pressed(A_BUTTON))
-		{
-			decelerate();
+			// the arduboy has its butons flipped in my opinion
+			if (arduboy.pressed(B_BUTTON))
+			{
+				accelerate();
+			}
+			else if (arduboy.pressed(A_BUTTON))
+			{
+				decelerate();
+			}
 		}
 	}
 
 	bool callback(char type, uint8_t damage)
 	{
-		if (type == 'C')
+		if (type == 'E')   // normal police
+		{
+			if (health > damage)
+			{
+				health -= damage;
+			}
+			else
+			{
+				// TODO game over condition
+				dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+			}
+
+			return false;
+		}
+		else if (type == 'C')
 		{
 			hasCrate = true;
-			score += 5;
+			SCORE += 5;
 			return true; // delete the crate
 		}
 		else if (type == 'D')
 		{
 			hasCrate = false;
-			score += 10;
+			SCORE += 10;
 			return true; // delete the drop point
 		}
 
@@ -98,8 +115,11 @@ struct Player: Car
 		}
 		*/
 
-		// TODO add flashing for when we get hit by an enemy
-		arduboy.fillRect(int16_t(x - camera.x + 4), int16_t(y - camera.y + 4), width - 8, height - 7, BLACK); // ghetto mask
-		sketch(PLAYER, curFrame);
+		if (health > 0)
+		{
+			// TODO add flashing for when we get hit by an enemy
+			arduboy.fillRect(int16_t(x - camera.x + 4), int16_t(y - camera.y + 4), width - 8, height - 7, BLACK); // ghetto mask
+			sketch(PLAYER, curFrame);
+		}
 	}
 };
