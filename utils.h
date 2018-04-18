@@ -5,8 +5,9 @@ uint8_t angleToFrame(float angle, uint8_t frameCount)
 
 Point randomPoint(uint16_t size)
 {
-	uint8_t padding = 10;
+	uint8_t padding = 15; // don't pick a point near the edge of the screen
 	Point point;
+
 	point.x = random(size - padding * 2) + padding;
 	point.y = random(size - padding * 2) + padding;
 
@@ -29,6 +30,7 @@ float distanceBetween(float x1, float y1, float x2, float y2)
 {
 	float xDiff = x2 - x1;
 	float yDiff = y2 - y1;
+
 	return sqrt(xDiff * xDiff + yDiff * yDiff);
 }
 
@@ -87,6 +89,12 @@ void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, ui
 	{
 		int16_t xLocator;
 		int16_t yLocator;
+
+		// don't make the indicators too big
+		if (radius > 2)
+		{
+			radius = 2;
+		}
 
 		// change coordinate space again to center of screen
 		float xTargetCenter = xTarget - camera.x - 64;

@@ -93,7 +93,8 @@ void loop()
 		cops[i].update();
 		cops[i].draw();
 
-		uint8_t locatorRadius = 150/distanceBetween(player.x, player.y, cops[i].x, cops[i].y);
+		// the magic number here represents the distance at which the indicator starts to grow
+		uint8_t locatorRadius = 200 / distanceBetween(player.x, player.y, cops[i].x, cops[i].y);
 		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height, locatorRadius);
 
 		// only collide with the player if it still exists
