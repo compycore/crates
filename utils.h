@@ -41,18 +41,16 @@ float findAngle(int x1, int y1, int x2, int y2)
 
 void drawGrid()
 {
-	uint8_t spacing = LEVEL_SIZE / 5; // LEVEL_SIZE must be evenly divisible by this number
-
 	// horizontal lines
-	for (uint8_t y = 0; y <= LEVEL_SIZE / spacing; y++)
+	for (uint8_t y = 0; y <= LEVEL_SIZE / GRID_SIZE; y++)
 	{
-		arduboy.drawFastHLine(0, y * spacing - camera.y, 128, WHITE);
+		arduboy.drawFastHLine(0, y * GRID_SIZE - camera.y, 128, WHITE);
 	}
 
 	// vertical lines
-	for (uint8_t x = 0; x <= LEVEL_SIZE / spacing; x++)
+	for (uint8_t x = 0; x <= LEVEL_SIZE / GRID_SIZE; x++)
 	{
-		arduboy.drawFastVLine(x * spacing - camera.x, 0, 64, WHITE);
+		arduboy.drawFastVLine(x * GRID_SIZE - camera.x, 0, 64, WHITE);
 	}
 }
 
