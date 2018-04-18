@@ -9,18 +9,23 @@ struct Police: Car
 		if (speed > turnSpeed)
 		{
 			// randomly toggle brake on occasion
-			if (arduboy.everyXFrames(100) && random(10) < 6)
+			if (arduboy.everyXFrames(10))
 			{
-				braking = !braking;
+				uint8_t chance = random(10);
+
+				if (chance < 3)
+				{
+					braking = !braking;
+				}
 			}
 
-			if (braking)
+			if (braking && speed > maxSpeed / 2)
 			{
-				speed -= accel;
+				speed -= accel * 2; // multiply to override the constant police acceleration
 			}
 
-			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
-			float shortest_angle = ((((angleToTarget - int(angle)) % 360) + 540) % 360) - 180;
+			int16_t angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
+			float shortest_angle = ((((angleToTarget - int16_t(angle)) % 360) + 540) % 360) - 180;
 			angle += shortest_angle * (followTurnRate + speed / 50);
 		}
 	}

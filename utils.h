@@ -18,6 +18,13 @@ Point randomOffScreen(uint16_t width, uint16_t height)
 	return point;
 }
 
+float distanceBetween(float x1, float y1, float x2, float y2)
+{
+	float xDiff = x2 - x1;
+	float yDiff = y2 - y1;
+	return sqrt(xDiff * xDiff + yDiff * yDiff);
+}
+
 float normalizeAngle(float angle)
 {
 	angle = int(angle) % 360;

@@ -54,8 +54,8 @@ List<Dust, 4> dust; // same dust count as police with one additional for the pla
 #include "cop.h"
 List<Cop, 3> cops;
 
-#include "skid-image.h"
-#include "skid.h"
+// #include "skid-image.h"
+// #include "skid.h"
 
 // player needs to be after dust because it can create dust
 #include "player-image.h"

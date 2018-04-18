@@ -1,8 +1,8 @@
 // minimal class to replace std::vector
-template<typename T, int Capacity>
+template<typename T, uint8_t Capacity>
 struct List
 {
-	int d_size = 0; // stores the number of actually stored objects
+	uint8_t d_size = 0; // stores the number of actually stored objects
 	T d_data[Capacity]; // stores the actual data
 
 	// adds a new value and allocates more space if needed (and allowed)
@@ -18,12 +18,12 @@ struct List
 	}
 
 	// size getter
-	int size() const
+	uint8_t size() const
 	{
 		return d_size;
 	};
 
-	int capacity() const
+	uint8_t capacity() const
 	{
 		return Capacity;
 	};
@@ -34,9 +34,9 @@ struct List
 	};
 
 	// delete an index
-	void erase(int index)
+	void erase(uint8_t index)
 	{
-		for (int i = index; i < d_size; i++)
+		for (uint8_t i = index; i < d_size; i++)
 		{
 			d_data[i] = d_data[i + 1]; // copy next element left
 		}
@@ -45,7 +45,7 @@ struct List
 	}
 
 	// getter
-	T &operator[](int idx)
+	T &operator[](uint8_t idx)
 	{
 		return d_data[idx];
 	}

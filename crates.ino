@@ -88,7 +88,9 @@ void loop()
 
 		cops[i].update();
 		cops[i].draw();
-		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height);
+
+		uint8_t locatorRadius = 150/distanceBetween(player.x, player.y, cops[i].x, cops[i].y);
+		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height, locatorRadius);
 
 		// only collide with the player if it still exists
 		if (player.health) {
@@ -105,8 +107,12 @@ void loop()
 		}
 	}
 
-	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
-	drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
+	if (!player.hasCrate) {
+		drawLocator(crate.x, crate.y, crate.width, crate.height, 2, false);
+	} else {
+		drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
+	}
+
 	drawNumber(2, 2, SCORE);
 
 	if (player.health == 0) {

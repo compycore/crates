@@ -1,6 +1,6 @@
 struct Player: Car
 {
-	List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
+	// List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
 	bool hasCrate = false;
 	float turnRate = 3.5;
 	float maxReverseSpeed = -1;
@@ -22,13 +22,15 @@ struct Player: Car
 		{
 			if (speed > turnSpeed)
 			{
+				float turnRateModifier = speed / maxSpeed - 1;
+
 				if (arduboy.pressed(LEFT_BUTTON))
 				{
-					angle += turnRate + (speed / maxSpeed - 1);
+					angle += turnRate + turnRateModifier;
 				}
 				else if (arduboy.pressed(RIGHT_BUTTON))
 				{
-					angle -= turnRate + (speed / maxSpeed - 1);
+					angle -= turnRate + turnRateModifier;
 				}
 			}
 
@@ -50,14 +52,16 @@ struct Player: Car
 		{
 			speed -= accel * 2;
 
+			/*
 			// generate more skids
 			if (arduboy.everyXFrames(2))
 			{
-				if (!skids.full())
-				{
-					skids.add(Skid(x, y, curFrame));
-				}
+			    if (!skids.full())
+			    {
+			        skids.add(Skid(x, y, curFrame));
+			    }
 			}
+			*/
 		}
 	}
 
@@ -106,20 +110,22 @@ struct Player: Car
 
 	void draw()
 	{
+		/*
 		// handle skids
 		for (uint8_t i = 0; i < skids.size(); i++)
 		{
-			if (skids[i].ttl)
-			{
-				skids[i].update();
-				skids[i].draw();
-			}
-			else
-			{
-				skids.erase(i);
-				i--;
-			}
+		    if (skids[i].ttl)
+		    {
+		        skids[i].update();
+		        skids[i].draw();
+		    }
+		    else
+		    {
+		        skids.erase(i);
+		        i--;
+		    }
 		}
+		*/
 
 		if (health)
 		{
