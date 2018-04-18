@@ -23,9 +23,9 @@ struct Entity: Simple
 		{
 			x = 0;
 		}
-		else if (x + width > LEVEL_WIDTH)
+		else if (x + width > LEVEL_SIZE)
 		{
-			x = LEVEL_WIDTH - width;
+			x = LEVEL_SIZE - width;
 		}
 
 		// contain to the screen
@@ -33,9 +33,9 @@ struct Entity: Simple
 		{
 			y = 0;
 		}
-		else if (y + height > LEVEL_HEIGHT)
+		else if (y + height > LEVEL_SIZE)
 		{
-			y = LEVEL_HEIGHT - height;
+			y = LEVEL_SIZE - height;
 		}
 	}
 

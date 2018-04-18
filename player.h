@@ -8,7 +8,7 @@ struct Player: Car
 	Player()
 	{
 		angle = random(360);
-		x = random(LEVEL_WIDTH), y = random(LEVEL_HEIGHT);
+		x = random(LEVEL_SIZE), y = random(LEVEL_SIZE);
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 		frameCount = ANGLES - 1;

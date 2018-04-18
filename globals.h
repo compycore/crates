@@ -1,7 +1,6 @@
 // general global variables
 uint8_t ANGLES = 25;
-uint16_t LEVEL_WIDTH = 500;
-uint16_t LEVEL_HEIGHT = 500;
+uint16_t LEVEL_SIZE = 500;
 uint16_t SCORE = 0;
 
 // library imports
