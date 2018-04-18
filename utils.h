@@ -13,7 +13,7 @@ Point randomPoint(uint16_t size)
 	return point;
 }
 
-Point randomOffScreen(uint16_t size)
+Point randomPointOffCamera(uint16_t size)
 {
 	Point point = randomPoint(size);
 

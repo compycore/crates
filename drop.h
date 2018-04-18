@@ -1,6 +1,6 @@
 struct Drop: Entity
 {
-	Point spawnPoint = randomOffScreen(LEVEL_SIZE);
+	Point spawnPoint = randomPointOffCamera(LEVEL_SIZE);
 	Drop()
 	{
 		x = spawnPoint.x, y = spawnPoint.y;
