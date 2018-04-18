@@ -21,11 +21,15 @@ void loop()
 
 	drawGrid();
 
-	crate.update();
-	crate.draw();
-
-	drop.update();
-	drop.draw();
+	if (!player.hasCrate) {
+		crate.update();
+		crate.draw();
+		drawLocator(crate.x, crate.y, crate.width, crate.height, 2, false);
+	} else {
+		drop.update();
+		drop.draw();
+		drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
+	}
 
 	player.update();
 	player.draw();
@@ -35,13 +39,13 @@ void loop()
 	if (player.collide(crate.type, 0, crate.cbox))
 	{
 		// TODO make this more exciting for the player
-		crate = Crate(); // move the crate to a new spot
+		drop = Drop(); // move the drop to a new spot
 	}
 
 	if (player.collide(drop.type, 0, drop.cbox))
 	{
 		// TODO make this more exciting for the player
-		drop = Drop(); // move the drop to a new spot
+		crate = Crate(); // move the crate to a new spot
 	}
 
 	// increase the score just for surviving
@@ -105,12 +109,6 @@ void loop()
 				cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
 			}
 		}
-	}
-
-	if (!player.hasCrate) {
-		drawLocator(crate.x, crate.y, crate.width, crate.height, 2, false);
-	} else {
-		drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
 	}
 
 	drawNumber(2, 2, SCORE);

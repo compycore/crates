@@ -1,6 +1,6 @@
 struct Cop: Police
 {
-	Point spawnPoint = randomOffScreen(LEVEL_SIZE, LEVEL_SIZE);
+	Point spawnPoint = randomOffScreen(LEVEL_SIZE);
 	Cop()
 	{
 		x = spawnPoint.x, y = spawnPoint.y;

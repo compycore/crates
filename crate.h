@@ -1,6 +1,6 @@
 struct Crate: Entity
 {
-	Point spawnPoint = randomOffScreen(LEVEL_SIZE, LEVEL_SIZE);
+	Point spawnPoint = randomOffScreen(LEVEL_SIZE);
 	Crate()
 	{
 		x = spawnPoint.x, y = spawnPoint.y;
