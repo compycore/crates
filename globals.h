@@ -17,6 +17,9 @@ ArduboyTones sound(arduboy.audio.enabled);
 Sprites sprites;  // Use this to optimize for execution speed
 // SpritesB sprites; // Use this to (likely) optimize for code size
 
+// #include "cactus-image.h"
+// #include "cactus.h"
+
 // general image imports
 #include "numbers-image.h"
 #include "qrcode-image.h"
@@ -50,6 +53,9 @@ List<Dust, 4> dust; // same dust count as police with one additional for the pla
 #include "cop-image.h"
 #include "cop.h"
 List<Cop, 3> cops;
+
+#include "skid-image.h"
+#include "skid.h"
 
 // player needs to be after dust because it can create dust
 #include "player-image.h"

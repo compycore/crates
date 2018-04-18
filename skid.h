@@ -1,5 +1,7 @@
 struct Skid: Entity
 {
+	Skid() = default;
+
 	Skid(float X, float Y, uint8_t CurFrame)
 	{
 		x = X, y = Y;
@@ -16,15 +18,6 @@ struct Skid: Entity
 
 	void draw()
 	{
-		/*
-		if (angle > 90 && angle < 270)
-		{
-		    sketch(SKID[curFrame], WHITE, MIRROR_HORIZONTAL);
-		}
-		else
-		{
-		*/
-		// sketch(SKID);
-		// }
+		sketch(SKID, curFrame);
 	}
 };

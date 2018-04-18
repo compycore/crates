@@ -1,8 +1,4 @@
 #include "globals.h"
-// #include "cactus-image.h"
-// #include "cactus.h"
-// #include "skid-image.h"
-// #include "skid.h"
 
 void setup()
 {
