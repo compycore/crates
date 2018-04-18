@@ -1,8 +1,8 @@
 // general global variables
 uint16_t SCORE = 0;
-uint8_t ANGLES = 25;
-uint16_t LEVEL_SIZE = 400;
-uint8_t GRID_SIZE = LEVEL_SIZE / 5;
+uint8_t const PROGMEM ANGLES = 25;
+uint16_t const PROGMEM LEVEL_SIZE = 400;
+uint8_t const PROGMEM GRID_SIZE = LEVEL_SIZE / 5;
 
 // library imports
 #include <Arduboy2.h>
