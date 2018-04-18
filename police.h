@@ -1,6 +1,7 @@
 struct Police: Car
 {
 	bool braking = false;
+	float followTurnRate = 0.05;
 	bool flashing = false;
 
 	void follow(int X, int Y)
@@ -15,7 +16,7 @@ struct Police: Car
 
 			if (braking)
 			{
-				speed -= 0.02;
+				speed -= accel;
 			}
 
 			int angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;

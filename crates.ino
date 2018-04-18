@@ -23,11 +23,6 @@ void loop()
 
 	if (!(menu.show())) return; // show the menu if we haven't already picked an option
 
-	// TODO spawn randomly or based on player performance
-	if (!cops.full()) {
-		cops.add(Cop());
-	}
-
 	drawGrid();
 
 	crate.update();
@@ -38,6 +33,8 @@ void loop()
 
 	player.update();
 	player.draw();
+
+	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 
 	if (player.collide(crate.type, 0, crate.cbox))
 	{
@@ -72,7 +69,12 @@ void loop()
 		}
 	}
 
-	// handle cop
+	// TODO spawn cops randomly or based on player performance
+	if (!cops.full()) {
+		cops.add(Cop());
+	}
+
+	// handle cops
 	for (uint8_t i = 0; i < cops.size(); i++)
 	{
 		// TODO maybe do this inside the cop class...?
@@ -110,8 +112,6 @@ void loop()
 	drawLocator(crate.x, crate.y, crate.width, crate.height, 2);
 	drawLocator(drop.x, drop.y, drop.width, drop.height, 2, false);
 	drawNumber(2, 2, SCORE);
-
-	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 
 	if (player.health == 0) {
 		busted.gameOver();

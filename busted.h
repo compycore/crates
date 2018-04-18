@@ -14,7 +14,7 @@ typedef struct Busted
 		else
 		{
 			// after a pause, return to the menu and reset the player to play again
-			if (counter < 150)
+			if (counter < 225)
 			{
 				counter++;
 			}

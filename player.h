@@ -2,6 +2,8 @@ struct Player: Car
 {
 	// List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
 	bool hasCrate = false;
+	float turnRate = 3.5;
+	float maxReverseSpeed = -1;
 
 	Player()
 	{
@@ -40,6 +42,11 @@ struct Player: Car
 				decelerate();
 			}
 		}
+	}
+
+	void decelerate()
+	{
+		if (speed > maxReverseSpeed) speed -= accel * 2;
 	}
 
 	bool callback(char type, uint8_t damage)
