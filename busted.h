@@ -1,7 +1,7 @@
 // TODO maybe move this into menu.h
 typedef struct Busted
 {
-	uint8_t x = 31;
+	uint8_t const x = 31;
 	int8_t y = -46;
 	uint8_t counter = 0;
 
@@ -14,7 +14,7 @@ typedef struct Busted
 		else
 		{
 			// after a pause, return to the menu and reset the player to play again
-			if (counter < 225)
+			if (counter < 250)
 			{
 				counter++;
 			}
