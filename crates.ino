@@ -69,6 +69,21 @@ void loop()
 		}
 	}
 
+	// handle spikes
+	for (uint8_t i = 0; i < spikes.size(); i++)
+	{
+		// delete the spike if the player collides with it
+		// TODO make the player react to hitting a spike
+		if (player.collide(spikes[i].type, spikes[i].damage, spikes[i].cbox)) {
+			spikes.erase(i);
+			i--;
+			continue;
+		}
+
+		spikes[i].update();
+		spikes[i].draw();
+	}
+
 	// TODO spawn cops randomly or based on player performance
 	if (!cops.full()) cops.add(Cop());
 

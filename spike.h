@@ -1,5 +1,7 @@
 struct Spike: Entity
 {
+	uint8_t damage = 1;
+
 	Spike() = default;
 
 	Spike(float X, float Y)

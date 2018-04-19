@@ -10,7 +10,7 @@ struct Entity: Simple
 
 	float angle = 0;
 	float speed = 0;
-	float maxSpeed = 2;
+	uint8_t maxSpeed = 2;
 
 	void physics()
 	{

@@ -1,5 +1,7 @@
 struct Dust: Entity
 {
+	uint8_t animFreq = 0;
+
 	Dust() = default;
 
 	Dust(float X, float Y, float Angle, float Speed)
@@ -12,6 +14,21 @@ struct Dust: Entity
 		animFreq = 8;
 
 		ttl = frameCount;
+	}
+
+	void animate()
+	{
+		if (arduboy.everyXFrames(animFreq))
+		{
+			if (curFrame < frameCount - 1)
+			{
+				curFrame += 1;
+			}
+			else
+			{
+				curFrame = 0;
+			}
+		}
 	}
 
 	void update()

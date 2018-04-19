@@ -12,7 +12,7 @@ https://felipemanga.github.io/ProjectABE/?skin=Arduboy&url=https://cdn.rawgit.co
 1. 400 - 2 cops 1 SWAT
 1. 500 - 3 cops 1 SWAT
 1. 500 - 3 cops 2 SWAT
-1. 600 - 4 cops 4 SWAT
+1. 600 - 3 cops 3 SWAT
 
 ## Notes
 ### General
