@@ -2,6 +2,9 @@ struct Entity: Simple
 {
 	uint8_t width = 0, height = 0;
 
+	uint8_t frameCount = 0;
+	uint8_t curFrame = 0;
+
 	float angle = 0;
 	float speed = 0;
 	uint8_t maxSpeed = 2;

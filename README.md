@@ -6,13 +6,13 @@ https://felipemanga.github.io/ProjectABE/?skin=Arduboy&url=https://cdn.rawgit.co
 ## Stages
 > 7 stages
 
-1. 300 - 1 cop
-1. 300 - 2 cops
-1. 400 - 3 cops
-1. 400 - 2 cops 1 SWAT
-1. 500 - 3 cops 1 SWAT
-1. 500 - 3 cops 2 SWAT
-1. 600 - 3 cops 3 SWAT
+1. 250 - 1 cop
+1. 250 - 2 cops
+1. 300 - 3 cops
+1. 300 - 2 cops 1 SWAT
+1. 250 - 2 cops 1 SWAT
+1. 300 - 3 cops 2 SWAT
+1. 300 - 3 cops 3 SWAT
 
 ## Notes
 ### General
