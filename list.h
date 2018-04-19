@@ -34,7 +34,7 @@ struct List
 	};
 
 	// delete an index
-	void erase(uint8_t index)
+	void erase(uint8_t const &index)
 	{
 		for (uint8_t i = index; i < d_size; i++)
 		{
@@ -45,7 +45,7 @@ struct List
 	}
 
 	// getter
-	T &operator[](uint8_t idx)
+	T &operator[](uint8_t const &idx)
 	{
 		return d_data[idx];
 	}
