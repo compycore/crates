@@ -50,7 +50,7 @@ struct Entity: Simple
 		return false;  // return false if the object isn't deleted because of the collision
 	}
 
-	bool collide(char type, uint8_t damage, Rect other)
+	bool collide(char const &type, uint8_t const &damage, Rect const &other)
 	{
 		if (arduboy.collide(cbox, other)) // preliminary solid collisions
 		{

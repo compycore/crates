@@ -4,7 +4,7 @@ struct Police: Car
 	bool flashing = false;
 	float followTurnRate = 0.05;
 
-	void follow(int X, int Y)
+	void follow(uint16_t const X, uint16_t const Y)
 	{
 		if (speed > turnSpeed)
 		{
@@ -46,7 +46,7 @@ struct Police: Car
 	}
 
 	// flash the lights
-	void flash(uint8_t xOffset, uint8_t yOffset)
+	void flash(uint8_t const xOffset, uint8_t const yOffset)
 	{
 		if (arduboy.everyXFrames(10))
 		{

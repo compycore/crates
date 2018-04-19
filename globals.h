@@ -1,8 +1,8 @@
 // general global variables
 uint16_t SCORE = 0;
-uint8_t ANGLES = 25;
-uint16_t LEVEL_SIZE = 400;
-uint8_t GRID_SIZE = LEVEL_SIZE / 5;
+uint8_t const PROGMEM ANGLES = 25;
+uint16_t const PROGMEM LEVEL_SIZE = 400;
+uint8_t const PROGMEM GRID_SIZE = LEVEL_SIZE / 5;
 
 // library imports
 #include <Arduboy2.h>
@@ -48,11 +48,19 @@ Menu menu;
 
 #include "dust-image.h"
 #include "dust.h"
-List<Dust, 4> dust; // same dust count as police with one additional for the player
+List<Dust, 6> dust; // same dust count as police with one additional for the player
+
+#include "spike-image.h"
+#include "spike.h"
+List<Spike, 5> spikes; // same dust count as police with one additional for the player
 
 #include "cop-image.h"
 #include "cop.h"
-List<Cop, 3> cops;
+List<Cop, 5> cops;
+
+#include "swat-image.h"
+#include "swat.h"
+List<Swat, 2> swat;
 
 // #include "skid-image.h"
 // #include "skid.h"

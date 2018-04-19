@@ -1,9 +1,9 @@
-uint8_t angleToFrame(float angle, uint8_t frameCount)
+uint8_t angleToFrame(float const &angle, uint8_t const &frameCount)
 {
 	return (uint8_t)(angle / 360 * frameCount);
 }
 
-Point randomPoint(uint16_t size)
+Point randomPoint(uint16_t const &size)
 {
 	uint8_t padding = 15; // don't pick a point near the edge of the screen
 	Point point;
@@ -14,7 +14,7 @@ Point randomPoint(uint16_t size)
 	return point;
 }
 
-Point randomPointOffCamera(uint16_t size)
+Point randomPointOffCamera(uint16_t const &size)
 {
 	Point point = randomPoint(size);
 
@@ -26,7 +26,7 @@ Point randomPointOffCamera(uint16_t size)
 	return point;
 }
 
-float distanceBetween(float x1, float y1, float x2, float y2)
+float distanceBetween(float const &x1, float const &y1, float const &x2, float const &y2)
 {
 	float xDiff = x2 - x1;
 	float yDiff = y2 - y1;
@@ -36,14 +36,14 @@ float distanceBetween(float x1, float y1, float x2, float y2)
 
 float normalizeAngle(float angle)
 {
-	angle = int(angle) % 360;
+	int16_t normalized = int16_t(angle) % 360;
 
-	if (angle < 0) angle += 360;
+	if (normalized < 0) normalized += 360;
 
-	return angle;
+	return normalized;
 }
 
-float findAngle(int x1, int y1, int x2, int y2)
+float findAngle(int16_t const &x1, int16_t const &y1, int16_t const &x2, int16_t const &y2)
 {
 	return atan2(y2 - y1, x1 - x2);
 }
@@ -63,7 +63,7 @@ void drawGrid()
 	}
 }
 
-void drawNumber(uint8_t x, uint8_t y, uint16_t number, uint8_t maxDigits = 6)
+void drawNumber(uint8_t x, uint8_t y, uint16_t const &number, uint8_t const &maxDigits = 6)
 {
 	uint8_t visualWidth = 5;
 	char chars[maxDigits];
@@ -83,7 +83,7 @@ void drawNumber(uint8_t x, uint8_t y, uint16_t number, uint8_t maxDigits = 6)
 	}
 }
 
-void drawLocator(float xTarget, float yTarget, uint8_t width, uint8_t height, uint8_t radius = 1, bool filled = true)
+void drawLocator(float const &xTarget, float const &yTarget, uint8_t const &width, uint8_t const &height, uint8_t radius = 1, bool const &filled = true)
 {
 	if (!camera.canSee(xTarget, yTarget, width, height))
 	{

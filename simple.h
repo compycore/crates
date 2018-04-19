@@ -21,7 +21,7 @@ struct Simple
 		}
 	}
 
-	void sketch(const uint8_t sprite[], const uint8_t frame = 0)
+	void sketch(uint8_t const sprite[], uint8_t const frame = 0)
 	{
 		sprites.drawSelfMasked((int16_t) (x - camera.x), (int16_t) (y - camera.y), sprite, frame);
 	}
