@@ -54,6 +54,10 @@ List<Dust, 4> dust; // same dust count as police with one additional for the pla
 #include "cop.h"
 List<Cop, 3> cops;
 
+#include "swat-image.h"
+#include "swat.h"
+List<Swat, 2> swat;
+
 // #include "skid-image.h"
 // #include "skid.h"
 
