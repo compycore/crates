@@ -1,4 +1,4 @@
-struct Spike: Entity
+struct Spike: Solid
 {
 	uint8_t damage = 1;
 

@@ -34,6 +34,7 @@ Camera camera;
 #include "list.h"
 #include "simple.h"
 #include "entity.h"
+#include "solid.h"
 #include "car.h"
 #include "police.h"
 

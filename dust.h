@@ -1,5 +1,6 @@
 struct Dust: Entity
 {
+	uint8_t ttl = 0;
 	uint8_t animFreq = 0;
 
 	Dust() = default;

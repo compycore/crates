@@ -1,4 +1,4 @@
-struct Crate: Entity
+struct Crate: Solid
 {
 	Point spawnPoint = randomPointOffCamera(LEVEL_SIZE);
 	Crate()

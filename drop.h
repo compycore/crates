@@ -1,4 +1,4 @@
-struct Drop: Entity
+struct Drop: Solid
 {
 	Point spawnPoint = randomPointOffCamera(LEVEL_SIZE);
 	Drop()
