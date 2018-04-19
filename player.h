@@ -16,6 +16,11 @@ struct Player: Car
 		type = 'P';
 	}
 
+	void increaseScore(uint8_t const &increase)
+	{
+		if (health) SCORE += increase;
+	}
+
 	void control()
 	{
 		if (health)
@@ -78,7 +83,7 @@ struct Player: Car
 				// TODO game over condition
 				health = 0;
 				speed = 0;
-				dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
+				if (!dust.full()) dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
 			}
 
 			return false;
@@ -86,13 +91,13 @@ struct Player: Car
 		else if (type == 'C')
 		{
 			hasCrate = true;
-			SCORE += 5;
+			increaseScore(5);
 			return true; // delete the crate
 		}
 		else if (type == 'D')
 		{
 			hasCrate = false;
-			SCORE += 10;
+			increaseScore(15);
 			return true; // delete the drop point
 		}
 

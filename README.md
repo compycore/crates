@@ -22,11 +22,13 @@ https://felipemanga.github.io/ProjectABE/?skin=Arduboy&url=https://cdn.rawgit.co
 #### Cops
 - Cops are fast (same speed as player)
 - Cops can take one hit
+- Destruction increases score by 3
 
 #### SWAT Vans
 - Go slower (0.5 cop speed)
 - Can take three hits
 - Drop tire spikes
+- Destruction increases score by 6
 
 ### Items
 #### Crate

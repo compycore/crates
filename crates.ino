@@ -49,9 +49,9 @@ void loop()
 	}
 
 	// increase the score just for surviving
-	if (player.health && arduboy.everyXFrames(60))
+	if (arduboy.everyXFrames(60))
 	{
-		SCORE++;
+		player.increaseScore(1);
 	}
 
 	// handle dust
@@ -70,46 +70,37 @@ void loop()
 	}
 
 	// TODO spawn cops randomly or based on player performance
-	if (!cops.full()) {
-		cops.add(Cop());
-	}
+	if (!cops.full()) cops.add(Cop());
 
 	// handle cops
 	for (uint8_t i = 0; i < cops.size(); i++)
 	{
-		// TODO maybe do this inside the cop class...?
-		// erase cops if they have no health
-		if (cops[i].health == 0) {
-			if (player.health) {
-				SCORE += 3; // award the player for destroying a cop
+		// check for collisions with other cops
+		for (uint8_t j = 0; j < cops.size(); j++)
+		{
+			if (j != i) {
+				if (cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox)) {
+					if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
+					player.increaseScore(3); // award the player for destroying a cop
+					cops.erase(i);
+					i--;
+					continue;
+				}
 			}
-
-			dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2));
-			cops.erase(i);
-			i--;
-			continue;
 		}
-
-		cops[i].update();
-		cops[i].draw();
-
-		// the magic number here represents the distance at which the indicator starts to grow
-		uint8_t locatorRadius = 200 / distanceBetween(player.x, player.y, cops[i].x, cops[i].y);
-		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height, locatorRadius);
 
 		// only collide with the player if it still exists
 		if (player.health) {
 			player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
 		}
 
+		cops[i].update();
+		cops[i].draw();
 		cops[i].follow(player.x, player.y);
 
-		for (uint8_t j = 0; j < cops.size(); j++)
-		{
-			if (j != i) {
-				cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox);
-			}
-		}
+		// the magic number here represents the distance at which the indicator starts to grow
+		uint8_t locatorRadius = 200 / distanceBetween(player.x, player.y, cops[i].x, cops[i].y);
+		drawLocator(cops[i].x, cops[i].y, cops[i].width, cops[i].height, locatorRadius);
 	}
 
 	drawNumber(2, 2, SCORE);
