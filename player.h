@@ -81,7 +81,6 @@ struct Player: Car
 			}
 			else
 			{
-				// TODO game over condition
 				health = 0;
 				speed = 0;
 				if (!dust.full()) dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));

@@ -5,7 +5,7 @@ struct Dust: Entity
 
 	Dust() = default;
 
-	Dust(float X, float Y, float Angle, float Speed)
+	Dust(float const &X, float const &Y, float const &Angle, float const &Speed)
 	{
 		x = X, y = Y;
 		angle = Angle;

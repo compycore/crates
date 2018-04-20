@@ -67,7 +67,6 @@ typedef struct Menu
 			arduboy.fillRect(selectionX, 55, 23, 10);
 			arduboy.drawRect(selectionX - 1, 54, 25, 11, BLACK);
 
-			// TODO Use magic numbers
 			// buttons
 			sprites.drawPlusMask(16, 56, MENU_INFO, 0);
 			sprites.drawPlusMask(41, 56, MENU_PLAY, 0);

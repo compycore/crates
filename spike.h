@@ -4,7 +4,7 @@ struct Spike: Solid
 
 	Spike() = default;
 
-	Spike(float X, float Y)
+	Spike(float const &X, float const &Y)
 	{
 		x = X, y = Y;
 		width = 7, height = 8;
