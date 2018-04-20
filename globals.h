@@ -53,7 +53,7 @@ List<Dust, 9> dust; // same dust count as police with one additional for the pla
 
 #include "spike-image.h"
 #include "spike.h"
-List<Spike, 5> spikes;
+List<Spike, 3> spikes;
 
 #include "cop-image.h"
 #include "cop.h"
