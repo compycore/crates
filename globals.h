@@ -49,19 +49,19 @@ Menu menu;
 
 #include "dust-image.h"
 #include "dust.h"
-List<Dust, 7> dust; // same dust count as police with one additional for the player
+List<Dust, 9> dust; // same dust count as police with one additional for the player
 
 #include "spike-image.h"
 #include "spike.h"
-List<Spike, 3> spikes;
+List<Spike, 5> spikes;
 
 #include "cop-image.h"
 #include "cop.h"
-List<Cop, 3> cops;
+List<Cop, 4> cops;
 
 #include "swat-image.h"
 #include "swat.h"
-List<Swat, 3> swat;
+List<Swat, 4> swat;
 
 // #include "skid-image.h"
 // #include "skid.h"
