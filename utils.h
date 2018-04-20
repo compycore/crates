@@ -65,19 +65,18 @@ void drawGrid()
 
 void drawNumber(uint8_t x, uint8_t const &y, uint16_t const &number)
 {
-	char static chars[6];
-	itoa(number, chars, 10);
+	itoa(number, VISUAL_SCORE, 10);
 
 	// pad the score with zeroes
-	for (uint8_t i = 0; i < 6 - strlen(chars); i++)
+	for (uint8_t i = 0; i < 6 - strlen(VISUAL_SCORE); i++)
 	{
 		sprites.drawPlusMask(x, y, NUMBERS, 0);
 		x += 5;
 	}
 
-	for (uint8_t i = 0; i < strlen(chars); i++)
+	for (uint8_t i = 0; i < strlen(VISUAL_SCORE); i++)
 	{
-		sprites.drawPlusMask(x, y, NUMBERS, uint8_t(chars[i]) - 48);
+		sprites.drawPlusMask(x, y, NUMBERS, uint8_t(VISUAL_SCORE[i]) - 48);
 		x += 5;
 	}
 }
@@ -101,31 +100,28 @@ void drawLocator(float const &xTarget, float const &yTarget, uint8_t const &widt
 
 		float slope = yTargetCenter / xTargetCenter;
 
-		int8_t paddedWidth = 126;
-		int8_t paddedHeight = 62;
-
 		// calculate indicator position if above or below
 		if (yTargetCenter < 0) // top of screen
 		{
-			xLocator = (-paddedHeight / 2) / slope;
-			yLocator = -paddedHeight / 2;
+			xLocator = (-31) / slope;
+			yLocator = -31;
 		}
 		else // bottom of screen
 		{
-			xLocator = (paddedHeight / 2) / slope;
-			yLocator = paddedHeight / 2 - 1;
+			xLocator = (31) / slope;
+			yLocator = 31 - 1;
 		}
 
 		//calculate indicator position if left or right
-		if (xLocator < -paddedWidth / 2) // left side
+		if (xLocator < -63) // left side
 		{
-			xLocator = -paddedWidth / 2;
-			yLocator = slope * -paddedWidth / 2;
+			xLocator = -63;
+			yLocator = slope * -63;
 		}
-		else if (xLocator > paddedWidth / 2) // right side
+		else if (xLocator > 63) // right side
 		{
-			xLocator = paddedWidth / 2 - 1;
-			yLocator = slope * paddedWidth / 2;
+			xLocator = 63 - 1;
+			yLocator = slope * 63;
 		}
 
 		// apply position after changing the coordinate system back to normal
