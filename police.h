@@ -4,16 +4,14 @@ struct Police: Car
 	bool flashing = false;
 	float followTurnRate = 0.05;
 
-	void follow(uint16_t const X, uint16_t const Y)
+	void follow(uint16_t const &X, uint16_t const &Y)
 	{
 		if (speed > turnSpeed)
 		{
 			// randomly toggle brake on occasion
 			if (arduboy.everyXFrames(10))
 			{
-				uint8_t chance = random(10);
-
-				if (chance < 3)
+				if (random(10) < 3)
 				{
 					braking = !braking;
 				}
@@ -24,6 +22,7 @@ struct Police: Car
 				speed -= accel * 2; // multiply to override the constant police acceleration
 			}
 
+			// TODO this can be cleaned up
 			int16_t angleToTarget = findAngle(x, y, X, Y) * 57296 / 1000 + 180;
 			float shortest_angle = ((((angleToTarget - int16_t(angle)) % 360) + 540) % 360) - 180;
 			angle += shortest_angle * (followTurnRate + speed / 50);
@@ -46,16 +45,9 @@ struct Police: Car
 	}
 
 	// flash the lights
-	void flash(uint8_t const xOffset, uint8_t const yOffset)
+	void flash(uint8_t const &xOffset, uint8_t const &yOffset)
 	{
-		if (arduboy.everyXFrames(10))
-		{
-			flashing = !flashing;
-		}
-
-		if (flashing)
-		{
-			arduboy.fillRect(x - camera.x + width / 2 - xOffset, y - camera.y + height / 2 - yOffset, 7, 3, WHITE);
-		}
+		if (arduboy.everyXFrames(10)) flashing = !flashing;
+		if (flashing) arduboy.fillRect(x - camera.x + width / 2 - xOffset, y - camera.y + height / 2 - yOffset, 7, 3, WHITE);
 	}
 };

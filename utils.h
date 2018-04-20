@@ -34,7 +34,7 @@ float distanceBetween(float const &x1, float const &y1, float const &x2, float c
 	return sqrt(xDiff * xDiff + yDiff * yDiff);
 }
 
-float normalizeAngle(float angle)
+float normalizeAngle(float const &angle)
 {
 	int16_t normalized = int16_t(angle) % 360;
 
@@ -63,23 +63,22 @@ void drawGrid()
 	}
 }
 
-void drawNumber(uint8_t x, uint8_t y, uint16_t const &number, uint8_t const &maxDigits = 6)
+void drawNumber(uint8_t x, uint8_t const &y, uint16_t const &number)
 {
-	uint8_t visualWidth = 5;
-	char chars[maxDigits];
+	char static chars[6];
 	itoa(number, chars, 10);
 
 	// pad the score with zeroes
-	for (uint8_t i = 0; i < maxDigits - strlen(chars); i++)
+	for (uint8_t i = 0; i < 6 - strlen(chars); i++)
 	{
 		sprites.drawPlusMask(x, y, NUMBERS, 0);
-		x += visualWidth;
+		x += 5;
 	}
 
 	for (uint8_t i = 0; i < strlen(chars); i++)
 	{
 		sprites.drawPlusMask(x, y, NUMBERS, uint8_t(chars[i]) - 48);
-		x += visualWidth;
+		x += 5;
 	}
 }
 

@@ -1,5 +1,6 @@
 struct Cop: Police
 {
+	// TODO can this be a non-local?
 	Point spawnPoint = randomPointOffCamera(LEVEL_SIZE);
 	Cop()
 	{

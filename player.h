@@ -27,6 +27,7 @@ struct Player: Car
 		{
 			if (speed > turnSpeed)
 			{
+				// TODO does this need to be a local variable?
 				float turnRateModifier = speed / maxSpeed - 1;
 
 				if (arduboy.pressed(LEFT_BUTTON))
