@@ -9,6 +9,8 @@ struct Entity: Simple
 	float speed = 0;
 	uint8_t maxSpeed = 2;
 
+	bool contain = false;
+
 	void physics()
 	{
 		// apply momentum according to the current angle
@@ -16,23 +18,26 @@ struct Entity: Simple
 		y -= speed * sin(angle * 1000 / 57296);
 
 		// contain to the screen
-		if (x < 0)
+		if (contain)
 		{
-			x = 0;
-		}
-		else if (x + width > LEVEL_SIZE)
-		{
-			x = LEVEL_SIZE - width;
-		}
+			if (x < 0)
+			{
+				x = 0;
+			}
+			else if (x + width > LEVEL_SIZE)
+			{
+				x = LEVEL_SIZE - width;
+			}
 
-		// contain to the screen
-		if (y < 0)
-		{
-			y = 0;
-		}
-		else if (y + height > LEVEL_SIZE)
-		{
-			y = LEVEL_SIZE - height;
+			// contain to the screen
+			if (y < 0)
+			{
+				y = 0;
+			}
+			else if (y + height > LEVEL_SIZE)
+			{
+				y = LEVEL_SIZE - height;
+			}
 		}
 	}
 };

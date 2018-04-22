@@ -7,8 +7,8 @@ Point randomPoint(uint16_t const &size)
 {
 	Point point;
 
-	point.x = random(size - 30) + 15;
-	point.y = random(size - 30) + 15;
+	point.x = random(size - 32) + 16;
+	point.y = random(size - 32) + 16;
 
 	return point;
 }
@@ -17,7 +17,7 @@ Point randomPointOffCamera(uint16_t const &size)
 {
 	Point point = randomPoint(size);
 
-	if (camera.canSee(point.x, point.y, 1, 1))
+	while (camera.canSee(point.x, point.y, 0, 0))
 	{
 		point = randomPoint(size);
 	}

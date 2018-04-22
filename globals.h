@@ -79,11 +79,11 @@ Player player;
 
 #include "crate-image.h"
 #include "crate.h"
-Crate crate;
+Crate crate = Crate(randomPointOffCamera(LEVEL_SIZE));
 
 #include "drop-image.h"
 #include "drop.h"
-Drop drop;
+Drop drop = Drop(randomPointOffCamera(LEVEL_SIZE));
 
 #include "busted-image.h"
 #include "busted.h"

@@ -14,6 +14,7 @@ struct Player: Car
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 		frameCount = ANGLES - 1;
 		health = 20;
+		contain = true;
 		type = 'P';
 	}
 

@@ -10,12 +10,12 @@ void setup()
 void loop()
 {
 	// arduboy setup for each frame
-	if (!(arduboy.nextFrame())) return;
+	if (!arduboy.nextFrame()) return;
 	arduboy.pollButtons();
 
-	if (!(compycore.introduce())) return; // draw the intro logo if we haven't finished that already
+	if (!compycore.introduce()) return; // draw the intro logo if we haven't finished that already
 
-	if (!(menu.show())) return; // show the menu if we haven't already picked an option
+	if (!menu.show()) return; // show the menu if we haven't already picked an option
 
 	drawGrid();
 
@@ -37,13 +37,13 @@ void loop()
 	if (collide(player.cbox, crate.cbox) && player.callback(crate))
 	{
 		// TODO make this more exciting for the player
-		drop = Drop(); // move the drop to a new spot
+		drop = Drop(randomPointOffCamera(LEVEL_SIZE)); // move the drop to a new spot
 	}
 
 	if (collide(player.cbox, drop.cbox) && player.callback(drop))
 	{
 		// TODO make this more exciting for the player
-		crate = Crate(); // move the crate to a new spot
+		crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
 	}
 
 	// increase the score just for surviving
@@ -83,7 +83,7 @@ void loop()
 	}
 
 	// TODO spawn cops randomly or based on player performance
-	if (!cops.full()) cops.add(Cop());
+	if (!cops.full()) cops.add(Cop(randomPointOffCamera(LEVEL_SIZE)));
 
 	// handle cops
 	for (uint8_t i = 0; i < cops.size(); i++)

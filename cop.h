@@ -1,10 +1,10 @@
 struct Cop: Police
 {
-	Cop()
+	Cop() = default;
+
+	Cop(Point spawn)
 	{
-		// TODO can this be a non-local?
-		Point spawnPoint = randomPointOffCamera(LEVEL_SIZE);
-		x = spawnPoint.x, y = spawnPoint.y;
+		x = spawn.x, y = spawn.y;
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
