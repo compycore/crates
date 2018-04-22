@@ -75,6 +75,8 @@ struct Player: Car
 	{
 		if (other.type == 'E') // normal police
 		{
+			SCORE = other.damage;
+
 			if (health > other.damage)
 			{
 				health -= other.damage;

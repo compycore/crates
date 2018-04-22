@@ -13,6 +13,7 @@ struct Swat: Police
 		frameCount = ANGLES - 1;
 
 		type = 'E';
+		damage = 5;
 	}
 
 	void update()

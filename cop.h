@@ -14,6 +14,7 @@ struct Cop: Police
 		frameCount = ANGLES - 1;
 
 		type = 'E';
+		damage = 3;
 	}
 
 	void update()

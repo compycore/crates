@@ -9,8 +9,6 @@ void setup()
 
 void loop()
 {
-	// arduboy.setCursor(0,0);
-
 	// arduboy setup for each frame
 	if (!(arduboy.nextFrame())) return;
 	arduboy.pollButtons();
