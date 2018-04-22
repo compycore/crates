@@ -36,6 +36,7 @@ Camera camera;
 #include "simple.h"
 #include "entity.h"
 #include "solid.h"
+#include "collisions.h"
 #include "car.h"
 #include "police.h"
 

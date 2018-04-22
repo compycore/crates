@@ -29,13 +29,13 @@ struct Police: Car
 		}
 	}
 
-	bool callback(char type, uint8_t damage)
+	bool callback(Solid const &other)
 	{
-		if (type == 'E') // only take damage from other cops
+		if (other.type == 'E') // only take damage from other cops
 		{
-			if (health > damage)
+			if (health > other.damage)
 			{
-				health -= damage;
+				health -= other.damage;
 				return false;
 			}
 

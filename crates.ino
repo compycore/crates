@@ -36,13 +36,13 @@ void loop()
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 
-	if (player.collide(crate.type, 0, crate.cbox))
+	if (arduboy.collide(player.cbox, crate.cbox) && player.callback(crate))
 	{
 		// TODO make this more exciting for the player
 		drop = Drop(); // move the drop to a new spot
 	}
 
-	if (player.collide(drop.type, 0, drop.cbox))
+	if (arduboy.collide(player.cbox, drop.cbox) && player.callback(drop))
 	{
 		// TODO make this more exciting for the player
 		crate = Crate(); // move the crate to a new spot
@@ -74,7 +74,7 @@ void loop()
 	{
 		// delete the spike if the player collides with it
 		// TODO make the player react to hitting a spike
-		if (player.collide(spikes[i].type, spikes[i].damage, spikes[i].cbox)) {
+		if (arduboy.collide(player.cbox, spikes[i].cbox) && player.callback(spikes[i])) {
 			spikes.erase(i);
 			i--;
 			continue;
@@ -94,7 +94,7 @@ void loop()
 		for (uint8_t j = 0; j < cops.size(); j++)
 		{
 			if (j != i) {
-				if (cops[i].collide(cops[j].type, cops[j].damage, cops[j].cbox)) {
+				if (arduboy.collide(cops[i].cbox, cops[j].cbox) && cops[i].callback(cops[j])) {
 					if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
 					player.increaseScore(3); // award the player for destroying a cop
 					cops.erase(i);
@@ -106,7 +106,7 @@ void loop()
 
 		// only collide with the player if it still exists
 		if (player.health) {
-			player.collide(cops[i].type, cops[i].damage, cops[i].cbox);
+			if (arduboy.collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
 		}
 
 		cops[i].update();

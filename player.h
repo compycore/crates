@@ -71,13 +71,13 @@ struct Player: Car
 		}
 	}
 
-	bool callback(char type, uint8_t damage)
+	bool callback(Solid const &other)
 	{
-		if (type == 'E')   // normal police
+		if (other.type == 'E') // normal police
 		{
-			if (health > damage)
+			if (health > other.damage)
 			{
-				health -= damage;
+				health -= other.damage;
 			}
 			else
 			{
@@ -88,13 +88,13 @@ struct Player: Car
 
 			return false;
 		}
-		else if (type == 'C')
+		else if (other.type == 'C')
 		{
 			hasCrate = true;
 			increaseScore(5);
 			return true; // delete the crate
 		}
-		else if (type == 'D')
+		else if (other.type == 'D')
 		{
 			hasCrate = false;
 			increaseScore(15);

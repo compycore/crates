@@ -5,11 +5,10 @@ uint8_t angleToFrame(float const &angle, uint8_t const &frameCount)
 
 Point randomPoint(uint16_t const &size)
 {
-	uint8_t padding = 15; // don't pick a point near the edge of the screen
 	Point point;
 
-	point.x = random(size - padding * 2) + padding;
-	point.y = random(size - padding * 2) + padding;
+	point.x = random(size - 30) + 15;
+	point.y = random(size - 30) + 15;
 
 	return point;
 }
@@ -18,9 +17,9 @@ Point randomPointOffCamera(uint16_t const &size)
 {
 	Point point = randomPoint(size);
 
-	while (camera.canSee(point.x, point.y, 0, 0))
+	if (camera.canSee(point.x, point.y, 1, 1))
 	{
-		point = randomPoint(size);
+		point.x += 100;
 	}
 
 	return point;
