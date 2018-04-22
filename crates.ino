@@ -88,6 +88,11 @@ void loop()
 	// handle cops
 	for (uint8_t i = 0; i < cops.size(); i++)
 	{
+		// only collide with the player if it still exists
+		if (player.health) {
+			// if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
+		}
+
 		// check for collisions with other cops
 		for (uint8_t j = 0; j < cops.size(); j++)
 		{
@@ -103,11 +108,6 @@ void loop()
 					}
 				}
 			}
-		}
-
-		// only collide with the player if it still exists
-		if (player.health) {
-			// if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
 		}
 
 		cops[i].update();

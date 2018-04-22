@@ -2,6 +2,7 @@ struct Player: Car
 {
 	// List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
 	bool hasCrate = false;
+	uint8_t spiked = 0;
 	float turnRate = 3.5;
 	float maxReverseSpeed = -1;
 
@@ -103,6 +104,12 @@ struct Player: Car
 			increaseScore(15);
 			return true; // delete the drop point
 		}
+		else if (other.type == 'S') // spikes
+		{
+			spiked += 3; // seconds
+			maxSpeed = 1; // cut max speed in half
+			return true; // delete the spike
+		}
 
 		return false;
 	}
@@ -114,6 +121,15 @@ struct Player: Car
 		updateCbox();
 		updateAngle();
 
+		// decrease the spike effect ttl 1 per second
+		if (spiked && arduboy.everyXFrames(60))
+		{
+			spiked--;
+		}
+		else
+		{
+			maxSpeed = 2;
+		};
 	}
 
 	void draw()
