@@ -94,13 +94,16 @@ void loop()
 		for (uint8_t j = 0; j < cops.size(); j++)
 		{
 			if (j != i) {
-				// if (collide(cops[i].cbox, cops[j].cbox) && cops[i].callback(cops[j])) {
 				if (collide(cops[i].cbox, cops[j].cbox)) {
-					if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
-					player.increaseScore(3); // award the player for destroying a cop
-					cops.erase(i);
-					i--;
-					continue;
+					if (cops[i].callback(cops[j])) {
+						if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
+						player.increaseScore(3); // award the player for destroying a cop
+						cops.erase(i);
+						i--;
+						continue;
+					} else {
+						separate(cops[i], cops[j]);
+					}
 				}
 			}
 		}
