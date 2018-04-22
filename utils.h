@@ -13,13 +13,13 @@ Point randomPoint(uint16_t const &size)
 	return point;
 }
 
-Point randomPointOffCamera(uint16_t const &size)
+Point randomPointOffCameraOffCamera(uint16_t const &size)
 {
 	Point point = randomPoint(size);
 
 	if (camera.canSee(point.x, point.y, 1, 1))
 	{
-		point.x += 100;
+		point = randomPoint(size);
 	}
 
 	return point;
