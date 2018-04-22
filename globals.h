@@ -30,13 +30,17 @@ Sprites sprites;  // Use this to optimize for execution speed
 #include "camera.h"
 Camera camera;
 
-// general engine imports
-#include "utils.h"
-#include "list.h"
+// general engine class imports
 #include "simple.h"
 #include "entity.h"
 #include "solid.h"
+
+// engine utility imports
+#include "list.h"
 #include "collisions.h"
+#include "utils.h"
+
+// specialty engine class imports
 #include "car.h"
 #include "police.h"
 

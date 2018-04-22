@@ -83,6 +83,7 @@ struct Player: Car
 			{
 				health = 0;
 				speed = 0;
+				// TODO maybe move this to .ino
 				if (!dust.full()) dust.add(Dust(x + width / 2 - 4, y + height / 2 - 4, angle, speed / 2));
 			}
 

@@ -28,7 +28,7 @@ struct List
 		return Capacity;
 	};
 
-	bool full() const
+	bool full()
 	{
 		return d_size == Capacity;
 	};
@@ -45,8 +45,8 @@ struct List
 	}
 
 	// getter
-	T &operator[](uint8_t const &idx)
+	T &operator[](uint8_t const &index)
 	{
-		return d_data[idx];
+		return d_data[index];
 	}
 };

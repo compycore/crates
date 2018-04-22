@@ -13,7 +13,7 @@ Point randomPoint(uint16_t const &size)
 	return point;
 }
 
-Point randomPointOffCameraOffCamera(uint16_t const &size)
+Point randomPointOffCamera(uint16_t const &size)
 {
 	Point point = randomPoint(size);
 
@@ -80,12 +80,12 @@ void drawNumber(uint8_t x, uint8_t const &y, uint16_t const &number)
 	}
 }
 
-void drawLocator(float const &xTarget, float const &yTarget, uint8_t const &width, uint8_t const &height, uint8_t radius = 1, bool const &filled = true)
+void drawLocator(Entity const &target, uint8_t radius = 1, bool const &filled = true)
 {
-	if (!camera.canSee(xTarget, yTarget, width, height))
+	if (!camera.canSee(target.x, target.y, target.width, target.height))
 	{
-		int16_t xLocator;
-		int16_t yLocator;
+		int16_t x;
+		int16_t y;
 
 		// don't make the indicators too big
 		if (radius > 2)
@@ -94,43 +94,43 @@ void drawLocator(float const &xTarget, float const &yTarget, uint8_t const &widt
 		}
 
 		// change coordinate space again to center of screen
-		float xTargetCenter = xTarget - camera.x - 64;
-		float yTargetCenter = yTarget - camera.y - 32;
+		float xCenter = target.x - camera.x - 64;
+		float yCenter = target.y - camera.y - 32;
 
-		float slope = yTargetCenter / xTargetCenter;
+		float slope = yCenter / xCenter;
 
 		// calculate indicator position if above or below
-		if (yTargetCenter < 0) // top of screen
+		if (yCenter < 0) // top of screen
 		{
-			xLocator = (-31) / slope;
-			yLocator = -31;
+			x = (-31) / slope;
+			y = -31;
 		}
 		else // bottom of screen
 		{
-			xLocator = (31) / slope;
-			yLocator = 31 - 1;
+			x = (31) / slope;
+			y = 31 - 1;
 		}
 
 		//calculate indicator position if left or right
-		if (xLocator < -63) // left side
+		if (x < -63) // left side
 		{
-			xLocator = -63;
-			yLocator = slope * -63;
+			x = -63;
+			y = slope * -63;
 		}
-		else if (xLocator > 63) // right side
+		else if (x > 63) // right side
 		{
-			xLocator = 63 - 1;
-			yLocator = slope * 63;
+			x = 63 - 1;
+			y = slope * 63;
 		}
 
 		// apply position after changing the coordinate system back to normal
 		if (filled)
 		{
-			arduboy.fillCircle(xLocator + 64, yLocator + 32, radius, WHITE);
+			arduboy.fillCircle(x + 64, y + 32, radius, WHITE);
 		}
 		else
 		{
-			arduboy.drawCircle(xLocator + 64, yLocator + 32, radius, WHITE);
+			arduboy.drawCircle(x + 64, y + 32, radius, WHITE);
 		}
 	}
 }
