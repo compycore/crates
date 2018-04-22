@@ -97,8 +97,7 @@ void loop()
 						if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
 						player.increaseScore(3); // award the player for destroying a cop
 						cops.erase(i);
-						i--;
-						continue;
+						break;
 					} else {
 						separate(cops[i], cops[j]);
 					}
@@ -108,7 +107,7 @@ void loop()
 
 		// only collide with the player if it still exists
 		if (player.health) {
-			if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
+			// if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
 		}
 
 		cops[i].update();

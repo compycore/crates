@@ -2,7 +2,7 @@
 uint16_t SCORE = 0;
 char VISUAL_SCORE[6];
 uint8_t const PROGMEM ANGLES = 25;
-uint16_t const PROGMEM LEVEL_SIZE = 300;
+uint16_t const PROGMEM LEVEL_SIZE = 400;
 uint8_t const PROGMEM GRID_SIZE = LEVEL_SIZE / 5;
 
 // library imports
@@ -55,19 +55,19 @@ Menu menu;
 
 #include "dust-image.h"
 #include "dust.h"
-List<Dust, 9> dust; // same dust count as police with one additional for the player
+List<Dust, 11> dust; // same dust count as police with one additional for the player
 
 #include "spike-image.h"
 #include "spike.h"
-List<Spike, 3> spikes;
+List<Spike, 5> spikes;
 
 #include "cop-image.h"
 #include "cop.h"
-List<Cop, 4> cops;
+List<Cop, 5> cops;
 
 #include "swat-image.h"
 #include "swat.h"
-List<Swat, 4> swat;
+List<Swat, 5> swat;
 
 // #include "skid-image.h"
 // #include "skid.h"
