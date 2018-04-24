@@ -1,6 +1,6 @@
 // general global variables
 uint16_t SCORE = 0;
-char VISUAL_SCORE[6];
+char VISUAL_SCORE[5];
 uint8_t const ANGLES = 25;
 uint16_t const LEVEL_SIZE = 400;
 uint8_t const GRID_SIZE = LEVEL_SIZE / 10;

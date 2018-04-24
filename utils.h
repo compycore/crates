@@ -67,7 +67,7 @@ void drawNumber(uint8_t x, uint8_t const &y, uint16_t const &number)
 	itoa(number, VISUAL_SCORE, 10);
 
 	// pad the score with zeroes
-	for (uint8_t i = 0; i < 6 - strlen(VISUAL_SCORE); i++)
+	for (uint8_t i = 0; i < 5 - strlen(VISUAL_SCORE); i++)
 	{
 		sprites.drawPlusMask(x, y, NUMBERS, 0);
 		x += 5;
