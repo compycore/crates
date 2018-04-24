@@ -15,7 +15,7 @@ struct Drop: Solid
 		updateCbox();
 	}
 
-	void draw()
+	void draw() const
 	{
 		sketch(DROP);
 	}

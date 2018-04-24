@@ -4,7 +4,7 @@ struct Camera
 	float y = 0;
 
 	// TODO maybe move this to use Points and Rects (the issue is that I use floats for all the x and y coords and a Point is int16_t
-	bool canSee(float xTarget, float yTarget, uint8_t width, uint8_t height)
+	bool canSee(float const &xTarget, float const &yTarget, uint8_t const &width, uint8_t const &height) const
 	{
 		if (xTarget + width > x && xTarget < x + 127)
 		{
@@ -17,7 +17,7 @@ struct Camera
 		return false;
 	}
 
-	void follow(float followX, float followY, uint8_t xPadding, uint8_t yPadding)
+	void follow(float const &followX, float const &followY, uint8_t const &xPadding, uint8_t const &yPadding)
 	{
 		if (x + xPadding > followX)
 		{

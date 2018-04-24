@@ -43,7 +43,7 @@ struct Dust: Entity
 		physics();
 	}
 
-	void draw()
+	void draw() const
 	{
 		sketch(DUST, curFrame);
 	}

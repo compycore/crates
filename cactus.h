@@ -5,7 +5,7 @@ struct Cactus: Simple
 		x = random(LEVEL_SIZE), y = random(LEVEL_SIZE);
 	}
 
-	void draw()
+	void draw() const
 	{
 		sketch(CACTUS);
 	}

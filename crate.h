@@ -15,7 +15,7 @@ struct Crate: Solid
 		updateCbox();
 	}
 
-	void draw()
+	void draw() const
 	{
 		sketch(CRATE);
 	}

@@ -16,7 +16,7 @@ struct Skid: Entity
 		ttl--;
 	}
 
-	void draw()
+	void draw() const
 	{
 		sketch(SKID, curFrame);
 	}

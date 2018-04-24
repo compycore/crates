@@ -17,7 +17,7 @@ struct Spike: Solid
 		updateCbox();
 	}
 
-	void draw()
+	void draw() const
 	{
 		sketch(SPIKE);
 	}

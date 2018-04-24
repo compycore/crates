@@ -133,7 +133,7 @@ struct Player: Car
 		};
 	}
 
-	void draw()
+	void draw() const
 	{
 		/*
 		// handle skids
