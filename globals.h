@@ -57,6 +57,10 @@ Menu menu;
 #include "dust.h"
 List<Dust, 11> dust; // same dust count as police with one additional for the player
 
+#include "cactus-image.h"
+#include "cactus.h"
+List<Cactus, 10> cacti;
+
 #include "spike-image.h"
 #include "spike.h"
 List<Spike, 5> spikes;
@@ -85,9 +89,9 @@ Crate crate = Crate(randomPointOffCamera(LEVEL_SIZE));
 #include "drop.h"
 Drop drop = Drop(randomPointOffCamera(LEVEL_SIZE));
 
-#include "game.h"
-Game game;
-
 #include "busted-image.h"
 #include "busted.h"
 Busted busted;
+
+#include "game.h"
+Game game;
