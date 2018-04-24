@@ -79,8 +79,9 @@ typedef struct Game
 			spikes[i].draw();
 		}
 
-		// TODO spawn cops randomly or based on player performance
+		// TODO implement levels
 		if (!cops.full()) cops.add(Cop(randomPointOffCamera(LEVEL_SIZE)));
+		if (!swat.full()) swat.add(Swat(randomPointOffCamera(LEVEL_SIZE)));
 
 		// handle cops
 		for (uint8_t i = 0; i < cops.size(); i++)
@@ -88,7 +89,7 @@ typedef struct Game
 			// only collide with the player if it still exists
 			if (player.health)
 			{
-				if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
+				// if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
 			}
 
 			// check for collisions with other cops
@@ -122,12 +123,53 @@ typedef struct Game
 			drawLocator(cops[i], locatorRadius);
 		}
 
+		// handle swat
+		for (uint8_t i = 0; i < swat.size(); i++)
+		{
+			// only collide with the player if it still exists
+			if (player.health)
+			{
+				// if (collide(player.cbox, swat[i].cbox)) player.callback(swat[i]);
+			}
+
+			// check for collisions with other swat
+			for (uint8_t j = 0; j < swat.size(); j++)
+			{
+				if (j != i)
+				{
+					if (collide(swat[i].cbox, swat[j].cbox))
+					{
+						if (swat[i].callback(swat[j]))
+						{
+							if (!dust.full()) dust.add(Dust(swat[i].x + swat[i].width / 2 - 4, swat[i].y + swat[i].height / 2 - 4, swat[i].angle, swat[i].speed / 2)); // generate a dust cloud
+							player.increaseScore(5); // award the player for destroying a cop
+							swat.erase(i);
+							break; // break instead of continuing because we don't want the nested for loops to get out of sync
+						}
+						else
+						{
+							separate(swat[i], swat[j]);
+						}
+					}
+				}
+			}
+
+			swat[i].update();
+			swat[i].draw();
+			swat[i].follow(player.x, player.y);
+
+			// the magic number here represents the distance at which the indicator starts to grow
+			uint8_t locatorRadius = 200 / distanceBetween(player.x, player.y, swat[i].x, swat[i].y);
+			drawLocator(swat[i], locatorRadius);
+		}
+
 		drawNumber(2, 2, SCORE);
 
 		// game over
 		if (player.health == 0)
 		{
-			busted.gameOver();
+			// TODO save score
+			busted.gameOver(); // show "busted" and return to the menu
 		}
 
 		arduboy.display(CLEAR_BUFFER); // draw everything to the screen

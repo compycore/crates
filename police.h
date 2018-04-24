@@ -45,9 +45,9 @@ struct Police: Car
 	}
 
 	// flash the lights
-	void flash(uint8_t const &xOffset, uint8_t const &yOffset)
+	void flash(int8_t const &xOffset, int8_t const &yOffset)
 	{
 		if (arduboy.everyXFrames(10)) flashing = !flashing;
-		if (flashing) arduboy.fillRect(x - camera.x + width / 2 - xOffset, y - camera.y + height / 2 - yOffset, 7, 3, WHITE);
+		if (flashing) arduboy.fillRect(x - camera.x + width / 2 + xOffset, y - camera.y + height / 2 + yOffset, 7, 3, WHITE);
 	}
 };

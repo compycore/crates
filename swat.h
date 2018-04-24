@@ -1,9 +1,10 @@
 struct Swat: Police
 {
-	Swat()
+	Swat() = default;
+
+	Swat(Point spawn)
 	{
-		Point spawnPoint = randomPointOffCamera(LEVEL_SIZE);
-		x = spawnPoint.x, y = spawnPoint.y;
+		x = spawn.x, y = spawn.y;
 		width = 20, height = 16;
 		cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
 
@@ -14,6 +15,8 @@ struct Swat: Police
 
 		type = 'E';
 		damage = 5;
+		health = 15;
+		maxSpeed = 1;
 	}
 
 	void update()
@@ -28,6 +31,6 @@ struct Swat: Police
 	{
 		arduboy.fillRect(int16_t(x - camera.x + 4), int16_t(y - camera.y + 4), width - 8, height - 7, BLACK); // ghetto mask
 		sketch(SWAT, curFrame);
-		flash(4, 6);
+		flash(-4, -7);
 	}
 };
