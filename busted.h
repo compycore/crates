@@ -1,4 +1,3 @@
-// TODO maybe move this into menu.h
 typedef struct Busted
 {
 	uint8_t const x = 31;

@@ -85,6 +85,9 @@ Crate crate = Crate(randomPointOffCamera(LEVEL_SIZE));
 #include "drop.h"
 Drop drop = Drop(randomPointOffCamera(LEVEL_SIZE));
 
+#include "game.h"
+Game game;
+
 #include "busted-image.h"
 #include "busted.h"
 Busted busted;

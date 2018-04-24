@@ -1,5 +1,6 @@
 typedef struct Menu
 {
+	// start menu
 	bool selected = false;
 	uint8_t currentSelection = 1;
 	bool submenu = false;
