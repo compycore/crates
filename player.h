@@ -27,7 +27,7 @@ struct Player: Car
 	{
 		if (health)
 		{
-			if (speed > turnSpeed)
+			if (abs(speed) > turnSpeed)
 			{
 				// TODO does this need to be a local variable?
 				float turnRateModifier = speed / maxSpeed - 1;

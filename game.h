@@ -87,7 +87,7 @@ typedef struct Game
 			// only collide with the player if it still exists
 			if (player.health)
 			{
-				// if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
+				if (collide(player.cbox, cops[i].cbox)) player.callback(cops[i]);
 			}
 
 			// check for collisions with other cops
