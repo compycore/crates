@@ -147,7 +147,7 @@ struct Player: Car
 		    else
 		    {
 		        skids.erase(i);
-		        i--;
+		        if (i) i--;
 		    }
 		}
 		*/

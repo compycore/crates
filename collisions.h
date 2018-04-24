@@ -1,3 +1,4 @@
+// copied from the arduboy2 library and modified to use references
 bool collide(Rect const &rect1, Rect const &rect2)
 {
 	return !(rect2.x                >= rect1.x + rect1.width  ||

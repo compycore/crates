@@ -34,13 +34,11 @@ void loop()
 
 	camera.follow(player.x+player.width/2, player.y+player.height/2, 54, 27); // make the camera follow the player
 
-	if (collide(player.cbox, crate.cbox) && player.callback(crate))
+	if (!player.hasCrate && collide(player.cbox, crate.cbox) && player.callback(crate))
 	{
 		// TODO make this more exciting for the player
 		drop = Drop(randomPointOffCamera(LEVEL_SIZE)); // move the drop to a new spot
-	}
-
-	if (collide(player.cbox, drop.cbox) && player.callback(drop))
+	} else if (player.hasCrate && collide(player.cbox, drop.cbox) && player.callback(drop))
 	{
 		// TODO make this more exciting for the player
 		crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
@@ -63,7 +61,7 @@ void loop()
 		else
 		{
 			dust.erase(i);
-			i--;
+			if (i) i--;
 		}
 	}
 
@@ -74,7 +72,7 @@ void loop()
 		// TODO make the player react to hitting a spike
 		if (collide(player.cbox, spikes[i].cbox) && player.callback(spikes[i])) {
 			spikes.erase(i);
-			i--;
+			if (i) i--;
 			continue;
 		}
 
@@ -102,7 +100,7 @@ void loop()
 						if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
 						player.increaseScore(3); // award the player for destroying a cop
 						cops.erase(i);
-						break;
+						break; // break instead of continuing because we don't want the nested for loops to get out of sync
 					} else {
 						separate(cops[i], cops[j]);
 					}
