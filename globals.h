@@ -1,25 +1,23 @@
 // general global variables
 uint16_t SCORE = 0;
 char VISUAL_SCORE[6];
-uint8_t const PROGMEM ANGLES = 25;
-uint16_t const PROGMEM LEVEL_SIZE = 400;
-uint8_t const PROGMEM GRID_SIZE = LEVEL_SIZE / 5;
+uint8_t const ANGLES = 25;
+uint16_t const LEVEL_SIZE = 400;
+uint8_t const GRID_SIZE = LEVEL_SIZE / 10;
 
 // library imports
 #include <Arduboy2.h>
 #include <ArduboyTones.h>
-#include <Sprites.h>
+#include <Sprites.h> // Use this to optimize for execution speed
+// #include <SpritesB.h> // Use this to (likely) optimize for code size
 
 // library instantiation
 Arduboy2Base arduboy;
-// Arduboy2 arduboy; // for debug only
+// Arduboy2 arduboy; // for debugging that needs text output on screen
 Arduboy2Audio audio;
 ArduboyTones sound(arduboy.audio.enabled);
-Sprites sprites;  // Use this to optimize for execution speed
+Sprites sprites; // Use this to optimize for execution speed
 // SpritesB sprites; // Use this to (likely) optimize for code size
-
-// #include "cactus-image.h"
-// #include "cactus.h"
 
 // general image imports
 #include "numbers-image.h"

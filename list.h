@@ -28,7 +28,7 @@ struct List
 		return Capacity;
 	};
 
-	bool full()
+	bool full() const
 	{
 		return d_size == Capacity;
 	};
