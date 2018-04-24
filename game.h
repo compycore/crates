@@ -54,9 +54,10 @@ typedef struct Game
 			}
 		}
 
+		// TODO move setup elsewhere
 		if (!cacti.full()) cacti.add(Cactus());
 
-		// handle cacti
+		// draw cacti
 		for (uint8_t i = 0; i < cacti.size(); i++)
 		{
 			cacti[i].draw();
@@ -123,6 +124,7 @@ typedef struct Game
 
 		drawNumber(2, 2, SCORE);
 
+		// game over
 		if (player.health == 0)
 		{
 			busted.gameOver();
