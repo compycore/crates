@@ -16,7 +16,7 @@ struct Swat: Police
 		type = 'E';
 		damage = 5;
 		health = 15;
-		maxSpeed = 1;
+		maxSpeed = 1.5;
 	}
 
 	void update()

@@ -66,18 +66,27 @@ typedef struct Game
 		// handle spikes
 		for (uint8_t i = 0; i < spikes.size(); i++)
 		{
-			// delete the spike if the player collides with it
-			// TODO make the player react to hitting a spike
-			if (collide(player.cbox, spikes[i].cbox) && player.callback(spikes[i]))
+			if (spikes[i].ttl)
+			{
+				// delete the spike if the player collides with it
+				// TODO make the player react to hitting a spike
+				if (collide(player.cbox, spikes[i].cbox) && player.callback(spikes[i]))
+				{
+					spikes.erase(i);
+					if (i) i--;
+					continue;
+				}
+
+				spikes[i].update();
+				spikes[i].draw();
+			}
+			else
 			{
 				spikes.erase(i);
 				if (i) i--;
-				continue;
 			}
-
-			spikes[i].update();
-			spikes[i].draw();
 		}
+
 
 		// TODO implement levels
 		if (!cops.full()) cops.add(Cop(randomPointOffCamera(LEVEL_SIZE)));

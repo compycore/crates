@@ -34,10 +34,7 @@ struct Dust: Entity
 
 	void update()
 	{
-		if (arduboy.everyXFrames(animFreq))
-		{
-			ttl--;
-		}
+		if (arduboy.everyXFrames(animFreq)) ttl--;
 
 		animate();
 		physics();
