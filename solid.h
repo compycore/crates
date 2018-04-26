@@ -9,6 +9,6 @@ struct Solid: Entity
 	void updateCbox()
 	{
 		// TODO does modifying like this allocate memory?
-		cbox = {.x = x + cbox_conf.x, .y = y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
+		cbox = {.x = (int16_t)x + cbox_conf.x, .y = (int16_t)y + cbox_conf.y, .width = cbox_conf.width, .height = cbox_conf.height};
 	}
 };

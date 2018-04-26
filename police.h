@@ -42,6 +42,8 @@ struct Police: Car
 			health = 0;
 			return true; // delete if the cop has taken all the damage it can
 		}
+
+		return false;
 	}
 
 	// flash the lights

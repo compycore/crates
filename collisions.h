@@ -7,7 +7,7 @@ bool collide(Rect const &rect1, Rect const &rect2)
 	         rect2.y + rect2.height <= rect1.y);
 }
 
-bool separate(Solid &first, Solid const &second)
+void separate(Solid &first, Solid const &second)
 {
 	float translateX = 0;
 	float translateY = 0;

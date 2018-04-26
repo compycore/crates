@@ -55,7 +55,7 @@ typedef struct Game
 		}
 
 		// TODO move setup elsewhere
-		if (!cacti.full()) cacti.add(Cactus());
+		while (!cacti.full()) cacti.add(Cactus());
 
 		// draw cacti
 		for (uint8_t i = 0; i < cacti.size(); i++)
@@ -89,8 +89,8 @@ typedef struct Game
 
 
 		// TODO implement levels
-		if (!cops.full()) cops.add(Cop(randomPointOffCamera(LEVEL_SIZE)));
-		if (!swat.full()) swat.add(Swat(randomPointOffCamera(LEVEL_SIZE)));
+		while (!cops.full()) cops.add(Cop(randomPointOffCamera(LEVEL_SIZE)));
+		while (!swat.full()) swat.add(Swat(randomPointOffCamera(LEVEL_SIZE)));
 
 		// handle cops
 		for (uint8_t i = 0; i < cops.size(); i++)
