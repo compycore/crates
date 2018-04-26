@@ -11,6 +11,7 @@ void loop()
 {
 	// arduboy setup for each frame
 	if (!arduboy.nextFrame()) return;
+	// if (!arduboy.nextFrameDEV()) return; // for debug (will light yellow LED when a frame takes too long to render)
 	arduboy.pollButtons();
 
 	if (!compycore.introduce()) return; // draw the intro logo if we haven't finished that already
