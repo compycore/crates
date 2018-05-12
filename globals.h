@@ -1,9 +1,8 @@
 // general global variables
 uint16_t SCORE = 0;
-char VISUAL_SCORE[5];
 uint8_t const ANGLES = 25;
 uint16_t const LEVEL_SIZE = 400;
-uint8_t const GRID_SIZE = LEVEL_SIZE / 10;
+uint8_t const GRID_SIZE = LEVEL_SIZE / 8;
 
 // library imports
 #include <Arduboy2.h>
@@ -53,11 +52,11 @@ Menu menu;
 
 #include "dust-image.h"
 #include "dust.h"
-List<Dust, 11> dust; // same dust count as police with one additional for the player
+List<Dust, 9> dust; // same dust count as police with one additional for the player
 
 #include "cactus-image.h"
 #include "cactus.h"
-List<Cactus, 10> cacti;
+List<Cactus, 5> cacti;
 
 #include "spike-image.h"
 #include "spike.h"
@@ -69,7 +68,7 @@ List<Cop, 5> cops;
 
 #include "swat-image.h"
 #include "swat.h"
-List<Swat, 5> swat;
+List<Swat, 3> swat;
 
 // #include "skid-image.h"
 // #include "skid.h"

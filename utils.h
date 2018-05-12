@@ -47,6 +47,14 @@ float findAngle(int16_t const &x1, int16_t const &y1, int16_t const &x2, int16_t
 	return atan2(y2 - y1, x1 - x2);
 }
 
+void drawScreenFlash()
+{
+	if (arduboy.everyXFrames(3))
+	{
+		arduboy.drawRect(0, 0, 128, 64);
+	}
+}
+
 void drawGrid()
 {
 	// horizontal lines
@@ -64,19 +72,24 @@ void drawGrid()
 
 void drawNumber(uint8_t x, uint8_t const &y, uint16_t const &number)
 {
-	itoa(number, VISUAL_SCORE, 10);
+	uint16_t numberCopy = number;
+	uint8_t digits = (int)(log10(number) + 1);
 
 	// pad the score with zeroes
-	for (uint8_t i = 0; i < 5 - strlen(VISUAL_SCORE); i++)
+	for (uint8_t i = 0; i < 5 - digits; i++)
 	{
 		sprites.drawPlusMask(x, y, NUMBERS, 0);
 		x += 5;
 	}
 
-	for (uint8_t i = 0; i < strlen(VISUAL_SCORE); i++)
+	// draw from right to left
+	x += 5 * (digits - 1);
+
+	for (uint8_t i = 0; i < digits; i++)
 	{
-		sprites.drawPlusMask(x, y, NUMBERS, uint8_t(VISUAL_SCORE[i]) - 48);
-		x += 5;
+		sprites.drawPlusMask(x, y, NUMBERS, numberCopy % 10);
+		x -= 5;
+		numberCopy = numberCopy / 10;
 	}
 }
 

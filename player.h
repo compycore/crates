@@ -20,7 +20,8 @@ struct Player: Car
 
 	void increaseScore(uint8_t const &increase)
 	{
-		if (health) SCORE += increase;
+		if (health && SCORE < 55555) SCORE += increase;
+		if (SCORE > 55555) SCORE = 55555;
 	}
 
 	void control()
