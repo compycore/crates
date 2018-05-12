@@ -26,12 +26,12 @@ typedef struct Game
 		if (!player.hasCrate && collide(player.cbox, crate.cbox) && player.callback(crate))
 		{
 			// TODO make this more exciting for the player
-			// drop = Drop(randomPointOffCamera(LEVEL_SIZE)); // move the drop to a new spot
+			drop = Drop(randomPointOffCamera(LEVEL_SIZE)); // move the drop to a new spot
 		}
 		else if (player.hasCrate && collide(player.cbox, drop.cbox) && player.callback(drop))
 		{
 			// TODO make this more exciting for the player
-			// crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
+			crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
 		}
 
 		// increase the score just for surviving
@@ -50,8 +50,8 @@ typedef struct Game
 			}
 			else
 			{
-				// dust.erase(i);
-				// if (i) i--;
+				dust.erase(i);
+				if (i) i--;
 			}
 		}
 
@@ -73,9 +73,9 @@ typedef struct Game
 				// TODO make the player react to hitting a spike
 				if (collide(player.cbox, spikes[i].cbox) && player.callback(spikes[i]))
 				{
-					// spikes.erase(i);
-					// if (i) i--;
-					// continue;
+					spikes.erase(i);
+					if (i) i--;
+					continue;
 				}
 
 				spikes[i].update();
@@ -83,8 +83,8 @@ typedef struct Game
 			}
 			else
 			{
-				// spikes.erase(i);
-				// if (i) i--;
+				spikes.erase(i);
+				if (i) i--;
 			}
 		}
 
@@ -113,7 +113,7 @@ typedef struct Game
 						{
 							if (!dust.full()) dust.add(Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4, cops[i].angle, cops[i].speed / 2)); // generate a dust cloud
 							player.increaseScore(3); // award the player for destroying a cop
-							// cops.erase(i);
+							cops.erase(i);
 							break; // break instead of continuing because we don't want the nested for loops to get out of sync
 						}
 						else
