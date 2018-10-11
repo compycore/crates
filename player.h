@@ -1,6 +1,8 @@
 struct Player : Car {
     // List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
     bool hasCrate = false;
+    uint8_t hurt = 0;
+    bool flashing = false;
     uint8_t spiked = 0;
     float turnRate = 3.5;
     float maxReverseSpeed = -1;
@@ -61,12 +63,12 @@ struct Player : Car {
     }
 
     bool callback(Solid const &other) {
-        if (other.type == 'E') // normal police
+        if (other.type == 'E' && !hurt) // normal police
         {
-            SCORE = other.damage;
-
             if (health > other.damage) {
                 health -= other.damage;
+                // make the player flash 3 times
+                hurt = 3;
             } else {
                 health = 0;
                 speed = 0;
@@ -75,11 +77,11 @@ struct Player : Car {
             }
 
             return false;
-        } else if (other.type == 'C') {
+        } else if (other.type == 'C') { // crate
             hasCrate = true;
             increaseScore(5);
             return true; // delete the crate
-        } else if (other.type == 'D') {
+        } else if (other.type == 'D') { // drop point
             hasCrate = false;
             increaseScore(15);
             return true; // delete the drop point
@@ -107,7 +109,7 @@ struct Player : Car {
         };
     }
 
-    void draw() const {
+    void draw() {
         /*
         // handle skids
         for (uint8_t i = 0; i < skids.size(); i++)
@@ -126,10 +128,18 @@ struct Player : Car {
         */
 
         if (health) {
-            // TODO add flashing for when we get hit by an enemy
-            arduboy.fillRect(int16_t(x - camera.x + 4), int16_t(y - camera.y + 4), width - 8, height - 7,
-                             BLACK); // ghetto mask
-            sketch(PLAYER, curFrame);
+            // flash when hit by an enemy
+            if (hurt && arduboy.everyXFrames(10)) {
+                flashing = !flashing;
+                hurt--;
+                return;
+            }
+
+            if (!flashing) {
+                // ghetto mask
+                arduboy.fillRect(int16_t(x - camera.x + 4), int16_t(y - camera.y + 4), width - 8, height - 7, BLACK);
+                sketch(PLAYER, curFrame);
+            }
         }
     }
 };
