@@ -20,8 +20,8 @@ typedef struct Busted {
                 cops.clear();
                 swat.clear();
                 spikes.clear();
-                crate = Crate();
-                drop = Drop();
+                crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
+                drop = Drop(randomPointOffCamera(LEVEL_SIZE));
                 player = Player();
             }
         }

@@ -2,6 +2,7 @@ struct Player : Car {
     // List<Skid, 5> skids; // skid count * everyXFrame (below) should be skid ttl
     bool hasCrate = false;
     uint8_t hurt = 0;
+    uint8_t max_health = 10; // max_health is the same as the pixel width of the health bar
     bool flashing = false;
     uint8_t spiked = 0;
     float turnRate = 3.5;
@@ -13,13 +14,14 @@ struct Player : Car {
         width = 20, height = 16;
         cbox_conf = {.x = 5, .y = 4, .width = 10, .height = 10};
         frameCount = ANGLES - 1;
-        health = 9;
+        health = max_health;
         contain = true;
         type = 'P';
     }
 
     void increaseScore(uint8_t const &increase) {
-        if (health && SCORE < 55555) SCORE += increase;
+        // TODO implement victory condition if you hit the max score
+        if (health && abs(speed) > turnRate && SCORE < 55555) SCORE += increase;
         if (SCORE > 55555) SCORE = 55555;
     }
 
@@ -67,8 +69,9 @@ struct Player : Car {
         {
             if (health > other.damage) {
                 health -= other.damage;
-                // make the player flash 3 times
-                hurt = 3;
+                // TODO make values like this configurable in globals.h
+                // make the player flash 5 times (needs to be an even number)
+                hurt = 6;
             } else {
                 health = 0;
                 speed = 0;
@@ -128,11 +131,14 @@ struct Player : Car {
         */
 
         if (health) {
+            // draw health bar
+            arduboy.drawRect(x - camera.x + 4, y - camera.y - 2, 12, 3);
+            arduboy.drawFastHLine(x - camera.x + 5, y - camera.y - 1, health, WHITE);
+
             // flash when hit by an enemy
             if (hurt && arduboy.everyXFrames(10)) {
                 flashing = !flashing;
                 hurt--;
-                return;
             }
 
             if (!flashing) {

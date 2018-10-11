@@ -1,6 +1,7 @@
 // general global variables
 uint16_t SCORE = 0;
 bool WANTED = false;
+bool SCREEN_FLASHING = false;
 
 // these values configure how many enemies per level
 uint8_t LEVEL = 0;

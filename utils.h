@@ -42,8 +42,9 @@ float findAngle(int16_t const &x1, int16_t const &y1, int16_t const &x2, int16_t
 
 // make it look like police sirens are flashing
 void drawScreenFlash() {
+    if (arduboy.everyXFrames(10)) SCREEN_FLASHING = !SCREEN_FLASHING;
     // TODO maybe make WANTED a param instead of a magically-referenced global
-    if (WANTED && arduboy.everyXFrames(3)) {
+    if (WANTED && SCREEN_FLASHING) {
         arduboy.drawRect(0, 0, 128, 64);
     }
 }
