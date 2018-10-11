@@ -24,11 +24,14 @@ typedef struct Game {
             drop = Drop(randomPointOffCamera(LEVEL_SIZE)); // move the drop to a new spot
         } else if (player.hasCrate && collide(player.cbox, drop.cbox) && player.callback(drop)) {
             // TODO make this more exciting for the player
+            WANTED = true;
+            // TODO make a function that increases the level so we don't go past a max level
+            LEVEL++;
             crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
         }
 
-        // increase the score just for surviving
-        if (arduboy.everyXFrames(60)) {
+        // increase the score for surviving when wanted
+        if (WANTED && arduboy.everyXFrames(60)) {
             player.increaseScore(1);
         }
 
