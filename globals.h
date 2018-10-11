@@ -1,8 +1,14 @@
 // general global variables
 uint16_t SCORE = 0;
+
+// these values configure how many enemies per level
+uint8_t LEVEL = 0;
+uint8_t const COP_COUNT[] = {0, 1, 2};
+uint8_t const SWAT_COUNT[] = {0, 0, 1};
+
 uint8_t const ANGLES = 25;
 uint16_t const LEVEL_SIZE = 400;
-uint8_t const GRID_SIZE = LEVEL_SIZE / 8;
+uint8_t const GRID_SIZE = LEVEL_SIZE / 5;
 
 // library imports
 #include <Arduboy2.h>
@@ -25,6 +31,7 @@ Sprites sprites; // Use this to optimize for execution speed
 
 // camera setup (used in in a couple functions in utils.h)
 #include "camera.h"
+
 Camera camera;
 
 // general engine class imports
@@ -44,30 +51,37 @@ Camera camera;
 // piece import and instantiation
 #include "compycore-image.h"
 #include "compycore.h"
+
 Compycore compycore;
 
 #include "menu-image.h"
 #include "menu.h"
+
 Menu menu;
 
 #include "dust-image.h"
 #include "dust.h"
+
 List<Dust, 9> dust; // same dust count as police with one additional for the player
 
 #include "cactus-image.h"
 #include "cactus.h"
+
 List<Cactus, 5> cacti;
 
 #include "spike-image.h"
 #include "spike.h"
-List<Spike, 5> spikes;
+
+List<Spike, 3> spikes;
 
 #include "cop-image.h"
 #include "cop.h"
+
 List<Cop, 5> cops;
 
 #include "swat-image.h"
 #include "swat.h"
+
 List<Swat, 3> swat;
 
 // #include "skid-image.h"
@@ -76,19 +90,24 @@ List<Swat, 3> swat;
 // player needs to be after dust because it can create dust
 #include "player-image.h"
 #include "player.h"
+
 Player player;
 
 #include "crate-image.h"
 #include "crate.h"
+
 Crate crate = Crate(randomPointOffCamera(LEVEL_SIZE));
 
 #include "drop-image.h"
 #include "drop.h"
+
 Drop drop = Drop(randomPointOffCamera(LEVEL_SIZE));
 
 #include "busted-image.h"
 #include "busted.h"
+
 Busted busted;
 
 #include "game.h"
+
 Game game;
