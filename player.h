@@ -21,7 +21,7 @@ struct Player : Car {
 
     void increaseScore(uint8_t const &increase) {
         // TODO implement victory condition if you hit the max score
-        if (health && abs(speed) > turnRate && SCORE < 55555) SCORE += increase;
+        if (health && abs(speed) > turnSpeed && SCORE < 55555) SCORE += increase;
         if (SCORE > 55555) SCORE = 55555;
     }
 
