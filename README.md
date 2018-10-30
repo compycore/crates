@@ -1,7 +1,7 @@
 # Crates
 ![Menu Graphic](art/menu/menu.png)
 
-https://felipemanga.github.io/ProjectABE/?skin=Arduboy&url=https://cdn.rawgit.com/jessemillar/crates/c8184f929e54a34f3364c23f8d378007aa33ae01/crates.ino.leonardo.hex
+https://felipemanga.github.io/ProjectABE/?skin=Arduboy&url=https://jessemillar.com/crates/crates.ino.leonardo.hex
 
 ## Stages
 > 7 stages
