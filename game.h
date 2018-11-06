@@ -25,8 +25,7 @@ typedef struct Game {
         } else if (player.hasCrate && collide(player.cbox, drop.cbox) && player.callback(drop)) {
             // TODO make this more exciting for the player
             WANTED = true;
-            // TODO make a function that increases the level so we don't go past a max level
-            LEVEL++;
+            if (LEVEL < MAX_LEVEL) { LEVEL++; }
             crate = Crate(randomPointOffCamera(LEVEL_SIZE)); // move the crate to a new spot
         }
 
