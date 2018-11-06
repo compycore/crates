@@ -52,15 +52,15 @@ struct Player : Car {
             speed -= accel * 2;
 
             /*
-            // generate more skids
-            if (arduboy.everyXFrames(2))
-            {
+               // generate more skids
+               if (arduboy.everyXFrames(2))
+               {
                 if (!skids.full())
                 {
                     skids.add(Skid(x, y, curFrame));
                 }
-            }
-            */
+               }
+             */
         }
     }
 
@@ -114,9 +114,9 @@ struct Player : Car {
 
     void draw() {
         /*
-        // handle skids
-        for (uint8_t i = 0; i < skids.size(); i++)
-        {
+           // handle skids
+           for (uint8_t i = 0; i < skids.size(); i++)
+           {
             if (skids[i].ttl)
             {
                 skids[i].update();
@@ -127,10 +127,16 @@ struct Player : Car {
                 skids.erase(i);
                 if (i) i--;
             }
-        }
-        */
+           }
+         */
 
         if (health) {
+            // draw crate indicator
+            if (hasCrate) {
+                arduboy.drawCircle(x - camera.x + 9, y - camera.y - 5, 1);
+                arduboy.drawCircle(x - camera.x + 10, y - camera.y - 5, 1);
+            }
+
             // draw health bar
             arduboy.drawRect(x - camera.x + 4, y - camera.y - 2, 12, 3);
             arduboy.drawFastHLine(x - camera.x + 5, y - camera.y - 1, health, WHITE);

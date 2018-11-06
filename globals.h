@@ -5,6 +5,7 @@ bool SCREEN_FLASHING = false;
 
 // these values configure how many enemies per level
 uint8_t LEVEL = 0;
+uint8_t MAX_LEVEL = 10;
 // TODO tweak level configs
 uint8_t const COP_COUNT[] = {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
 uint8_t const SWAT_COUNT[] = {0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3};
