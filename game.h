@@ -88,6 +88,7 @@ typedef struct Game {
                 if (j != i) {
                     if (collide(cops[i].cbox, cops[j].cbox)) {
                         if (cops[i].callback(cops[j])) {
+                            sound.tone(50, 200);
                             if (!dust.full())
                                 dust.add(
                                         Dust(cops[i].x + cops[i].width / 2 - 4, cops[i].y + cops[i].height / 2 - 4,

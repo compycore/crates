@@ -1,5 +1,5 @@
 // general global variables
-uint16_t SCORE = 0;
+uint16_t SCORE = 55550;
 bool WANTED = false;
 bool SCREEN_FLASHING = false;
 
@@ -90,6 +90,8 @@ List<Swat, 3> swat;
 
 // #include "skid-image.h"
 // #include "skid.h"
+
+#include "song.h"
 
 // player needs to be after dust because it can create dust
 #include "player-image.h"
