@@ -15563,7 +15563,7 @@ document.addEventListener("DOMContentLoaded", function () {
          model: {
             // proxy: "https://cors-anywhere.herokuapp.com/",
             ram: {
-               skin: "Arduboy",
+               skin: "BareFit",
                autoRun: "crates.ino.leonardo.hex",
                debuggerEnabled: false,
                isNativeBuild: false
