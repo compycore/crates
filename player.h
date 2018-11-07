@@ -71,8 +71,10 @@ struct Player : Car {
                 health -= other.damage;
                 // TODO make values like this configurable in globals.h
                 // make the player flash 5 times (needs to be an even number)
+                sound.tone(98, 100, 98, 100);
                 hurt = 6;
             } else {
+                sound.tone(174, 600, 164, 600, 155, 600);
                 health = 0;
                 speed = 0;
                 // TODO maybe move this to .ino
@@ -81,15 +83,18 @@ struct Player : Car {
 
             return false;
         } else if (other.type == 'C') { // crate
+            sound.tone(784, 100, 1046, 100);
             hasCrate = true;
             increaseScore(5);
             return true; // delete the crate
         } else if (other.type == 'D') { // drop point
+            sound.tone(1046, 100, 1046, 100, 1318, 100);
             hasCrate = false;
             increaseScore(15);
             return true; // delete the drop point
         } else if (other.type == 'S') // spikes
         {
+            sound.tone(98, 100, 87, 100);
             spiked += 3; // seconds
             maxSpeed = 1; // cut max speed in half
             return true; // delete the spike
