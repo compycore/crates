@@ -1,5 +1,5 @@
 // general global variables
-uint16_t SCORE = 55550;
+uint16_t SCORE = 0;
 bool WANTED = false;
 bool SCREEN_FLASHING = false;
 
