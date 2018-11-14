@@ -1,41 +1,8 @@
-# Crates
-![Menu Graphic](art/menu/menu.png)
+[![Available on itch.io](http://jessemillar.github.io/available-on-itchio-badge/badge-color.png)](https://jessemillar.itch.io/crates)
 
-https://felipemanga.github.io/ProjectABE/?skin=Arduboy&url=https://jessemillar.com/crates/crates.ino.leonardo.hex
+## Overview
+Pablo is a penguin. A penguin who likes cars. And stealing. Stealing cars. He uses these stolen cars to transport certain types of goods wanted by certain types of people to certain places that the police, ahem, cops, may or may not necessarily approve of.
 
-## Stages
-> 7 stages
+You wanna work for Pablo? You gotta prove yourself. Strap in, hit that gas pedal, and get delivering!
 
-1. 250 - 1 cop
-1. 250 - 2 cops
-1. 300 - 3 cops
-1. 300 - 2 cops 1 SWAT
-1. 250 - 2 cops 1 SWAT
-1. 300 - 3 cops 2 SWAT
-1. 300 - 3 cops 3 SWAT
-
-## Notes
-### General
-- Score increases by 1 every second
-
-### Enemies
-#### Cops
-- Cops are fast (same speed as player)
-- Cops can take one hit
-- Destruction increases score by 3
-
-#### SWAT Vans
-- Go slower (0.5 cop speed)
-- Can take three hits
-- Drop tire spikes
-- Destruction increases score by 6
-
-### Items
-#### Crate
-- Increases score by 5
-
-#### Drop Spot
-- Increases score by 15
-
-#### Tire Spikes
-- Temporarily slow the player to 0.5 speed (3 seconds)
+Crates is an [Arduboy](https://arduboy.com/) game that lets you live our greatest car crime fantasies on the go! [It even has a full game manual complete with an original short story!](https://jessemillar.com/crates/) You can play the game in your browser, but the best experience is playing on a physical Arduboy console.
