@@ -5,4 +5,4 @@ Pablo is a penguin. A penguin who likes cars. And stealing. Stealing cars. He us
 
 You wanna work for Pablo? You gotta prove yourself. Strap in, hit that gas pedal, and get delivering!
 
-Crates is an [Arduboy](https://arduboy.com/) game that lets you live our greatest car crime fantasies on the go! [It even has a full game manual complete with an original short story!](https://jessemillar.com/crates/) You can play the game in your browser, but the best experience is playing on a physical Arduboy console.
+Crates is an [Arduboy](https://arduboy.com/) game that lets you live your greatest car crime fantasies on the go! [It even has a full game manual complete with an original short story!](https://jessemillar.com/crates/) You can play the game in your browser, but the best experience is playing on a physical Arduboy console.
