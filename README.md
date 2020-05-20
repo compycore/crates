@@ -2,7 +2,7 @@
 
 ## Crates
 
-[![Man Hours](https://img.shields.io/endpoint?url=https%3A%2F%2Fjessemillar-man-hours.herokuapp.com%2Fhours%3Frepo%3Dhttps%3A%2F%2Fgithub.com%2Fcompycore%2Fcrates.git)](https://github.com/jessemillar/man-hours)
+[![Man Hours](https://img.shields.io/endpoint?url=https%3A%2F%2Fmh.%3Eessemillar.com%2Fhours%3Frepo%3Dhttps%3A%2F%2Fgithub.com%2Fcompycore%2Fcrates.git)](https://jessemillar.com/r/man-hours)
 
 Pablo is a penguin. A penguin who likes cars. And stealing. Stealing cars. He uses these stolen cars to transport certain types of goods wanted by certain types of people to certain places that the police, ahem, cops, may or may not necessarily approve of.
 
